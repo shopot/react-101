@@ -1,4 +1,4 @@
-import { Fragment, ReactElement } from 'react';
+import { Fragment, ReactElement, ReactNode } from 'react';
 
 /**
  * JSX — это расширение синтаксиса JavaScript,
@@ -7,9 +7,14 @@ import { Fragment, ReactElement } from 'react';
  */
 
 const App = (): ReactElement => {
+  return <h1>Hello React</h1>;
+
+  /** ReactNode vs ReactElement */
+  // return 'demo';
+
   /** Простой элемент с одним тегом H1 */
-  const someJSX = <h1>Hello React</h1>;
-  return someJSX;
+  // const someJSX = <h1>Hello React</h1>;
+  // return someJSX;
 
   // return <h1>Hello React</h1>;
 
