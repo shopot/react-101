@@ -9,6 +9,9 @@ import { Fragment, ReactElement } from 'react';
 const App = (): ReactElement => {
   /** Простой элемент с одним тегом H1 */
   const someJSX = <h1>Hello React</h1>;
+  return someJSX;
+
+  // return <h1>Hello React</h1>;
 
   /** Вложенные элементы */
   // const someJSX = (
@@ -16,6 +19,7 @@ const App = (): ReactElement => {
   //     <h1>Hello React</h1>
   //   </div>
   // );
+  // return someJSX;
 
   /** Фрагмент */
   // const someJSX = (
@@ -24,6 +28,7 @@ const App = (): ReactElement => {
   //     <div>This is text</div>
   //   </Fragment>
   // );
+  // return someJSX;
 
   /** Фрагмент */
   // const someJSX = (
@@ -32,14 +37,12 @@ const App = (): ReactElement => {
   //     <div>This is text</div>
   //   </>
   // );
-
-  return someJSX;
+  // return someJSX;
 
   /** Выражения */
   // const expressions1 = <p>{1 + 2}</p>;
   // const expressions2 = <p>{Math.random() * 100}</p>;
   // const expressions3 = <p>{expressions1}</p>;
-
   // return (
   //   <>
   //     <h1>Hello React</h1>
