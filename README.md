@@ -1,8 +1,6 @@
 # React JSX
 
-**JSX** представляет способ описания визуального кода посредством комбинации кода на JavaScript и разметки XML.
-
-**JSX** - синтаксический сахар для функции `React.createElement(component, props, ...children)`.
+**JSX** представляет способ описания визуального кода посредством комбинации кода на JavaScript и разметки XML, это синтаксический сахар для функции `React.createElement(component, props, ...children)`.
 
 ```jsx
 <header>
