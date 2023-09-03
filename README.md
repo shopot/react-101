@@ -8,7 +8,7 @@
 </header>
 ```
 
-этот код **JSX**, после транспиляции превратится в вызов `React.createElement()`:
+этот код **JSX**, после компиляции превратится в вызов `React.createElement()`:
 
 ```javascript
 React.createElement(
