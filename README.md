@@ -33,7 +33,8 @@ const Footer = (): ReactElement => {
 };
 
 // Определение ReactNode
-type ReactNode = string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>>
+type ReactNode = string | number | boolean
+ | ReactElement<any, string | JSXElementConstructor<any>>
  | Iterable<ReactNode> | ReactPortal | null | undefined
 ```
 
