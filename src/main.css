@@ -1,3 +1,21 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+#root,
+.card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.card {
+  padding: 16px;
+  border: 1px solid lightgray;
+  border-radius: 8px;
+}
+
+h2 {
+  margin: 0;
+}
+
+img {
+  margin-top: 16px;
+}
