@@ -59,9 +59,10 @@ git checkout chapter-05
 ```
 
 - 🔗 [Responding to Events](https://react.dev/learn/responding-to-events)
+- 🔗 [React event object](https://react.dev/reference/react-dom/components/common#react-event-object)
 </details>
 
-### 📚 [Списки и ключи](https://github.com/shopot/react-101/tree/chapter-06)
+### 📚 [Списки и ключи - React Key Concepts](https://github.com/shopot/react-101/tree/chapter-06)
 
 <details>
   <summary>Info</summary>
@@ -73,7 +74,7 @@ git checkout chapter-06
 - 🔗 [Rendering Lists](https://react.dev/learn/rendering-lists)
 </details>
 
-### 📚 [Состояние: память компонента, хук useState](https://github.com/shopot/react-101/tree/chapter-07)
+### 📚 [Состояние: память компонента, знакомство с useState](https://github.com/shopot/react-101/tree/chapter-07)
 
 <details>
   <summary>Info</summary>
