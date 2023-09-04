@@ -84,7 +84,7 @@ export const AlertButton = ({ message, children }) => {
   return <button onClick={handleClick}>{children}</button>;
 };
 
-// src/components/tool-bar.jsx
+// src/components/toolbar.jsx
 export const Toolbar = () => {
   return (
     <div>
@@ -125,7 +125,7 @@ export const Button = ({ onClick, children }) => {
   return <button onClick={onClick}>{children}</button>;
 };
 
-// src/components/tool-bar.jsx
+// src/components/toolbar.jsx
 export const Toolbar = ({ onPlayMovie, onUploadImage }) => {
   return (
     <div>
