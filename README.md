@@ -2,6 +2,20 @@
 
 React позволяет добавлять обработчики событий в ваш JSX. Обработчики событий - это пользовательские функции, которые будут запускаться в ответ на такие взаимодействия, как щелчок, наведение курсора, фокусировка на вводе формы и т. д.
 
+Все обработчики событий получат объект события React. Его также иногда называют "синтетическим событием" (`Synthetic event`). Он соответствует тому же стандарту, что и базовые события DOM, но исправляет некоторые несоответствия браузера.
+
+```ts
+// TypeScript declaration
+interface SyntheticEvent<T = Element, E = Event>
+  extends BaseSyntheticEvent<E, EventTarget & T, EventTarget> {}
+```
+
+Если по какой-то причине нужно базовое событие DOM, его можно получить из `e.nativeEvent`.
+
+Более подробную информацию об объекте можно найти на на странице официальной документации:
+
+- 🔗 [React event object](https://react.dev/reference/react-dom/components/common#react-event-object)
+
 ### Добавление обработчиков событий
 
 Простой сценарий добавления обработчика в компонент `Button`:
@@ -61,7 +75,8 @@ export const Button = () => {
 Поскольку обработчики событий объявляются внутри компонента, они имеют доступ к свойствам компонента.
 
 ```jsx
-const AlertButton = ({ message, children }) => {
+// src/components/alert-button.jsx
+export const AlertButton = ({ message, children }) => {
   const handleClick = () => {
     alert(message);
   };
@@ -69,7 +84,8 @@ const AlertButton = ({ message, children }) => {
   return <button onClick={handleClick}>{children}</button>;
 };
 
-const Toolbar = () => {
+// src/components/tool-bar.jsx
+export const Toolbar = () => {
   return (
     <div>
       <AlertButton message="Playing!">Play Movie</AlertButton>
@@ -84,11 +100,13 @@ const Toolbar = () => {
 Часто требуется, чтобы родительский компонент указал обработчик событий для своего дочернего компонента.
 
 ```jsx
-const Button = ({ onClick, children }) => {
+// src/components/button.jsx
+export const Button = ({ onClick, children }) => {
   return <button onClick={onClick}>{children}</button>;
 };
 
-const PlayButton = ({ movieName }) => {
+// src/components/play-button.jsx
+export const PlayButton = ({ movieName }) => {
   const handlePlayClick = () => {
     alert(`Playing ${movieName}!`);
   };
@@ -102,10 +120,12 @@ const PlayButton = ({ movieName }) => {
 По соглашению (Naming convention) пропсы обработчика событий должны начинаться с `on`, за которым следует заглавная буква.
 
 ```jsx
+// src/components/button.jsx
 export const Button = ({ onClick, children }) => {
   return <button onClick={onClick}>{children}</button>;
 };
 
+// src/components/tool-bar.jsx
 export const Toolbar = ({ onPlayMovie, onUploadImage }) => {
   return (
     <div>
@@ -115,6 +135,7 @@ export const Toolbar = ({ onPlayMovie, onUploadImage }) => {
   );
 };
 
+// src/app/app.jsx
 export const App = () => {
   const playMovie = () => alert('Playing!');
 
@@ -212,3 +233,4 @@ const Signup = () => {
 **Официальная документация по теме:**
 
 - 🔗 [Responding to Events](https://react.dev/learn/responding-to-events)
+- 🔗 [React event object](https://react.dev/reference/react-dom/components/common#react-event-object)
