@@ -208,3 +208,10 @@ const Clock = ({ color, time }) => {
 
 Когда вам нужно отреагировать на ввод пользователя (например, изменить выбранный цвет), вам нужно будет "установить состояние", о чем вы можете узнать в
 [State: A Component's Memory](https://react.dev/learn/state-a-components-memory)
+
+Документация по теме:
+
+- 🔗 [Your First Component](https://react.dev/learn/your-first-component)
+- 🔗 [Describing the UI](https://react.dev/learn/describing-the-ui)
+
+[⬆ Back to Top](#компоненты---одна-из-основных-концепций-react)
