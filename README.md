@@ -214,4 +214,4 @@ const Clock = ({ color, time }) => {
 - 🔗 [Your First Component](https://react.dev/learn/your-first-component)
 - 🔗 [Describing the UI](https://react.dev/learn/describing-the-ui)
 
-[⬆ Back to Top](#компоненты---одна-из-основных-концепций-react)
+**[⬆ Back to Top](#компоненты---одна-из-основных-концепций-react)**
