@@ -263,3 +263,5 @@ const element = <h1>{title}</h1>;
 
 - 🔗 [Writing Markup with JSX](https://react.dev/learn/writing-markup-with-jsx)
 - 🔗 [JavaScript in JSX with Curly Braces](https://react.dev/learn/javascript-in-jsx-with-curly-braces)
+
+**[⬆ Back to Top](#знакомство-с-jsx)**
