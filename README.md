@@ -107,5 +107,6 @@ React использует древовидные структуры для уп
 Документация по теме:
 
 - 🔗 [Preserving and Resetting State - Описание работы алгоритма обновления Dom tree](https://react.dev/learn/preserving-and-resetting-state)
+- 📺 [Подробно о React Reconciliation, или Как React добился 60 fps](https://www.youtube.com/watch?v=NPXJnKytER4)
 
 **[⬆ Back to Top](#отрисовка-элементов)**
