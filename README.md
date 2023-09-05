@@ -235,4 +235,4 @@ const Signup = () => {
 - 🔗 [Responding to Events](https://react.dev/learn/responding-to-events)
 - 🔗 [React event object](https://react.dev/reference/react-dom/components/common#react-event-object)
 
-[⬆ Back to Top](#обработка-событий)
+**[⬆ Back to Top](#обработка-событий)**
