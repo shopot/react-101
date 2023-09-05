@@ -1,7 +1,18 @@
 {
-  "name": "learning-react",
+  "name": "react-101",
+  "version": "1.0.0",
+  "description": "React.js introducing for RS School students and not only",
+  "keywords": [
+    "react",
+    "javascript",
+    "typescript",
+    "jsx",
+    "frontend"
+  ],
+  "author": "Konstantin Sapronov (https://github.com/shopot)",
+  "homepage": "https://github.com/shopot/react-101",
+  "license": "MIT",
   "private": true,
-  "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
