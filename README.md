@@ -299,7 +299,7 @@ const App = () => {
 };
 ```
 
-Это значительно повышает производительность, поскольку теперь при каждом нажатии клавиши перерисовывается только компонент `<MyForm />`. Еще один из методов оптимизации повторного рендеринга это хук [useDeferredValue](https://react.dev/reference/react/useDeferredValue#deferring-re-rendering-for-a-part-of-the-ui).
+Это значительно повышает производительность, поскольку теперь при каждом нажатии клавиши перерисовывается только компонент `<MyForm />`. Еще один из методов оптимизации повторного рендеринга это использование хука [useDeferredValue](https://react.dev/reference/react/useDeferredValue#deferring-re-rendering-for-a-part-of-the-ui).
 
 Документация по теме:
 
