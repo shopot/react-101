@@ -188,9 +188,124 @@ console.log(formData.firstName);
 
 ### Управление `<input>` с помощью переменной состояния
 
+По умолчанию компонент типа `<input />` неконтролируемый. Даже если вы передаете начальное значение, например `<input defaultValue="Initial text" />`, JSX указывает только начальное значение и контролирует, какое значение должно быть прямо сейчас.
+
+Чтобы выполнить рендер (визуализировать) контролируемого компонента типа `<input />`, ему нужно передать пропс (атрибут) `value` (или `checked` для флажков `type="checkbox"` и переключателей `type="radio"`). Тогда React будет всегда контролировать значение через переданный пропс `value`.
+
+Обычно это можно сделать, объявив переменную состояния через вызов хука `useState`:
+
+```jsx
+const MyForm = () => {
+  // Объявление переменной состояния
+  const [firstName, setFirstName] = useState('');
+  // ...
+
+  // Связать значение input с переменной состояния
+  // ... и обновлять переменную состояния при любых изменениях!
+  return <input value={firstName} onChange={(e) => setFirstName(e.target.value)} />;
+};
+```
+
+💡 Значение, которое вы передаете управляемым компонентам, не должно быть `undefined` или `null`. Если вам нужно, чтобы начальное значение было пустым, то инициализируйте переменную состояния пустой строкой `useState('')` как в примере выше.
+
+💡 Если вы хотите управлять вводом при помощи переменной состояния, то вы должны обязательно передать обработчик событий `onChange`.
+
+```jsx
+// 🔴 Bug: controlled text input with no onChange handler
+<input value={something} />
+
+// ✅ Good: uncontrolled input with an initial value
+<input defaultValue={something} />
+
+// ✅ Good: controlled input with onChange
+<input value={something} onChange={e => setSomething(e.target.value)} />
+
+// ✅ Good: readonly controlled input without on change
+<input value={something} readOnly={true} />
+
+```
+
+Примеры с `type="checkbox"`
+
+```jsx
+// ✅ Good: uncontrolled checkbox with an initial value
+<input type="checkbox" defaultChecked={something} />
+
+// ✅ Good: controlled checkbox with onChange
+<input type="checkbox" checked={something} onChange={e => setSomething(e.target.checked)} />
+
+// ✅ Good: readonly controlled input without on change
+<input type="checkbox" checked={something} readOnly={true} />
+```
+
+⚠️ Переменную состояния контролируемого компонента нельзя обновлять асинхронно.
+
+```jsx
+const handleChange = (e) => {
+  // 🔴 Bug: updating an input asynchronously
+  setTimeout(() => {
+    setFirstName(e.target.value);
+  }, 100);
+};
+
+const handleChange = (e) => {
+  // ✅ Updating a controlled input to e.target.value synchronously
+  setFirstName(e.target.value);
+};
+```
+
+### Оптимизация повторного рендеринга при каждом нажатии клавиши
+
+Когда вы используете контролируемый ввод, вы устанавливаете состояние при каждом нажатии клавиши. Если компонент, содержащий ваше состояние, повторно отображает большое дерево, это будет сказываться на производительности:
+
+```jsx
+const App = () => {
+  const [firstName, setFirstName] = useState('');
+
+  return (
+    <>
+      <form>
+        <input value={firstName} onChange={(e) => setFirstName(e.target.value)} />
+      </form>
+      <PageContent />
+    </>
+  );
+};
+```
+
+Обновление состояния вызванное методом из хука `useState` приводит к повторному рендеренгу компонента и всех его потомков.
+
+Поскольку `<PageContent />` не зависит от состояния ввода, то форму с вводом можно вынести в отдельный компонент:
+
+```jsx
+// src/components/my-forms.jsx
+const MyForm = () => {
+  const [firstName, setFirstName] = useState('');
+  return (
+    <form>
+      <input value={firstName} onChange={(e) => setFirstName(e.target.value)} />
+    </form>
+  );
+};
+
+// src/app/app.jsx
+const App = () => {
+  return (
+    <>
+      <MyForm />
+      <PageContent />
+    </>
+  );
+};
+```
+
+Это значительно повышает производительность, поскольку теперь при каждом нажатии клавиши перерисовывается только компонент `<MyForm />`. Еще один из методов оптимизации повторного рендеринга это хук [useDeferredValue](https://react.dev/reference/react/useDeferredValue#deferring-re-rendering-for-a-part-of-the-ui).
+
 Документация по теме:
 
-- 🔗
+- 🔗 [Common components (e.g. `<div>`)](https://react.dev/reference/react-dom/components/common)
+- 🔗 [Component `<input>`](https://react.dev/reference/react-dom/components/input)
+- 🔗 [useDeferredValue](https://react.dev/reference/react/useDeferredValue#deferring-re-rendering-for-a-part-of-the-ui)
 
 [⬆ Back to Top](#react-dom-компоненты---компоненты-форм)
 
