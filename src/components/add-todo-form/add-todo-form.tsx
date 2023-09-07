@@ -34,7 +34,7 @@ export const AddTodoForm = ({ addTodo }: Props): ReactElement => {
           className={styles.formInput}
           type="text"
           placeholder="Add your new todo"
-          aria-label="Full name"
+          aria-label="Add your new todo"
         />
         <Button onCLick={handleClick}>Add new</Button>
       </div>
