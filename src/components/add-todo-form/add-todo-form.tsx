@@ -1,5 +1,7 @@
 import { ReactElement, useState } from 'react';
 
+import styles from './add-todo-form.module.css';
+
 import { Button } from '@/shared/ui';
 
 export const AddTodoForm = ({ addTodo }: Props): ReactElement => {
@@ -24,12 +26,12 @@ export const AddTodoForm = ({ addTodo }: Props): ReactElement => {
   };
 
   return (
-    <form className="w-full max-w-lg">
-      <div className="flex items-center border-b border-blue-500 py-2">
+    <form className={styles.formWrapper}>
+      <div className={styles.formInputWrapper}>
         <input
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-          className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
+          className={styles.formInput}
           type="text"
           placeholder="Add your new todo"
           aria-label="Full name"

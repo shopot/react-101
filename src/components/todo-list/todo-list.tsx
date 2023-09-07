@@ -1,7 +1,9 @@
 import { ReactElement } from 'react';
 
-import { TodoItem } from '@/components/todo-item';
+import styles from './todo-list.module.css';
+
 import { Todo } from '@/types';
+import { TodoItem } from '../todo-item';
 
 export const TodoList = ({ todos, onToggleComplete, onRemove }: Props): ReactElement => {
   // Формируем список JSX элементов из наших todo
@@ -11,7 +13,7 @@ export const TodoList = ({ todos, onToggleComplete, onRemove }: Props): ReactEle
     <TodoItem key={todo.id} todo={todo} onToggleComplete={onToggleComplete} onRemove={onRemove} />
   ));
 
-  return <div className="flex flex-col items-start  py-2 ">{todoList}</div>;
+  return <div className={styles.todoList}>{todoList}</div>;
 };
 
 type Props = {

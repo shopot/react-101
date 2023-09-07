@@ -1,5 +1,7 @@
 import { ReactElement, useState } from 'react';
 
+import styles from './app.module.css';
+
 import { TodoList } from '@/components/todo-list';
 import { AddTodoForm } from '@/components/add-todo-form';
 import { deepCopy } from '@/util';
@@ -24,7 +26,7 @@ const App = (): ReactElement => {
   // можно было использовать библиотеку uuid: https://www.npmjs.com/package/uuid
   const [todoIndex, setTodoIndex] = useState(1);
 
-  // Метод для переключение статуса completed
+  // Метод для переключения статуса completed
   const toggleTodoComplete = (todoId: number) => {
     // Находим индекс массива todo по id
     const findIndex = todos.findIndex(({ id }) => id === todoId);
@@ -77,8 +79,8 @@ const App = (): ReactElement => {
   };
 
   return (
-    <div className="container max-w-lg mx-auto mt-8">
-      <h1 className="text-center font-semibold text-3xl">Todo App</h1>
+    <div className={styles.appContainer}>
+      <h1 className={styles.header}>Todo App</h1>
       <AddTodoForm addTodo={addTodo} />
       <TodoList todos={todos} onToggleComplete={toggleTodoComplete} onRemove={removeTodo} />
     </div>

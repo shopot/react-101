@@ -1,10 +1,12 @@
 import { ReactElement } from 'react';
 
+import styles from './button-remove.module.css';
+
 export const ButtonRemove = ({ onCLick }: Props): ReactElement => {
   return (
     <svg
       onClick={onCLick}
-      className="h-10 w-10 text-red-500 cursor-pointer hover:text-red-700"
+      className={styles.buttonRemove}
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
