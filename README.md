@@ -12,6 +12,7 @@
 - 📘 [Списки и ключи - React Key Concepts](https://github.com/shopot/react-101/tree/chapter-06) - _chapter-06_
 - 📘 [Состояние: память компонента, знакомство с useState](https://github.com/shopot/react-101/tree/chapter-07) - _chapter-07_
 - 📘 [Применение стилей CSS - краткий обзор](https://github.com/shopot/react-101/tree/chapter-08) - _chapter-08_
+- 📘 [React DOM компоненты - компоненты форм](https://github.com/shopot/react-101/tree/chapter-09) - _chapter-09_
 
 <details>
   <summary>Information</summary>
