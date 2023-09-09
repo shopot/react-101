@@ -1,5 +1,5 @@
 .appContainer {
-  @apply container max-w-lg mx-auto mt-8
+  @apply container mt-8 flex flex-col items-center
 }
 
 .header {

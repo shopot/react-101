@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+  @apply antialiased text-gray-700 bg-gray-100
+}
+
+#root {
+  @apply flex w-full h-screen justify-center justify-items-center
+}
