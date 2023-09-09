@@ -13,7 +13,8 @@
 - 📘 [Состояние: память компонента, знакомство с useState](https://github.com/shopot/react-101/tree/chapter-07) - _chapter-07_
 - 📘 [Применение стилей CSS - краткий обзор](https://github.com/shopot/react-101/tree/chapter-08) - _chapter-08_
 - 📘 [React DOM компоненты - компоненты форм](https://github.com/shopot/react-101/tree/chapter-09) - _chapter-09_
-
+- 📘 [Совместное использование состояния между компонентами](https://github.com/shopot/react-101/tree/chapter-10) - _chapter-10_
+  
 <details>
   <summary>Information</summary>
 
