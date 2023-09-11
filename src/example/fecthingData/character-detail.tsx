@@ -12,7 +12,7 @@ export const CharacterDetail = ({ data }: Props): ReactElement | null => {
   return (
     <div className="flex gap-6 bg-gray-700 rounded-lg mt-2 p-8">
       <div className="">
-        <img className="rounded-lg" src={image} />
+        <img className="rounded-lg" alt={name} src={image} />
       </div>
       <div className="text-lg">
         <h2 className="text-white font-extrabold text-4xl mb-4">{name}</h2>
