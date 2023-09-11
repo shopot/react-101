@@ -7,8 +7,11 @@ export const Description = (): ReactElement => {
     <>
       <div>
         <Subtitle>Управление модальным диалогом</Subtitle>
-        <a href="#">
-          &#128279; <Badge>modal-app.ts</Badge>
+        <a
+          href="https://github.com/shopot/react-101/blob/chapter-11/src/example/modalApp/modal-dialog.tsx"
+          target="_blank"
+        >
+          &#128279; <Badge>modal-dialog.tsx</Badge>
         </a>
         <Divider />В этом примере внешней системой является DOM браузера.
         <br />

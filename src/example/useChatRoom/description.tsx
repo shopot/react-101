@@ -7,7 +7,10 @@ export const Description = (): ReactElement => {
     <>
       <div>
         <Subtitle>Пользовательский хук useChatRoom</Subtitle>
-        <a href="#">
+        <a
+          href="https://github.com/shopot/react-101/blob/chapter-11/src/example/useChatRoom/use-chat-room.ts"
+          target="_blank"
+        >
           &#128279; <Badge>use-chat-room.ts</Badge>
         </a>
         <Divider />В этом примере компонент <Badge>ChatRoom</Badge> использует эффект, чтобы

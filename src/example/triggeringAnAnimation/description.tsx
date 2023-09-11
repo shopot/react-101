@@ -7,8 +7,11 @@ export const Description = (): ReactElement => {
     <>
       <div>
         <Subtitle>Запуск анимации</Subtitle>
-        <a href="#">
-          &#128279; <Badge>triggering-animation-app.ts</Badge>
+        <a
+          href="https://github.com/shopot/react-101/blob/chapter-11/src/example/triggeringAnAnimation/welcome.tsx"
+          target="_blank"
+        >
+          &#128279; <Badge>welcome.tsx</Badge>
         </a>
         <Divider />В этом примере внешней системой является библиотека анимации в файле{' '}
         <Badge>animation.js</Badge>. Он предоставляет класс JavaScript под названием

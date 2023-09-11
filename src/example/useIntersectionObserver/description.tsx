@@ -7,7 +7,10 @@ export const Description = (): ReactElement => {
     <>
       <div>
         <Subtitle>Пользовательский хук useIntersectionObserver</Subtitle>
-        <a href="#">
+        <a
+          href="https://github.com/shopot/react-101/blob/chapter-11/src/example/useIntersectionObserver/use-intersection-observer.tsx"
+          target="_blank"
+        >
           &#128279; <Badge>use-intersection-observer.ts</Badge>
         </a>
         <Divider />В этом примере внешней системой снова является DOM браузера. Компонент{' '}

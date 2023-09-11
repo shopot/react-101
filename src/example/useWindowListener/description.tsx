@@ -6,7 +6,10 @@ export const Description = (): ReactElement => {
   return (
     <div>
       <Subtitle>Пользовательский хук useWindowListener</Subtitle>
-      <a href="#">
+      <a
+        href="https://github.com/shopot/react-101/blob/chapter-11/src/example/useWindowListener/use-window-listener.ts"
+        target="_blank"
+      >
         &#128279; <Badge>use-window-listener.ts</Badge>
       </a>
       <Divider />В этом примере внешней системой является сам DOM браузера. Обычно вы указываете

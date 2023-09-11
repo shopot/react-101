@@ -7,7 +7,10 @@ export const Description = (): ReactElement => {
     <>
       <div>
         <Subtitle>Получение данных с помощью эффектов - пользовательский хук useFetchData</Subtitle>
-        <a href="#">
+        <a
+          href="https://github.com/shopot/react-101/blob/chapter-11/src/example/fecthingData/use-fetch-data.ts"
+          target="_blank"
+        >
           &#128279; <Badge>use-fetch-data.ts</Badge>
         </a>
         <Divider />
