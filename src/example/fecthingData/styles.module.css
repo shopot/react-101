@@ -1,0 +1,23 @@
+.card {
+  @apply flex gap-6 bg-gray-700 rounded-lg mt-2 p-8 text-lg text-white
+}
+
+.card img {
+  @apply rounded-lg
+}
+
+.title {
+  @apply text-white font-extrabold text-4xl mb-4
+}
+
+.location {
+  @apply mt-4
+}
+
+.location .label {
+  @apply text-gray-300
+}
+
+.location .name {
+  @apply text-orange-300
+}

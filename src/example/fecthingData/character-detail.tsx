@@ -1,5 +1,7 @@
 import { ReactElement } from 'react';
 
+import styles from './styles.module.css';
+
 export const CharacterDetail = ({ data }: Props): ReactElement | null => {
   if (typeof data === 'undefined') {
     return null;
@@ -10,19 +12,19 @@ export const CharacterDetail = ({ data }: Props): ReactElement | null => {
   const { name: locationName } = location;
 
   return (
-    <div className="flex gap-6 bg-gray-700 rounded-lg mt-2 p-8">
-      <div className="">
-        <img className="rounded-lg" alt={name} src={image} />
+    <div className={styles.card}>
+      <div>
+        <img alt={name} src={image} />
       </div>
-      <div className="text-lg">
-        <h2 className="text-white font-extrabold text-4xl mb-4">{name}</h2>
-        <p className="text-white">
+      <div>
+        <h2 className={styles.title}>{name}</h2>
+        <p>
           {species} - {gender}
         </p>
-        <p className="pt-4">
-          <span className="text-gray-300">Last known location:</span>
+        <p className={styles.location}>
+          <span className={styles.label}>Last known location:</span>
           <br />
-          <span className="text-orange-300">{locationName}</span>
+          <span className={styles.name}>{locationName}</span>
         </p>
       </div>
     </div>
