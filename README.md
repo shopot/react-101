@@ -6,6 +6,7 @@
 - [Что такое useEffect?](#что-такое-useeffect)
 - [Массив зависимостей useEffect](#массив-зависимостей-useeffect)
 - [Функция очистки useEffect (cleanup function)](#функция-очистки-useeffect-cleanup-function)
+- [Приложение с примерами useEffect из документации React](#приложение-с-примерами-useeffect-из-документации-react)
 
 ### Жизненный цикл компонента в React
 
