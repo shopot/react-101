@@ -1,0 +1,11 @@
+.modal {
+  @apply w-2/6 border rounded shadow-sm p-8
+}
+
+.modal h1 {
+  @apply text-center text-3xl font-bold text-gray-600 mb-8 block
+}
+
+.modal div {
+  @apply text-center
+}
