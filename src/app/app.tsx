@@ -1,51 +1,9 @@
-import { ReactElement, useState } from 'react';
-
-import styles from './app.module.css';
-
-import questions from '@/data/questions.ts';
-import results from '@/data/results.ts';
-
-import { QuestionsForm, QuestionsResult } from '@/components';
-import { Button } from '@/shared/ui';
-
-export const App = (): ReactElement => {
-  const [questionAnswered, setQuestionAnswered] = useState(0);
-
-  const [totalCorrect, setTotalCorrect] = useState(0);
-
-  const answerQuestion = (isCorrect: boolean) => {
-    if (isCorrect) {
-      setTotalCorrect(totalCorrect + 1);
-    }
-
-    setQuestionAnswered(questionAnswered + 1);
-  };
-
-  const resetQuiz = () => {
-    setQuestionAnswered(0);
-    setTotalCorrect(0);
-  };
-
+function App() {
   return (
-    <div className={styles.appContainer}>
-      <h1 className={styles.header}>React Quiz App</h1>
-      <div className={styles.card}>
-        {questionAnswered < questions.length ? (
-          <QuestionsForm
-            questions={questions}
-            questionAnswered={questionAnswered}
-            onAnswerQuestion={answerQuestion}
-          />
-        ) : (
-          <QuestionsResult totalCorrect={totalCorrect} results={results} />
-        )}
-
-        {questionAnswered === questions.length && (
-          <div className={styles.buttons}>
-            <Button onCLick={resetQuiz}>Начать сначала</Button>
-          </div>
-        )}
-      </div>
+    <div className="container mx-auto mt-5">
+      <h1 className="text-center text-5xl font-extrabold dark:text-white">Hello React</h1>
     </div>
   );
-};
+}
+
+export default App;
