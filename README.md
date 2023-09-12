@@ -504,6 +504,7 @@ export const App = () => {
 
 Готовый пример с приложением находится в src раздела chapter-12.
 
+```shell
 Для запуска примера с готовым приложением выполните команды:
 
 git clone https://github.com/shopot/react-101.git
@@ -513,7 +514,14 @@ git checkout chapter-11
 npm install
 
 npm run dev
+```
+
+Документация по теме:
+- 🔗 [Thinking in React](https://react.dev/learn/thinking-in-react)
+- 🔗 [Passing Props to a Component](https://react.dev/learn/passing-props-to-a-component)
+- 🔗 [State: A Component's Memory](https://react.dev/learn/state-a-components-memory)
+- 🔗 [useState() Hook](https://react.dev/reference/react/useState)
+- 🔗 [Adding Interactivity](https://react.dev/learn/adding-interactivity)
+- 🔗 [Describing the UI](https://react.dev/learn/describing-the-ui)
 
 [⬆ Back to Top](#руководство-react-quiz-app---мыслим-как-react)
-
-Adding Interactivity
