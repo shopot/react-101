@@ -87,7 +87,7 @@ export const CharacterDetail = ({characterId}) => {
 другом порядке, чем вы их отправили.
 
 Второй пример реализации с `AbortController` можно найти в оригинальной
-статье [Fixing Race Conditions in React with useEffect](https://maxrozen.com/race-conditions-fetching-data-react-with-useeffect).
+статье 🔗 [Fixing Race Conditions in React with useEffect](https://maxrozen.com/race-conditions-fetching-data-react-with-useeffect).
 
 Если вы постоянно размещаете код для получения данных непосредственно внутри функции `useEffect` в компонентах React,
 это
