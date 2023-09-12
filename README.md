@@ -507,9 +507,8 @@ export const App = () => {
 
 Готовый пример с приложением находится в src раздела chapter-12.
 
-```shell
 Для запуска примера с готовым приложением выполните команды:
-
+```shell
 git clone https://github.com/shopot/react-101.git
 
 git checkout chapter-11
