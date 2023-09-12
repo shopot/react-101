@@ -379,13 +379,6 @@ const QuestionsResult = ({totalCorrect, results}) => {
 
 // ...
 
-const QuestionsForm = ({questions, questionAnswered, onAnswerQuestion}) => {
-  const {ask, answers} = questions[questionAnswered];
-  //...
-};
-
-//...
-
 export const App = () => {
   // Количество ответов, переменная отражающая текущий прогресс викторины
   const [questionAnswered, setQuestionAnswered] = useState(0);
@@ -435,6 +428,14 @@ const AnswerRow = ({text, onAnswerQuestion}) => {
       {text}
     </div>
   );
+};
+
+
+// ...
+
+const QuestionsForm = ({questions, questionAnswered, onAnswerQuestion}) => {
+  const {ask, answers} = questions[questionAnswered];
+  //...
 };
 
 //...
