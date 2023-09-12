@@ -1,0 +1,15 @@
+.main {
+  @apply container mx-auto mt-5
+}
+
+.header1 {
+  @apply text-center text-3xl font-extrabold dark:text-white
+}
+
+.loading {
+  @apply text-center pt-8
+}
+
+.list {
+  @apply flex flex-wrap justify-center gap-6 mt-10
+}
