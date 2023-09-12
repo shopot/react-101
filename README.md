@@ -14,6 +14,7 @@
 - 📘 [Применение стилей CSS - краткий обзор](https://github.com/shopot/react-101/tree/chapter-08) - _chapter-08_
 - 📘 [React DOM компоненты - компоненты форм](https://github.com/shopot/react-101/tree/chapter-09) - _chapter-09_
 - 📘 [Совместное использование состояния между компонентами](https://github.com/shopot/react-101/tree/chapter-10) - _chapter-10_
+- 📘 [Знакомство с хуком useEffect](https://github.com/shopot/react-101/tree/chapter-11) - _chapter-11_
   
 <details>
   <summary>Information</summary>
