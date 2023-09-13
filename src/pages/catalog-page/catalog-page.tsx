@@ -32,7 +32,7 @@ export const CatalogPage = (): ReactElement => {
     return <div className={styles.loading}>Something went wrong...</div>;
   }
 
-  if (!data) {
+  if (!data?.length) {
     return <div className={styles.loading}>Loading...</div>;
   }
 

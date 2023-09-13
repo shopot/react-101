@@ -13,9 +13,15 @@ export const useFetch = <T>(uri: string) => {
       try {
         const response = await fetch(uri);
 
-        const data = (await response.json()) as T;
+        if (response?.ok) {
+          const data = (await response.json()) as T;
 
-        setData(data);
+          setData(data);
+
+          setError(undefined);
+        } else {
+          setError(new Error(`HTTP Response Code: ${response?.status}`));
+        }
       } catch (error) {
         setError(error as Error);
       }
