@@ -1,5 +1,5 @@
 .row {
-  @apply max-w-sm bg-white rounded-lg
+  @apply max-w-sm bg-white rounded-lg shadow
 }
 
 .row img {

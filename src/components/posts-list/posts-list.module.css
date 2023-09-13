@@ -1,0 +1,3 @@
+.list {
+  @apply flex flex-wrap justify-center gap-6 mt-10
+}
