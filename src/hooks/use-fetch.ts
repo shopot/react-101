@@ -17,8 +17,6 @@ export const useFetch = <T>(uri: string) => {
           const data = (await response.json()) as T;
 
           setData(data);
-
-          setError(undefined);
         } else {
           setError(new Error(`HTTP Response Code: ${response?.status}`));
         }
@@ -26,6 +24,8 @@ export const useFetch = <T>(uri: string) => {
         setError(error as Error);
       }
     }
+
+    setError(undefined);
 
     void getData(uri);
   }, [uri]);
