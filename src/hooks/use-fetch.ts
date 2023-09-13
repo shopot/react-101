@@ -10,6 +10,8 @@ export const useFetch = <T>(uri: string) => {
     }
 
     async function getData(uri: string) {
+      setError(undefined);
+
       try {
         const response = await fetch(uri);
 
@@ -24,8 +26,6 @@ export const useFetch = <T>(uri: string) => {
         setError(error as Error);
       }
     }
-
-    setError(undefined);
 
     void getData(uri);
   }, [uri]);
