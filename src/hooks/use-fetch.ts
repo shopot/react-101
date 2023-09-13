@@ -2,8 +2,7 @@ import { useState, useEffect } from 'react';
 
 export const useFetch = <T>(uri: string) => {
   const [data, setData] = useState<T | undefined>();
-  const [error, setError] = useState<Error>();
-  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<Error | undefined>();
 
   useEffect(() => {
     if (!uri) {
@@ -19,13 +18,11 @@ export const useFetch = <T>(uri: string) => {
         setData(data);
       } catch (error) {
         setError(error as Error);
-      } finally {
-        setLoading(false);
       }
     }
 
     void getData(uri);
   }, [uri]);
 
-  return { loading, data, error };
+  return { data, error };
 };

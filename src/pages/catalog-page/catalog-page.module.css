@@ -1,0 +1,15 @@
+.loading {
+  @apply text-center pt-8
+}
+
+.pagination {
+  @apply flex justify-center gap-2 mt-8
+}
+
+.pagination button {
+  @apply bg-white hover:bg-gray-100 text-gray-800 font-semibold py-1.5 px-4 border border-gray-300 rounded shadow
+}
+
+.pagination button:disabled {
+  @apply opacity-75 hover:bg-white
+}
