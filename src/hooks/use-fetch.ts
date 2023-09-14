@@ -9,6 +9,8 @@ export const useFetch = <T>(uri: string) => {
       return;
     }
 
+    let active = true;
+
     async function getData(uri: string) {
       try {
         const response = await fetch(uri);
@@ -16,7 +18,9 @@ export const useFetch = <T>(uri: string) => {
         if (response?.ok) {
           const data = (await response.json()) as T;
 
-          setData(data);
+          if (active) {
+            setData(data);
+          }
         } else {
           setError(new Error(`HTTP Response Code: ${response?.status}`));
         }
@@ -30,6 +34,8 @@ export const useFetch = <T>(uri: string) => {
     return () => {
       setError(undefined);
       setData(undefined);
+
+      active = false;
     };
   }, [uri]);
 
