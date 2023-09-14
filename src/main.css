@@ -1,3 +1,22 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+  @apply h-full text-gray-800
+}
+
+#root {
+  @apply h-full;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr auto;
+}
+
+p {
+  @apply pb-2.5
+}
+
+a {
+  @apply font-medium text-blue-600 hover:underline
+}

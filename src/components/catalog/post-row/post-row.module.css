@@ -1,0 +1,33 @@
+.row {
+  @apply max-w-sm bg-white rounded-lg shadow
+}
+
+.row img {
+  @apply rounded-t-lg hover:opacity-75
+}
+.body {
+  @apply p-6
+}
+.name {
+  @apply text-2xl font-semibold
+}
+
+.addedBy {
+  @apply text-gray-600 font-medium
+}
+
+.owner {
+  @apply font-medium pl-2 text-red-700
+}
+
+.footer {
+  @apply pt-4 flex justify-between
+}
+
+.addedAt {
+  @apply text-gray-500
+}
+
+.btnRead {
+  @apply mt-4 font-medium text-blue-600 hover:underline
+}

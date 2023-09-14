@@ -1,0 +1,3 @@
+.footer {
+  @apply flex justify-center py-8
+}

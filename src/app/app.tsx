@@ -1,9 +1,12 @@
-function App() {
-  return (
-    <div className="container mx-auto mt-5">
-      <h1 className="text-center text-5xl font-extrabold dark:text-white">Hello React</h1>
-    </div>
-  );
-}
+import { ReactElement } from 'react';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+
+import { routes } from '@/pages';
+
+const router = createBrowserRouter(routes);
+
+const App = (): ReactElement => {
+  return <RouterProvider router={router} />;
+};
 
 export default App;

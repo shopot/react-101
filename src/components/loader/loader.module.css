@@ -1,0 +1,10 @@
+.wrapper {
+  @apply flex justify-center mt-8
+}
+.svg {
+  @apply w-8 h-8 mr-2 text-gray-200 animate-spin fill-blue-600
+}
+
+.text {
+  @apply text-gray-700
+}

@@ -1,0 +1,13 @@
+.nav {
+  @apply bg-white w-full h-12 flex justify-center items-center
+}
+
+.link {
+  @apply block px-4 py-2 text-lg font-medium text-gray-600 border-b-2 border-b-white hover:text-black
+}
+
+.pending {}
+
+.active {
+  @apply border-b-red-600
+}

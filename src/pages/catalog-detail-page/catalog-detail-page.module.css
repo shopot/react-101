@@ -1,0 +1,7 @@
+.detail {
+  @apply w-full flex justify-center
+}
+
+.error {
+  @apply text-center pt-8 text-gray-700
+}
