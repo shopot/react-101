@@ -8,6 +8,7 @@ import { useFetch } from '@/hooks';
 import { Post } from '@/types';
 import { PostsList } from '@/components/catalog';
 import { Loader } from '@/components/loader';
+import { Pagination } from '@/components/pagination';
 
 export const CatalogPage = (): ReactElement => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -19,37 +20,15 @@ export const CatalogPage = (): ReactElement => {
   // Computed variable
   const page = parseInt(searchParams.get('page') || '1', 10);
 
-  const sanitizePageNumber = (page: number) => {
-    return page > 1 && page <= MAX_PAGE_COUNT ? page : 1;
-  };
-
-  const handlePrevPage = () => {
-    const prevPage = sanitizePageNumber(page - 1);
-
-    if (prevPage === page) {
-      return;
-    }
-
-    setSearchParams(`page=${prevPage}`);
-  };
-
-  const handleNextPage = () => {
-    const nextPage = sanitizePageNumber(page + 1);
-
-    if (nextPage === page) {
-      return;
-    }
-
-    setSearchParams(`page=${nextPage}`);
-  };
+  const handleChangePage = (nextPage: number) => setSearchParams(`page=${nextPage}`);
 
   useEffect(() => {
-    const newPageNumber = sanitizePageNumber(parseInt(searchParams.get('page') || '1', 10));
+    const currentPage = parseInt(searchParams.get('page') || '1', 10);
 
-    setUri(`${API_URI}?_limit=6&_page=${newPageNumber}`);
+    setUri(`${API_URI}?_limit=6&_page=${currentPage}`);
   }, [searchParams]);
 
-  if (error) {
+  if (error || data?.length === 0) {
     return <div className={styles.error}>Something went wrong...</div>;
   }
 
@@ -60,14 +39,12 @@ export const CatalogPage = (): ReactElement => {
   return (
     <>
       <PostsList posts={data} />
-      <div className={styles.pagination}>
-        <button type="button" disabled={page === 1} onClick={handlePrevPage}>
-          Prev
-        </button>
-        <button type="button" disabled={page === MAX_PAGE_COUNT} onClick={handleNextPage}>
-          Next
-        </button>
-      </div>
+      <Pagination
+        prev={page === 1}
+        next={page === MAX_PAGE_COUNT}
+        onPrev={() => handleChangePage(page - 1)}
+        onNext={() => handleChangePage(page + 1)}
+      />
     </>
   );
 };
