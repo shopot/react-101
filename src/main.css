@@ -2,8 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  @apply h-full text-gray-800
+
+html, body {
+  @apply h-full
 }
 
 #root {
