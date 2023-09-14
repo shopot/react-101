@@ -10,7 +10,7 @@ export const PostDetail = ({ data }: Props): ReactElement => {
 
   return (
     <div className={styles.wrapper}>
-      <img src={`${BASE_URL}/${image}`} />
+      <img alt={title} src={`${BASE_URL}/${image}`} />
       <div className={styles.body}>
         <h2 className={styles.name}>{title}</h2>
         <p>

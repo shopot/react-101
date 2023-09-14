@@ -16,7 +16,7 @@ export const PostRow = ({ data }: Props): ReactElement => {
   return (
     <div className={styles.row}>
       <Link to={more}>
-        <img src={`${BASE_URL}/${image}`} />
+        <img alt={title} src={`${BASE_URL}/${image}`} />
       </Link>
       <div className={styles.body}>
         <h2 className={styles.name}>{title}</h2>
