@@ -1,16 +1,10 @@
-import { RouteObject } from 'react-router';
-
-import { Root } from '@/layouts';
-
-import { HomePage } from './home-page';
-import { CatalogPage } from './catalog-page';
-import { CatalogDetailPage } from './catalog-detail-page';
-import { AboutPage } from './about-page';
-import { ErrorPage } from './error-page';
+import { createBrowserRouter } from 'react-router-dom';
 
 import { APP_ROUTES } from '@/config';
+import { Root } from '@/layouts';
+import { AboutPage, CatalogDetailPage, CatalogPage, ErrorPage, HomePage } from '@/pages';
 
-export const routes: RouteObject[] = [
+export const router = createBrowserRouter([
   {
     path: APP_ROUTES.HOME,
     element: <Root />,
@@ -22,4 +16,4 @@ export const routes: RouteObject[] = [
       { path: APP_ROUTES.ABOUT, element: <AboutPage /> },
     ],
   },
-];
+]);
