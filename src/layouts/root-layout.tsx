@@ -4,7 +4,7 @@ import { Outlet } from 'react-router-dom';
 import { TopMenu } from '@/components/top-menu';
 import { Footer } from '@/components/footer';
 
-export const Root = (): ReactElement => {
+export const RootLayout = (): ReactElement => {
   return (
     <>
       <header>
