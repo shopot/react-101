@@ -6,7 +6,7 @@ import styles from './top-menu.module.css';
 import { APP_ROUTES } from '@/config';
 
 export const TopMenu = (): ReactElement => {
-  const createClassName = ({ isActive, isPending }: LinkProps) => {
+  const computedClassName = ({ isActive, isPending }: LinkProps) => {
     const stateClass = isPending ? styles.pending : isActive ? styles.active : '';
 
     return `${styles.link} ${stateClass}`;
@@ -14,13 +14,13 @@ export const TopMenu = (): ReactElement => {
 
   return (
     <nav className={styles.nav}>
-      <NavLink to={APP_ROUTES.HOME} className={createClassName}>
+      <NavLink to={APP_ROUTES.HOME} className={computedClassName}>
         Home
       </NavLink>
-      <NavLink to={APP_ROUTES.CATALOG} className={createClassName}>
+      <NavLink to={APP_ROUTES.CATALOG} className={computedClassName}>
         Catalog
       </NavLink>
-      <NavLink to={APP_ROUTES.ABOUT} className={createClassName}>
+      <NavLink to={APP_ROUTES.ABOUT} className={computedClassName}>
         About
       </NavLink>
     </nav>
