@@ -30,7 +30,7 @@ const App = (): ReactElement => {
   };
 
   // Метод для переключения статуса completed
-  const toggleTodoComplete = (todoId: number) => {
+  const handleToggleTodo = (todoId: number) => {
     // Находим индекс массива todo по id
     const findIndex = todos.findIndex(({ id }) => id === todoId);
 
@@ -51,7 +51,7 @@ const App = (): ReactElement => {
   };
 
   // Метод для удаления todo по id
-  const removeTodo = (todoId: number) => {
+  const handleRemoveTodo = (todoId: number) => {
     // Удаляем элемент из массива используя копию массива
     const newState = structuredClone<Todo[]>(todos).filter(({ id }) => id !== todoId);
 
@@ -60,7 +60,7 @@ const App = (): ReactElement => {
   };
 
   // Метод для добавления нового todo массив из todo
-  const addTodo = (title: string) => {
+  const handleAddTodo = (title: string) => {
     // Создаем новый элемент для списка todo
     const newTodo = {
       id: getLastId() + 1,
@@ -81,8 +81,8 @@ const App = (): ReactElement => {
   return (
     <div className={styles.appContainer}>
       <h1 className={styles.header}>Todo App</h1>
-      <AddTodoForm addTodo={addTodo} />
-      <TodoList todos={todos} onToggleComplete={toggleTodoComplete} onRemove={removeTodo} />
+      <AddTodoForm addTodo={handleAddTodo} />
+      <TodoList todos={todos} onToggleComplete={handleToggleTodo} onRemove={handleRemoveTodo} />
     </div>
   );
 };
