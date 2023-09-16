@@ -2,13 +2,7 @@ import { TodoAction, TodoState } from './types.ts';
 import { ADD_NEW_TODO, REMOVE_TODO, TOGGLE_COMPLETED } from './constants.ts';
 
 export const todoReducer = (state: TodoState, action: TodoAction): TodoState => {
-  const getLastId = () => {
-    if (state.length === 0) {
-      return 0;
-    }
-
-    return state[state.length - 1].id;
-  };
+  const getLastId = () => (state.length ? state[state.length - 1].id : 0);
 
   const { type, todoId, title } = action;
 
