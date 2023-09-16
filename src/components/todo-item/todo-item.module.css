@@ -1,0 +1,19 @@
+.todoRow {
+  @apply flex items-center justify-between w-full border-b border-gray-300
+}
+
+.todoInputWrapper {
+  @apply flex items-center mb-1
+}
+
+.todoInput {
+  @apply w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 focus:ring-0
+}
+
+.todoTitle {
+  @apply w-full pl-3
+}
+
+.todoTitleThrough {
+  @apply line-through text-gray-500
+}
