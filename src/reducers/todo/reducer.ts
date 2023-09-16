@@ -9,7 +9,7 @@ export const todoReducer = (state: TodoState, action: TodoAction): TodoState => 
   switch (type) {
     case ADD_NEW_TODO: {
       if (!title) {
-        return state;
+        break;
       }
 
       const newTodo = {
@@ -27,7 +27,7 @@ export const todoReducer = (state: TodoState, action: TodoAction): TodoState => 
 
     case REMOVE_TODO: {
       if (!todoId) {
-        return state;
+        break;
       }
 
       return structuredClone<TodoState>(state).filter(({ id }) => id !== todoId);
@@ -35,7 +35,7 @@ export const todoReducer = (state: TodoState, action: TodoAction): TodoState => 
 
     case TOGGLE_COMPLETED: {
       if (!todoId) {
-        return state;
+        break;
       }
 
       const findIndex = state.findIndex(({ id }) => id === todoId);
@@ -52,5 +52,6 @@ export const todoReducer = (state: TodoState, action: TodoAction): TodoState => 
     }
   }
 
-  return state;
+  // Return unchanged state
+  return structuredClone<TodoState>(state);
 };
