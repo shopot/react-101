@@ -1,5 +1,5 @@
 import { TodoAction, TodoState } from './types.ts';
-import { ADD_NEW_TODO, REMOVE_TODO, TOGGLE_COMPLETED } from './constants.ts';
+import { ADD_NEW_TODO, REMOVE_TODO, TOGGLE_COMPLETED } from './actions.ts';
 
 export const todoReducer = (state: TodoState, action: TodoAction): TodoState => {
   const getLastId = () => (state.length ? state[state.length - 1].id : 0);
