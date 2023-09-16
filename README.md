@@ -71,7 +71,11 @@ const App = () => {
     <>
       <h1>Todo App</h1>
       <AddTodoForm onAddTodo={handleAddTodo} />
-      <TodoList todos={todos} onToggleComplete={handleToggleTodo} onRemove={handleRemoveTodo} />
+      <TodoList
+        todos={todos}
+        onToggleComplete={handleToggleTodo}
+        onRemove={handleRemoveTodo}
+      />
     </>
   );
 };
@@ -320,7 +324,11 @@ const App = () => {
     <>
       <h1>Todo App</h1>
       <AddTodoForm onAddTodo={handleAddTodo} />
-      <TodoList todos={todos} onToggleComplete={handleToggleTodo} onRemove={handleRemoveTodo} />
+      <TodoList
+        todos={todos}
+        onToggleComplete={handleToggleTodo}
+        onRemove={handleRemoveTodo}
+      />
     </>
   );
 };
@@ -448,7 +456,11 @@ const App = () => {
     <>
       <h1>Todo App</h1>
       <AddTodoForm onAddTodo={handleAddTodo} />
-      <TodoList todos={todos} onToggleComplete={handleToggleTodo} onRemove={handleRemoveTodo} />
+      <TodoList
+        todos={todos} 
+        onToggleComplete={handleToggleTodo} 
+        onRemove={handleRemoveTodo}
+      />
     </>
   );
 };
