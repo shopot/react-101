@@ -81,7 +81,7 @@ const App = (): ReactElement => {
   return (
     <div className={styles.appContainer}>
       <h1 className={styles.header}>Todo App</h1>
-      <AddTodoForm addTodo={handleAddTodo} />
+      <AddTodoForm onAddTodo={handleAddTodo} />
       <TodoList todos={todos} onToggleComplete={handleToggleTodo} onRemove={handleRemoveTodo} />
     </div>
   );

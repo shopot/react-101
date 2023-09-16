@@ -4,7 +4,7 @@ import styles from './add-todo-form.module.css';
 
 import { Button } from '@/shared/ui';
 
-export const AddTodoForm = ({ addTodo }: Props): ReactElement => {
+export const AddTodoForm = ({ onAddTodo }: Props): ReactElement => {
   // Объявляем переменную состояния для контролируемого компонента input,
   // начальное значение пустая строка
   const [title, setTitle] = useState('');
@@ -19,7 +19,7 @@ export const AddTodoForm = ({ addTodo }: Props): ReactElement => {
 
     // Вызываем метод полученный через пропсы от родительского компонента
     // и передаем туда обработанное значение title из переменной состояния
-    addTodo(trimmedValue);
+    onAddTodo(trimmedValue);
 
     // Сбрасываем input через переменную состояния
     setTitle('');
@@ -43,5 +43,5 @@ export const AddTodoForm = ({ addTodo }: Props): ReactElement => {
 };
 
 type Props = {
-  addTodo: (title: string) => void;
+  onAddTodo: (title: string) => void;
 };
