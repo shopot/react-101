@@ -405,6 +405,55 @@ const App = () => {
 абстракции, который позволяет вам отделять дополнительную логику отправки экшенов от реального выбрасывания этих экшенов
 компонентами.
 
+Итоговый листинг с использованием генераторов будет следующим:
+
+`actions.js`
+
+```jsx
+// src/reducers/todo/actions.js
+export const ADD_NEW_TODO = 'ADD_NEW_TODO';
+export const REMOVE_TODO = 'REMOVE_TODO';
+export const TOGGLE_COMPLETED = 'TOGGLE_COMPLETED';
+
+export const addNewTodo = (title) => ({type: ADD_NEW_TODO, title});
+
+export const removeTodo = (todoId) => ({type: REMOVE_TODO, todoId});
+
+export const toggleCompleted = (todoId) => ({
+  type: TOGGLE_COMPLETED,
+  todoId,
+});
+```
+
+`app.jsx`
+
+```jsx
+// src/app/app.jsx
+import { useReducer } from 'react';
+
+import { TodoList } from '@/components/todo-list';
+import { AddTodoForm } from '@/components/add-todo-form';
+import { addNewTodo, removeTodo, toggleCompleted, todoReducer } from '@/reducers/todo';
+
+const App = () => {
+  const [todos, dispatch] = useReducer(todoReducer, []);
+
+  const handleAddTodo = (title) => dispatch(addNewTodo(title));
+
+  const handleRemoveTodo = (todoId) => dispatch(removeTodo(todoId));
+
+  const handleToggleTodo = (todoId) => dispatch(toggleCompleted(todoId));
+
+  return (
+    <>
+      <h1>Todo App</h1>
+      <AddTodoForm onAddTodo={handleAddTodo} />
+      <TodoList todos={todos} onToggleComplete={handleToggleTodo} onRemove={handleRemoveTodo} />
+    </>
+  );
+};
+```
+
 🔗 [Ссылка на деплой приложения](https://todo-app-ab1e50.netlify.app/)
 
 Готовый пример с приложением находится в `src` раздела chapter-15.
