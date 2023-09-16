@@ -5,11 +5,8 @@ import styles from './add-todo-form.module.css';
 import { Button } from '@/shared/ui';
 
 export const AddTodoForm = ({ onAddTodo }: Props): ReactElement => {
-  // Объявляем переменную состояния для контролируемого компонента input,
-  // начальное значение пустая строка
   const [title, setTitle] = useState('');
 
-  // Объявляем обработчик событий для контролируемого компонента input
   const handleClick = (): void => {
     const trimmedValue = title.trim();
 
@@ -17,11 +14,8 @@ export const AddTodoForm = ({ onAddTodo }: Props): ReactElement => {
       return;
     }
 
-    // Вызываем метод полученный через пропсы от родительского компонента
-    // и передаем туда обработанное значение title из переменной состояния
     onAddTodo(trimmedValue);
 
-    // Сбрасываем input через переменную состояния
     setTitle('');
   };
 

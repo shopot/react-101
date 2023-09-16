@@ -1,7 +1,7 @@
 import styles from './todo-item.module.css';
 
 import { ButtonRemove } from '@/shared/ui';
-import { Todo } from '@/types';
+import { Todo } from '@/reducers/todo';
 
 export const TodoItem = ({ todo, onToggleComplete, onRemove }: Props) => {
   const { id, title, completed } = todo;
