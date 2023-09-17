@@ -479,15 +479,35 @@ const App = () => {
 };
 ```
 
-### Написание функции редюсера
+### Применение useReducer()
 
-Состояние (аргумент функции редюсера) доступно только для чтения. Не изменяйте никакие объекты или массивы в состоянии:
+💡 Как и все React хуки, `useReducer()` вызывается только на верхнем уровне вашего компонента.
+
+💡 `useReducer()` возвращает массив ровно с двумя элементами:
+
+1. Текущее значение переменной состояния, первоначально установленное при вызове `useReducer()`.
+2. Функция отправки, которая вызывается для того что бы изменить текущее состояние.
+
+💡 Чтобы обновить то, что отображается на экране, вызовите `dispatch()` с объектом экшен (action):
+
+```jsx
+const handleClick = () => {
+  dispatch({type: 'increment_age'});
+};
+```
+
+React передаст текущее состояние и объект экшен в вашу функцию редюсер. Ваш редюсер рассчитает и вернет следующее
+состояние. React сохранит это следующее состояние, запустит повторный рендеринг компонента и обновит пользовательский
+интерфейс.
+
+💡 Состояние (аргумент функции редюсера) доступно только для чтения. Не изменяйте никакие объекты или массивы в
+состоянии:
 
 ```jsx
 const reducer = (state, action) => {
   switch (action.type) {
-    case 'incremented_age': {
-      // 🚩 Don't mutate an object in state like this:
+    case 'increment_age': {
+      // ❌ Don't mutate an object in state like this:
       state.age = state.age + 1;
       return state;
     }
@@ -502,7 +522,7 @@ const reducer = (state, action) => {
 ```jsx
 const reducer = (state, action) => {
   switch (action.type) {
-    case 'incremented_age': {
+    case 'increment_age': {
       // ✅ Instead, return a new object
       return {
         ...state,
@@ -514,6 +534,91 @@ const reducer = (state, action) => {
   //...
 }
 ```
+
+💡 Вызов функции `dispatch()` не меняет состояние работающего кода.
+
+```jsx
+const handleClick = () => {
+  console.log(state.age);  // 42
+
+  dispatch({type: 'increment_age'}); // Request a re-render with 43
+  console.log(state.age);  // Still 42!
+
+  setTimeout(() => {
+    console.log(state.age); // Also 42!
+  }, 5000);
+};
+```
+
+Это потому, что состояния ведут себя как snapshot. Обновление состояния требует повторного рендеринга компонента с новым
+значением состояния, но не влияет на переменную состояния JavaScript в уже запущенном обработчике событий.
+
+💡 React проигнорирует ваше обновление, если следующее состояние будет равно предыдущему, как это определено сравнением
+`Object.is()`. Обычно это происходит, когда вы напрямую меняете объект или массив в состоянии:
+
+```jsx
+const reducer = (state, action) => {
+  switch (action.type) {
+    case 'increment_age': {
+      // ❌ Wrong: mutating existing object
+      state.age++;
+      return state;
+    }
+    case 'changed_name': {
+      // ❌ Wrong: mutating existing object
+      state.name = action.nextName;
+      return state;
+    }
+    // ...
+  }
+}
+```
+
+Вы изменили существующий объект состояния и вернули его, поэтому React проигнорировал обновление. Чтобы это исправить,
+вам необходимо убедиться, что вы всегда обновляете объекты в состоянии и обновляете массивы в состоянии, а не изменяете
+их:
+
+```jsx
+const reducer = (state, action) => {
+  switch (action.type) {
+    case 'increment_age': {
+      // ✅ Correct: creating a new object
+      return {
+        ...state,
+        age: state.age + 1,
+      };
+    }
+    case 'changed_name': {
+      // ✅ Correct: creating a new object
+      return {
+        ...state,
+        name: action.nextName,
+      };
+    }
+    // ...
+  }
+};
+```
+
+💡 Не забывайте вернуть новое состояние в каждом блоке `case` в инструкции `switch` вашего редюсера:
+
+```jsx
+const reducer = (state, action) => {
+  switch (action.type) {
+    case 'increment_age': {
+      // ...
+    }
+    case 'edit_name': {
+      // ...
+    }
+  }
+
+  throw Error('Unknown action: ' + action.type);
+};
+```
+
+💡 В строгом режиме (Strict Mode) React дважды вызовет функции reducer и initializer. Это не должно нарушить работу
+вашего кода.
 
 🔗 [Ссылка на деплой приложения](https://todo-app-ab1e50.netlify.app/)
 
@@ -534,5 +639,11 @@ npm run dev
 Документация по теме:
 
 - 🔗 [React Hook useReducer()](https://react.dev/reference/react/useReducer)
+- 🔗 [Extracting State Logic into a Reducer](https://react.dev/learn/extracting-state-logic-into-a-reducer)
+- 🔗 [Updating Objects in State](https://react.dev/learn/updating-objects-in-state)
+- 🔗 [Updating Arrays in State](https://react.dev/learn/updating-arrays-in-state)
+- 🔗 [State as a Snapshot](https://react.dev/learn/state-as-a-snapshot)
+- 🔗 [Strict Mode](https://react.dev/reference/react/StrictMode)
+- 🔗 [Keeping Components Pure](https://react.dev/learn/keeping-components-pure)
 
 [⬆ Back to Top](#знакомство-с-хуком-usereducer)
