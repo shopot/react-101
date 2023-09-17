@@ -260,7 +260,7 @@ const MyForm = () => {
 Примеры с `type="text"`
 
 ```jsx
-// 🔴 Bug: controlled text input with no onChange handler
+// ❌ Bug: controlled text input with no onChange handler
 <input value={something} />
 
 // ✅ Good: uncontrolled input with an initial value
@@ -291,7 +291,7 @@ const MyForm = () => {
 
 ```jsx
 const handleChange = (e) => {
-  // 🔴 Bug: updating an input asynchronously
+  // ❌ Bug: updating an input asynchronously
   setTimeout(() => {
     setFirstName(e.target.value);
   }, 100);
@@ -568,7 +568,7 @@ const NewPost = () => {
 ### Примеры использования `<textarea>`
 
 ```jsx
-// 🔴 Неправильно: в контролируемом компоненте отсутствует обработчик onChange
+// ❌ Неправильно: в контролируемом компоненте отсутствует обработчик onChange
 <textarea value={something} />
 
 // ✅ Правильно: неконтролируемый компонент с начальным значением
