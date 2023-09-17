@@ -22,6 +22,7 @@
 - 📘 [Руководство React Quiz App - Мыслим как React](https://github.com/shopot/react-101/tree/chapter-12) - _chapter-12_
 - 📘 [Получение данных - Fetching data](https://github.com/shopot/react-101/tree/chapter-13) - _chapter-13_
 - 📘 [Маршрутизация в SPA - React Routing](https://github.com/shopot/react-101/tree/chapter-14) - _chapter-14_
+- 📘 [Знакомство с хуком useReducer](https://github.com/shopot/react-101/tree/chapter-15) - _chapter-15_
 
 <details>
   <summary>Information</summary>
