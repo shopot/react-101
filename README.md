@@ -25,46 +25,30 @@ const initialState = [
 const App = () => {
   const [todos, setTodos] = useState(initialState);
 
-  const getLastId = () => {
-    if (todos.length === 0) {
-      return 0;
-    }
-
-    return todos[todos.length - 1].id;
-  };
+  const getLastId = () => (todos.length ? todos[todos.length - 1].id : 0);
 
   const handleToggleTodo = (todoId) => {
-    const findIndex = todos.findIndex(({id}) => id === todoId);
+    const newTodos = todos.map((t) => {
+      if (t.id === todoId) {
+        return { ...t, completed: !t.completed };
+      }
 
-    if (findIndex !== -1) {
-      const newState = structuredClone(todos);
+      return t;
+    });
 
-      const todo = newState[findIndex];
-
-      newState[findIndex] = {...todo, completed: !todo.completed};
-
-      setTodos(newState);
-    }
+    setTodos(newTodos);
   };
 
-  const removeTodo = (todoId) => {
-    const newState = structuredClone(todos).filter(({id}) => id !== todoId);
+  const handleRemoveTodo = (todoId) => {
+    const newTodos = todos.filter(({ id }) => id !== todoId);
 
-    setTodos(newState);
+    setTodos(newTodos);
   };
 
-  const handleRemoveTodo = (title) => {
-    const newTodo = {
-      id: getLastId() + 1,
-      title,
-      completed: false,
-    };
+  const handleAddTodo = (title) => {
+    const newTodos = [...todos, { id: getLastId() + 1, title, completed: false }];
 
-    const newState = structuredClone(todos);
-
-    newState.push(newTodo);
-
-    setTodos(newState);
+    setTodos(newTodos);
   };
 
   return (
@@ -249,43 +233,21 @@ export const todoReducer = (state, action) => {
         break;
       }
 
-      const newTodo = {
-        id: getLastId() + 1,
-        title,
-        completed: false,
-      };
-
-      const newState = structuredClone(state);
-
-      newState.push(newTodo);
-
-      return newState;
+      return [...state, { id: getLastId() + 1, title, completed: false }];
     }
 
     case 'remove_todo': {
-      if (!todoId) {
-        break;
-      }
-
-      return structuredClone(state).filter(({id}) => id !== todoId);
+      return state.filter(({id}) => id !== todoId);
     }
 
     case 'toggle_completed': {
-      if (!todoId) {
-        break;
-      }
+      return state.map((t) => {
+        if (t.id === todoId) {
+          return { ...t, completed: !t.completed };
+        }
 
-      const findIndex = state.findIndex(({id}) => id === todoId);
-
-      if (findIndex !== -1) {
-        const newState = structuredClone(state);
-
-        const todo = newState[findIndex];
-
-        newState[findIndex] = {...todo, completed: !todo.completed};
-
-        return newState;
-      }
+        return t;
+      });
     }
   }
 
@@ -297,7 +259,8 @@ export const todoReducer = (state, action) => {
 По соглашению, код который вычисляет следующее состояние, обычно записывают в виде инструкции `switch`.
 Для каждого блока `case` в инструкции `switch` будет вычисляться и возвращаться следующее состояние.
 
-❗ Если `todoReducer()` получит экшен (action) которого нет в инструкции `switch` или какие-то данные будут отсутствовать,
+❗ Если `todoReducer()` получит экшен (action) которого нет в инструкции `switch` или какие-то данные будут
+отсутствовать,
 то `todoReducer()` вернет неизмененное состояние. На практике такое поведение не является типичным, правильнее будет
 сгенерировать исключение с соответствующим сообщением об ошибке, это позволит избежать побочных эффектов и обнаружить
 ошибки в реализации логики в работе с редюсером.
@@ -349,7 +312,8 @@ const App = () => {
 местах используются явно заданные (hardcoded) повторяющиеся значения типа `add_new_todo`,  `remove_todo`
 и `toggle_completed` эти значения можно заменить на строковые константы.
 
-Определение типа `action` в виде констант является наследием архитектуры **Flux**, во **Flux** традиционно считается, что
+Определение типа `action` в виде констант является наследием архитектуры **Flux**, во **Flux** традиционно считается,
+что
 вы должны определять каждый тип `action` строковой константой, сам список констант обычно выносится в отдельный модуль:
 
 ```js
@@ -457,13 +421,49 @@ const App = () => {
       <h1>Todo App</h1>
       <AddTodoForm onAddTodo={handleAddTodo} />
       <TodoList
-        todos={todos} 
-        onToggleComplete={handleToggleTodo} 
+        todos={todos}
+        onToggleComplete={handleToggleTodo}
         onRemove={handleRemoveTodo}
       />
     </>
   );
 };
+```
+
+### Написание функции редюсера
+
+Состояние (аргумент функции редюсера) доступно только для чтения. Не изменяйте никакие объекты или массивы в состоянии:
+
+```jsx
+const reducer = (state, action) => {
+  switch (action.type) {
+    case 'incremented_age': {
+      // 🚩 Don't mutate an object in state like this:
+      state.age = state.age + 1;
+      return state;
+    }
+    //...
+  }
+  //...
+};
+```
+
+Вместо этого всегда возвращайте новые объекты из вашего редюсера:
+
+```jsx
+const reducer = (state, action) => {
+  switch (action.type) {
+    case 'incremented_age': {
+      // ✅ Instead, return a new object
+      return {
+        ...state,
+        age: state.age + 1,
+      };
+    }
+    //...
+  }
+  //...
+}
 ```
 
 🔗 [Ссылка на деплой приложения](https://todo-app-ab1e50.netlify.app/)
