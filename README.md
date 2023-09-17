@@ -28,7 +28,7 @@ React Hooks функциональные компоненты полностью
 Это функция JavaScript, возвращающая JSX. Функция не требует расширения и не нужно запоминать никаких специальных
 методов.
 
-```jsx
+```tsx
 // Using ES6 arrow functions
 const Header = () => {
   return (
@@ -39,9 +39,7 @@ const Header = () => {
 };
 
 // TypeScript: ReactNode | ReactElement
-const Footer = ()
-:
-ReactElement => {
+const Footer = (): ReactElement => {
   return (
     <footer>
       <p>From Wikipedia 2023</p>
@@ -50,10 +48,9 @@ ReactElement => {
 };
 
 // Определение ReactNode
-type
-ReactNode = string | number | boolean
-  | ReactElement < any, string | JSXElementConstructor < any >>
-| Iterable < ReactNode > | ReactPortal | null | undefined
+type ReactNode = string | number | boolean
+  | ReactElement<any, string | JSXElementConstructor<any>>
+  | Iterable<ReactNode> | ReactPortal | null | undefined
 ```
 
 🚩🚩🚩 Компоненты React - это обычные функции JavaScript, но их имена должны **начинаться с заглавной буквы**, иначе они не
@@ -121,7 +118,8 @@ export default function PageLayout() {
 
 ```jsx
 // Syntax ES6 Default Export statement
-export const Button = () => {...
+export const Button = () => {
+  // ...
 };
 
 export default Button;
@@ -151,15 +149,18 @@ const Avatar = () => {
 };
 ```
 
-Встроенные компоненты браузера в React `<img>`, `<div>`, `<input>` и т.д., ведут аналогично пользовательским компонентам, они могут принимать пропсы (
+Встроенные компоненты браузера в React `<img>`, `<div>`, `<input>` и т.д., ведут аналогично пользовательским
+компонентам, они могут принимать пропсы (
 атрибуты) и обработчики событий.
 
 Пример передачи пропсов в пользовательские компоненты:
 
-
 ```jsx
 export const Profile = () => {
-  return <Avatar person={{name: 'Lin Lanying', imageId: '1bX5QH6'}} size={100} />;
+  return <Avatar
+    person={{name: 'Lin Lanying', imageId: '1bX5QH6'}}
+    size={100}
+  />;
 };
 ```
 
@@ -213,7 +214,6 @@ const Profile = (props) => {
 Обычно в браузере используются вложенные теги
 
 ```html
-
 <div>
   <img />
 </div>
@@ -230,7 +230,7 @@ const Profile = (props) => {
 Когда вы вкладываете контент в тег JSX, родительский компонент получит этот контент в `props`,
 называемом `children` (`props.children`).
 
-```jsx
+```tsx
 const Card = ({children}) => {
   return <div className="card">{children}</div>;
 };
@@ -238,8 +238,7 @@ const Card = ({children}) => {
 // TypeScript
 import { ReactNode } from 'react';
 
-type
-Props = {
+type Props = {
   children: ReactNode;
 };
 ```
