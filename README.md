@@ -30,7 +30,7 @@ const App = () => {
   const handleToggleTodo = (todoId) => {
     const newTodos = todos.map((t) => {
       if (t.id === todoId) {
-        return { ...t, completed: !t.completed };
+        return {...t, completed: !t.completed};
       }
 
       return t;
@@ -40,13 +40,13 @@ const App = () => {
   };
 
   const handleRemoveTodo = (todoId) => {
-    const newTodos = todos.filter(({ id }) => id !== todoId);
+    const newTodos = todos.filter(({id}) => id !== todoId);
 
     setTodos(newTodos);
   };
 
   const handleAddTodo = (title) => {
-    const newTodos = [...todos, { id: getLastId() + 1, title, completed: false }];
+    const newTodos = [...todos, {id: getLastId() + 1, title, completed: false}];
 
     setTodos(newTodos);
   };
@@ -233,7 +233,7 @@ export const todoReducer = (state, action) => {
         break;
       }
 
-      return [...state, { id: getLastId() + 1, title, completed: false }];
+      return [...state, {id: getLastId() + 1, title, completed: false}];
     }
 
     case 'remove_todo': {
@@ -243,7 +243,7 @@ export const todoReducer = (state, action) => {
     case 'toggle_completed': {
       return state.map((t) => {
         if (t.id === todoId) {
-          return { ...t, completed: !t.completed };
+          return {...t, completed: !t.completed};
         }
 
         return t;
@@ -395,6 +395,48 @@ export const toggleCompleted = (todoId) => ({
   type: TOGGLE_COMPLETED,
   todoId,
 });
+```
+
+`reducer.js`
+
+```jsx
+// src/reducers/todo/reducer.js
+import { ADD_NEW_TODO, REMOVE_TODO, TOGGLE_COMPLETED } from './actions.ts';
+
+export const todoReducer = (state, action) => {
+  const getLastId = () => (state.length ? state[state.length - 1].id : 0);
+
+  const {type, todoId, title} = action;
+
+  switch (type) {
+    case ADD_NEW_TODO: {
+      if (!title) {
+        break;
+      }
+
+      return [
+        ...state, 
+        {id: getLastId() + 1, title, completed: false},
+      ];
+    }
+
+    case REMOVE_TODO: {
+      return state.filter(({id}) => id !== todoId);
+    }
+
+    case TOGGLE_COMPLETED: {
+      return state.map((t) => {
+        if (t.id === todoId) {
+          return {...t, completed: !t.completed};
+        }
+
+        return t;
+      });
+    }
+  }
+
+  throw Error('Unknown action: ' + action.type);
+};
 ```
 
 `app.jsx`
