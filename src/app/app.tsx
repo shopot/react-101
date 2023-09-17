@@ -21,61 +21,39 @@ const App = (): ReactElement => {
   const [todos, setTodos] = useState<Todo[]>(initialState);
 
   // Функция для получения последнего id списка
-  const getLastId = () => {
-    if (todos.length === 0) {
-      return 0;
-    }
-
-    return todos[todos.length - 1].id;
-  };
+  const getLastId = () => (todos.length ? todos[todos.length - 1].id : 0);
 
   // Метод для переключения статуса completed
   const handleToggleTodo = (todoId: number) => {
-    // Находим индекс массива todo по id
-    const findIndex = todos.findIndex(({ id }) => id === todoId);
+    // Обновляем значение completed
+    const newTodos = todos.map((t) => {
+      if (t.id === todoId) {
+        return { ...t, completed: !t.completed };
+      }
 
-    if (findIndex !== -1) {
-      // Создаем полную копию списка todo, объекты нельзя скопировать простым присваиванием
-      // Полная копия нужна, потому что в setTodos нужно передать новое значение,
-      // поэтому мы не можем поменять часть переменной состояния при использовании useState()
-      const newState = structuredClone<Todo[]>(todos);
+      return t;
+    });
 
-      const todo = newState[findIndex];
-
-      // Обновляем значение completed уже в копии массива todo
-      newState[findIndex] = { ...todo, completed: !todo.completed };
-
-      // Обновляем переменную состояния новым значением из списка todo
-      setTodos(newState);
-    }
+    // Обновляем переменную состояния новым значением из списка todo
+    setTodos(newTodos);
   };
 
   // Метод для удаления todo по id
   const handleRemoveTodo = (todoId: number) => {
-    // Удаляем элемент из массива используя копию массива
-    const newState = structuredClone<Todo[]>(todos).filter(({ id }) => id !== todoId);
+    // Удаляем элемент из массива
+    const newTodos = todos.filter(({ id }) => id !== todoId);
 
     // Обновляем переменную состояния новым значением из списка todo
-    setTodos(newState);
+    setTodos(newTodos);
   };
 
   // Метод для добавления нового todo массив из todo
   const handleAddTodo = (title: string) => {
-    // Создаем новый элемент для списка todo
-    const newTodo = {
-      id: getLastId() + 1,
-      title,
-      completed: false,
-    };
-
-    // Получаем копию массива списка todo
-    const newState = structuredClone<Todo[]>(todos);
-
     // Добавляем в него новый элемент
-    newState.push(newTodo);
+    const newTodos = [...todos, { id: getLastId() + 1, title, completed: false }];
 
     // Обновляем переменную состояния новым значением из списка todo
-    setTodos(newState);
+    setTodos(newTodos);
   };
 
   return (
