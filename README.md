@@ -401,7 +401,7 @@ export const toggleCompleted = (todoId) => ({
 
 ```jsx
 // src/reducers/todo/reducer.js
-import { ADD_NEW_TODO, REMOVE_TODO, TOGGLE_COMPLETED } from './actions.ts';
+import { ADD_NEW_TODO, REMOVE_TODO, TOGGLE_COMPLETED } from './actions';
 
 export const todoReducer = (state, action) => {
   const getLastId = () => (state.length ? state[state.length - 1].id : 0);
