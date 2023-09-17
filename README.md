@@ -479,6 +479,7 @@ const App = () => {
   );
 };
 ```
+[⬆ Back to Top](#знакомство-с-хуком-usereducer)
 
 ### Применение useReducer()
 
