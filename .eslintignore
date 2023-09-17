@@ -7,3 +7,5 @@ public/*
 static/*
 scripts/*
 src/vite-env.d.ts
+tailwind.config.ts
+postcss.config.js
