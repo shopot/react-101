@@ -12,46 +12,23 @@ export const todoReducer = (state: TodoState, action: TodoAction): TodoState => 
         break;
       }
 
-      const newTodo = {
-        id: getLastId() + 1,
-        title,
-        completed: false,
-      };
-
-      const newState = structuredClone<TodoState>(state);
-
-      newState.push(newTodo);
-
-      return newState;
+      return [...state, { id: getLastId() + 1, title, completed: false }];
     }
 
     case REMOVE_TODO: {
-      if (!todoId) {
-        break;
-      }
-
-      return structuredClone<TodoState>(state).filter(({ id }) => id !== todoId);
+      return state.filter(({ id }) => id !== todoId);
     }
 
     case TOGGLE_COMPLETED: {
-      if (!todoId) {
-        break;
-      }
+      return state.map((t) => {
+        if (t.id === todoId) {
+          return { ...t, completed: !t.completed };
+        }
 
-      const findIndex = state.findIndex(({ id }) => id === todoId);
-
-      if (findIndex !== -1) {
-        const newState = structuredClone<TodoState>(state);
-
-        const todo = newState[findIndex];
-
-        newState[findIndex] = { ...todo, completed: !todo.completed };
-
-        return newState;
-      }
+        return t;
+      });
     }
   }
 
-  // Return unchanged state
-  return structuredClone<TodoState>(state);
+  throw Error('Unknown action: ' + action.type);
 };
