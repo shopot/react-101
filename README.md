@@ -25,7 +25,8 @@
 - 📘 [Знакомство с хуком useReducer](https://github.com/shopot/react-101/tree/chapter-15) - _chapter-15_
 - 📘 [Знакомство с хуком useRef](https://github.com/shopot/react-101/tree/chapter-16) - _chapter-16_
 
-Примеры приложений (деплой):
+<details>
+  <summary>Примеры приложений (деплой):</summary>
 
 - 🔗 [Приложение Todo App](https://todo-app-ab1e50.netlify.app) - [chapter-09](https://github.com/shopot/react-101/tree/chapter-09), [chapter-15](https://github.com/shopot/react-101/tree/chapter-15)
 - 🔗 [Приложение React Roadmap (Accordion)](https://react-roadmap-ab1e50.netlify.app) - [chapter-10](https://github.com/shopot/react-101/tree/chapter-10)
@@ -34,6 +35,9 @@
 - 🔗 [Приложение Fetching Data](https://fetch-data-ab1e50.netlify.app) - [chapter-13](https://github.com/shopot/react-101/tree/chapter-13)
 - 🔗 [Приложение с React Router](https://react-router-ab1e50.netlify.app) - [chapter-14](https://github.com/shopot/react-101/tree/chapter-14)
 - 🔗 [Приложение с примерами useRef](https://react-useref-ab1e50.netlify.app) - [chapter-16](https://github.com/shopot/react-101/tree/chapter-16)
+
+</details>
+
 <details>
   <summary>Information</summary>
 
