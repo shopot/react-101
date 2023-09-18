@@ -1,0 +1,7 @@
+.badge {
+  @apply bg-gray-100 text-indigo-800 text-sm font-semibold mr-2 px-2 py-0.5 rounded
+}
+
+a .badge {
+  @apply  hover:bg-rose-50
+}

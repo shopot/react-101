@@ -1,0 +1,7 @@
+.catsList > li {
+  @apply pb-8
+}
+
+.catsList > li > img {
+  @apply rounded p-16 border bg-gray-50
+}

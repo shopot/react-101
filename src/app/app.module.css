@@ -1,0 +1,15 @@
+.main {
+  @apply container mx-auto mt-5
+}
+
+.header1 {
+  @apply text-center text-3xl font-bold text-gray-600 mb-8
+}
+
+.nav {
+  @apply list-none flex justify-start mt-2
+}
+
+.wrapper {
+  @apply mt-4 border rounded-md p-4 shadow-md bg-white
+}
