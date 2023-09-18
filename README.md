@@ -156,7 +156,7 @@ const reducer = (state, action) => {
     }
   }
 
-  throw Error('Unknown action.');
+  throw new Error('Unknown action.');
 };
 ```
 
@@ -192,7 +192,7 @@ const reducer = (state, action) => {
     }
   }
 
-  throw Error('Unknown action.');
+  throw new Error('Unknown action.');
 };
 
 const initialState = {
@@ -443,7 +443,7 @@ export const todoReducer = (state, action) => {
     }
   }
 
-  throw Error('Unknown action: ' + action.type);
+  throw new Error('Unknown action: ' + action.type);
 };
 ```
 
@@ -617,7 +617,7 @@ const reducer = (state, action) => {
     }
   }
 
-  throw Error('Unknown action: ' + action.type);
+  throw new Error('Unknown action: ' + action.type);
 };
 ```
 
