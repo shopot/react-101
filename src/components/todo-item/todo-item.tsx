@@ -1,9 +1,14 @@
+import { ReactElement, useContext } from 'react';
+
 import styles from './todo-item.module.css';
 
 import { ButtonRemove } from '@/shared/ui';
-import { Todo } from '@/reducers/todo';
+import { removeTodo, Todo, toggleCompleted } from '@/reducers/todo';
+import { TodoDispatchContext } from '@/contexts';
 
-export const TodoItem = ({ todo, onToggleComplete, onRemove }: Props) => {
+export const TodoItem = ({ todo }: TodoItemProps): ReactElement => {
+  const dispatch = useContext(TodoDispatchContext);
+
   const { id, title, completed } = todo;
 
   const completedClass = completed ? styles.todoTitleThrough : '';
@@ -13,19 +18,17 @@ export const TodoItem = ({ todo, onToggleComplete, onRemove }: Props) => {
       <div className={styles.todoInputWrapper}>
         <input
           checked={completed}
-          onChange={() => onToggleComplete(id)}
-          type="checkbox"
+          onChange={() => dispatch(toggleCompleted(id))}
           className={styles.todoInput}
+          type="checkbox"
         />
       </div>
       <div className={`${styles.todoTitle} ${completedClass}`}>{title}</div>
-      <ButtonRemove onCLick={() => onRemove(id)} />
+      <ButtonRemove onCLick={() => dispatch(removeTodo(id))} />
     </div>
   );
 };
 
-type Props = {
+type TodoItemProps = {
   todo: Todo;
-  onToggleComplete: (todoId: number) => void;
-  onRemove: (todoId: number) => void;
 };

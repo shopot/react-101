@@ -1,11 +1,15 @@
-import { ReactElement, useState } from 'react';
+import { ReactElement, useContext, useState } from 'react';
 
 import styles from './add-todo-form.module.css';
 
 import { Button } from '@/shared/ui';
+import { TodoDispatchContext } from '@/contexts';
+import { addNewTodo } from '@/reducers/todo';
 
-export const AddTodoForm = ({ onAddTodo }: Props): ReactElement => {
+export const AddTodoForm = (): ReactElement => {
   const [title, setTitle] = useState('');
+
+  const dispatch = useContext(TodoDispatchContext);
 
   const handleClick = (): void => {
     const trimmedValue = title.trim();
@@ -14,7 +18,7 @@ export const AddTodoForm = ({ onAddTodo }: Props): ReactElement => {
       return;
     }
 
-    onAddTodo(trimmedValue);
+    dispatch(addNewTodo(trimmedValue));
 
     setTitle('');
   };
@@ -34,8 +38,4 @@ export const AddTodoForm = ({ onAddTodo }: Props): ReactElement => {
       </div>
     </form>
   );
-};
-
-type Props = {
-  onAddTodo: (title: string) => void;
 };
