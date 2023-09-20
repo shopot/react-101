@@ -24,11 +24,12 @@
 - 📘 [Маршрутизация в SPA - React Routing](https://github.com/shopot/react-101/tree/chapter-14) - _chapter-14_
 - 📘 [Знакомство с хуком useReducer](https://github.com/shopot/react-101/tree/chapter-15) - _chapter-15_
 - 📘 [Знакомство с хуком useRef](https://github.com/shopot/react-101/tree/chapter-16) - _chapter-16_
+- 📘 [Знакомство с хуком useContext](https://github.com/shopot/react-101/tree/chapter-17) - _chapter-17_
 
 <details>
   <summary>Примеры приложений (деплой):</summary>
 
-- 🔗 [Приложение Todo App](https://todo-app-ab1e50.netlify.app) - [chapter-09](https://github.com/shopot/react-101/tree/chapter-09), [chapter-15](https://github.com/shopot/react-101/tree/chapter-15)
+- 🔗 [Приложение Todo App](https://todo-app-ab1e50.netlify.app) - [chapter-09](https://github.com/shopot/react-101/tree/chapter-09), [chapter-15](https://github.com/shopot/react-101/tree/chapter-15), [chapter-17](https://github.com/shopot/react-101/tree/chapter-17)
 - 🔗 [Приложение React Roadmap (Accordion)](https://react-roadmap-ab1e50.netlify.app) - [chapter-10](https://github.com/shopot/react-101/tree/chapter-10)
 - 🔗 [Приложение с примерами useEffect](https://react-use-effect-ab1e50.netlify.app) - [chapter-11](https://github.com/shopot/react-101/tree/chapter-11)
 - 🔗 [Приложение React Quiz App](https://quiz-app-ab1e50.netlify.app) - [chapter-12](https://github.com/shopot/react-101/tree/chapter-12)
