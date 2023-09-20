@@ -415,6 +415,8 @@ export const AddTodoForm = () => {
 };
 ```
 
+Полный пример приложения на TypeScript находится в `src`.
+
 [⬆ Back to Top](#знакомство-с-хуком-usecontext)
 
 ### Итог
