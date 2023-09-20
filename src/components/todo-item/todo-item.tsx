@@ -1,4 +1,4 @@
-import { ReactElement, useContext } from 'react';
+import { ReactElement } from 'react';
 
 import styles from './todo-item.module.css';
 
