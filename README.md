@@ -229,11 +229,9 @@ const MyPage = () => {
   return (
     <ThemeContext.Provider value={theme}>
       <Form />
-      <Button onClick={() => {
-        setTheme('light');
-      }}>
+      <button onClick={() => setTheme('light')}>
         Switch to light theme
-      </Button>
+      </button>
     </ThemeContext.Provider>
   );
 };
