@@ -1,12 +1,13 @@
-import { ReactElement, useContext } from 'react';
+import { ReactElement } from 'react';
 
 import styles from './todo-list.module.css';
 
 import { TodoItem } from '../todo-item';
-import { TodoContext } from '@/contexts';
+import { useTodo } from '@/contexts';
 
 export const TodoList = (): ReactElement => {
-  const todos = useContext(TodoContext);
+  const todos = useTodo();
+
   const todoList = todos.map((todo) => <TodoItem key={todo.id} todo={todo} />);
 
   return <div className={styles.todoList}>{todoList}</div>;

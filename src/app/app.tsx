@@ -2,8 +2,7 @@ import { ReactElement } from 'react';
 
 import styles from './app.module.css';
 
-import { TodoProvider } from '@/providers';
-
+import { TodoProvider } from '@/contexts';
 import { AddTodoForm } from '@/components/add-todo-form';
 import { TodoList } from '@/components/todo-list';
 

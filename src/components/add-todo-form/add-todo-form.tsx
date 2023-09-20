@@ -1,15 +1,16 @@
-import { ReactElement, useContext, useState } from 'react';
+import { ReactElement, useState } from 'react';
 
 import styles from './add-todo-form.module.css';
 
 import { Button } from '@/shared/ui';
-import { TodoDispatchContext } from '@/contexts';
+
 import { addNewTodo } from '@/reducers/todo';
+import { useTodoDispatch } from '@/contexts';
 
 export const AddTodoForm = (): ReactElement => {
   const [title, setTitle] = useState('');
 
-  const dispatch = useContext(TodoDispatchContext);
+  const dispatch = useTodoDispatch();
 
   const handleClick = (): void => {
     const trimmedValue = title.trim();

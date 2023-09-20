@@ -4,10 +4,11 @@ import styles from './todo-item.module.css';
 
 import { ButtonRemove } from '@/shared/ui';
 import { removeTodo, Todo, toggleCompleted } from '@/reducers/todo';
-import { TodoDispatchContext } from '@/contexts';
+
+import { useTodoDispatch } from '@/contexts';
 
 export const TodoItem = ({ todo }: TodoItemProps): ReactElement => {
-  const dispatch = useContext(TodoDispatchContext);
+  const dispatch = useTodoDispatch();
 
   const { id, title, completed } = todo;
 
