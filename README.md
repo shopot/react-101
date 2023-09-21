@@ -27,6 +27,8 @@
 - 📘 [Знакомство с хуком useReducer](https://github.com/shopot/react-101/tree/chapter-15) - _chapter-15_
 - 📘 [Знакомство с хуком useRef](https://github.com/shopot/react-101/tree/chapter-16) - _chapter-16_
 - 📘 [Знакомство с хуком useContext](https://github.com/shopot/react-101/tree/chapter-17) - _chapter-17_
+- 📘 [Работа с формами - обзор библиотеки React Hook Form](https://github.com/shopot/react-101/tree/chapter-18) - _chapter-18_
+  
 
 <details>
   <summary>Примеры приложений (деплой):</summary>
