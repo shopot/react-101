@@ -287,6 +287,7 @@ const MyForm = () => {
       />
       <ErrorMessage errors={errors} name="singleErrorInput" />
 
+      {/* Extended example with the render callback function */}
       <ErrorMessage
         errors={errors}
         name="singleErrorInput"
