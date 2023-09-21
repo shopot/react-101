@@ -109,7 +109,7 @@ const MyForm = () => {
 
 ```jsx
 const {onChange, onBlur, name, ref} = register('firstName');
-// include type check against field path with the name you have supplied.
+// Include type check against field path with the name you have supplied.
 
 <input
   onChange={onChange} // assign onChange event 
@@ -118,7 +118,7 @@ const {onChange, onBlur, name, ref} = register('firstName');
   ref={ref} // assign ref prop
 />
 
-// same as above
+// Same as above
 <input {...register('firstName')} />
 ```
 
@@ -307,7 +307,7 @@ const MyForm = () => {
 `react-hook-form` также поддерживает проверку формы на основе схемы с
 помощью библиотек
 валидации [Yup](https://github.com/jquense/yup), [Zod](https://github.com/vriad/zod), [Superstruct](https://github.com/ianstormtaylor/superstruct)
-и [Joi](https://github.com/hapijs/joi), где вы можете передать свою схему в `useForm` в качестве дополнительной
+и [Joi](https://github.com/hapijs/joi), где вы можете передать свою схему в `useForm()` в качестве дополнительной
 конфигурации. Библиотека валидации проверит ваши входные данные на соответствие схеме и вернет либо ошибки, либо
 действительный результат.
 
@@ -357,7 +357,7 @@ const MyForm = () => {
 Для интеграции с внешней библиотекой используется функция resolver, которая принимает схему, описанную согласно правилам
 использования библиотеки, и выполняет валидацию с использованием внешней библиотеки для входных данных формы.
 
-Полный список поддерживаемых библиотек, список resolver-функций и примеры использования смотрите
+Полный список поддерживаемых библиотек, список resolver-функций и примеры можно найти
 на [официальной странице](https://github.com/react-hook-form/resolvers) `@hookform/resolvers`.
 
 ### Как выполнить reset формы
@@ -368,6 +368,28 @@ const MyForm = () => {
   значения `input/select/checkbox`.
 - React Hook Form API: `reset()` - метод `reset()` сбросит все значения полей формы, а также очистит все ошибки в форме,
   то есть приведет состояние формы к начальному значению.
+
+Ниже приведен фрагмент кода с использованием метода `reset()`:
+
+```jsx
+import { useForm } from 'react-hook-form';
+
+const MyForm = () => {
+  const {register, handleSubmit, reset} = useForm();
+
+  const submit = (data) => console.log(data);
+
+  return (
+    <form onSubmit={handleSubmit(submit)}>
+      <input {...register('username')} />
+      <input {...register('email')} />
+
+      <button type="reset" onClick={reset}>Reset</button>
+      <button type="submit">Submit</button>
+    </form>
+  );
+};
+```
 
 [⬆ Back to Top](#работа-с-формами---обзор-библиотеки-react-hook-form)
 
@@ -435,7 +457,7 @@ const MyForm = () => {
 
 ### Интеграция с UI библиотеками
 
-`react-hook-form` упростила интеграцию с внешними UI библиотеками. Если компонент формы не предоставляет `ref`, вам
+`react-hook-form` имеет простую интеграцию с внешними UI библиотеками. Если компонент формы не предоставляет `ref`, вам
 следует использовать компонент `<Controller>`, который позаботится о процессе регистрации:
 
 ```jsx
@@ -486,14 +508,14 @@ const App = () => {
 ### Использование React Context API с React Hook Form
 
 Хук `useFormContext()` позволяет вам получить доступ к контексту формы. Этот хук предназначен для использования в
-глубоко вложенных структурах, где было бы неудобно передавать контекст в качестве пропса.
+глубоко вложенных структурах, где было бы неудобно передавать контекст в качестве пропсов.
 
 В качестве провайдера используется компонент `<FormProvider>`, который принимает в качестве пропсов методы и объекты,
 возвращаемые хуком `useForm()`.
 
 Использование `useFormContext()` аналогично использованию `useContext()`, без указания конкретного контекста,
 предполагается, что контекст будет подставляться автоматически, из чего следует что вложенные конструкции
-с `<FormProvider>` работать не будет.
+с `<FormProvider>` работать не будут.
 
 Пример с использованием `useFormContext()`:
 
@@ -541,7 +563,7 @@ export const MyForm = () => {
 Что касается разработчиков, React Hook Form предоставляет встроенную нативную HTML валидацию и тесно следует стандартам
 HTML, позволяя дальнейшее расширение с помощью мощных методов валидации и интеграции в виде нативных схем. Кроме того,
 наличие формы со строгой проверкой типов с помощью TypeScript обеспечивает раннюю обратную связь во время сборки,
-которая помогает разработчику создать надежное решение.
+которая помогает разработчику создавать надежные решения реализации HTML-форм.
 
 [⬆ Back to Top](#работа-с-формами---обзор-библиотеки-react-hook-form)
 
