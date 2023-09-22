@@ -1,0 +1,11 @@
+.button {
+  @apply flex-shrink-0 text-sm border text-white rounded-md px-4 py-2 focus:outline-none
+}
+
+.primary {
+  @apply bg-blue-500 hover:bg-blue-700 border-blue-500 hover:border-blue-700
+}
+
+.default {
+  @apply bg-white text-gray-900 hover:bg-gray-100  border-gray-300
+}

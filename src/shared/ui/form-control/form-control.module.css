@@ -1,0 +1,7 @@
+.formControl {
+  @apply mb-2.5
+}
+
+.formControl span {
+  @apply mt-2 text-sm text-red-600
+}
