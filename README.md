@@ -385,8 +385,8 @@ const MyForm = () => {
       <input {...register('username')} />
       <input {...register('email')} />
 
-      <button type="reset" onClick={reset}>Reset</button>
       <button type="submit">Submit</button>
+      <button type="button" onClick={()=> reset()}>Reset</button>
     </form>
   );
 };
