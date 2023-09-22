@@ -3,5 +3,5 @@
 }
 
 .header1 {
-  @apply text-center text-3xl font-extrabold dark:text-white
+  @apply text-center text-3xl font-bold
 }
