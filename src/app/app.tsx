@@ -2,7 +2,7 @@ import { Fragment, ReactElement, ReactNode, createElement } from 'react';
 
 /**
  * JSX — это расширение синтаксиса JavaScript,
- * которое позволяет писать HTML-разметку внутри файла JavaScript.
+ * которое позволяет писать на XML-подобном синтаксисе разметку внутри файла JavaScript.
  * Файлы JSX имеют расширение tsx и jsx.
  */
 
