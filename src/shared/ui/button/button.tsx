@@ -3,15 +3,11 @@ import { ButtonHTMLAttributes, ReactElement } from 'react';
 import styles from './button.module.css';
 
 export const Button = (props: ButtonProps): ReactElement => {
-  const { variant, type, ...rest } = props;
+  const { variant, type, className, ...rest } = props;
 
-  return (
-    <button
-      type={type || 'button'}
-      className={`${styles.button} ${styles[variant || 'default']}`}
-      {...rest}
-    />
-  );
+  const computedClassName = `${styles.button} ${styles[variant || 'default']} ${className || ''}`;
+
+  return <button type={type || 'button'} className={computedClassName} {...rest} />;
 };
 
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {

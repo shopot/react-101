@@ -7,7 +7,7 @@ import styles from './register-form.module.css';
 
 import { Button, Input, Select, Checkbox, Card, FormControl } from '@/shared/ui';
 import { RegisterFormValues } from './register-form-types.ts';
-import { validateYupSchema } from './validate-yup-schema';
+import { yupSchemaValidator } from './yup-schema-validator.ts';
 
 export const RegisterForm = (): ReactElement => {
   const {
@@ -15,7 +15,7 @@ export const RegisterForm = (): ReactElement => {
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm<RegisterFormValues>({ resolver: yupResolver(validateYupSchema) });
+  } = useForm<RegisterFormValues>({ resolver: yupResolver(yupSchemaValidator) });
 
   const onSubmit: SubmitHandler<RegisterFormValues> = (data) => {
     alert(JSON.stringify(data));
@@ -74,7 +74,7 @@ export const RegisterForm = (): ReactElement => {
 
         <div className={styles.actions}>
           <Button type="submit" variant="primary">
-            Send
+            Register
           </Button>
           <Button onClick={() => reset()}>Reset</Button>
         </div>

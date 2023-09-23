@@ -1,3 +1,32 @@
+.card {
+  @apply w-96 p-6 bg-white border border-gray-200 rounded-lg shadow
+}
+
+.formControl {
+  @apply mb-2.5
+}
+
+.formControl span {
+  @apply mt-2 text-sm text-red-600
+}
+
+.formControl label {
+  @apply block mb-1 text-sm font-medium text-gray-900
+}
+
+.formControl input {
+  @apply bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2 outline-none
+}
+
 .actions {
   @apply flex justify-center gap-2
 }
+
+button {
+  @apply flex-shrink-0 text-sm border rounded-md px-4 py-2 focus:outline-none bg-white text-gray-900 hover:bg-gray-100 border-gray-300
+}
+
+button.primary {
+  @apply bg-blue-500 hover:bg-blue-700 border-blue-500 hover:border-blue-700  text-white
+}
+

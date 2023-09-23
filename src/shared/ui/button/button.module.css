@@ -1,9 +1,9 @@
 .button {
-  @apply flex-shrink-0 text-sm border text-white rounded-md px-4 py-2 focus:outline-none
+  @apply flex-shrink-0 text-sm border rounded-md px-4 py-2 focus:outline-none
 }
 
 .primary {
-  @apply bg-blue-500 hover:bg-blue-700 border-blue-500 hover:border-blue-700
+  @apply bg-blue-500 text-white hover:bg-blue-700 border-blue-500 hover:border-blue-700
 }
 
 .default {

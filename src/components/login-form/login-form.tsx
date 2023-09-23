@@ -1,11 +1,10 @@
 import { ReactElement } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { ErrorMessage } from '@hookform/error-message';
 
 import styles from './login-form.module.css';
 
-import { Button, Card, FormControl, Input } from '@/shared/ui';
 import { LoginFormValues } from './login-form-types.ts';
+import { loginFormValidator } from './login-form-validator.ts';
 
 export const LoginForm = (): ReactElement => {
   const {
@@ -20,30 +19,33 @@ export const LoginForm = (): ReactElement => {
   };
 
   return (
-    <Card>
+    <div className={styles.card}>
       <form onSubmit={(e) => void handleSubmit(onSubmit)(e)} autoComplete="off">
-        <FormControl>
-          <Input label="Email" {...register('email')} autoComplete="email" />
-          <ErrorMessage errors={errors} name="email" as="span" />
-        </FormControl>
+        <div className={styles.formControl}>
+          <label>Email</label>
+          <input {...register('email', { ...loginFormValidator.email })} autoComplete="email" />
+          {errors?.email && <span>{errors.email.message}</span>}
+        </div>
 
-        <FormControl>
-          <Input
-            label="Password"
-            {...register('password')}
+        <div className={styles.formControl}>
+          <label>Password</label>
+          <input
+            {...register('password', { ...loginFormValidator.password })}
             type="password"
             autoComplete="new-password"
           />
-          <ErrorMessage errors={errors} name="password" as="span" />
-        </FormControl>
+          {errors?.password && <span>{errors.password.message}</span>}
+        </div>
 
         <div className={styles.actions}>
-          <Button type="submit" variant="primary">
-            Send
-          </Button>
-          <Button onClick={() => reset()}>Reset</Button>
+          <button type="submit" className={styles.primary}>
+            Login
+          </button>
+          <button type="button" onClick={() => reset()}>
+            Reset
+          </button>
         </div>
       </form>
-    </Card>
+    </div>
   );
 };

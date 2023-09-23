@@ -1,0 +1,19 @@
+.appContainer {
+  @apply container mx-auto mt-5
+}
+
+.h1 {
+  @apply text-center text-2xl font-bold
+}
+
+.description {
+  @apply mt-4 flex flex-col items-center p-8 border rounded-lg shadow-sm bg-white
+}
+
+.btnActive {
+  @apply bg-blue-50
+}
+
+.formWrapper {
+  @apply flex justify-center w-auto mt-4
+}

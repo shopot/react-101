@@ -1,6 +1,6 @@
 import * as Yup from 'yup';
 
-export const validateYupSchema = Yup.object({
+export const yupSchemaValidator = Yup.object({
   name: Yup.string().required('Name is required.').min(4, 'Name must be at least 4 characters'),
   email: Yup.string().email('Pleas enter a valid email address.').required('Email is required.'),
   password: Yup.string()
