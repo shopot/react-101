@@ -20,3 +20,7 @@ body {
 #root {
   @apply h-full;
 }
+
+p {
+  @apply pb-4
+}

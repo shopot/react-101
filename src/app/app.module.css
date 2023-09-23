@@ -1,0 +1,11 @@
+.app {
+  @apply container mx-auto mt-5
+}
+
+.app h1 {
+  @apply text-center text-3xl font-bold
+}
+
+.actions {
+  @apply text-center mt-5
+}

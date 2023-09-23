@@ -1,0 +1,23 @@
+.modalOverlay {
+  @apply fixed top-0 left-0 z-30 w-screen h-screen bg-black opacity-50
+}
+
+.modalWrapper {
+  @apply fixed top-0 left-0 z-40 w-full h-full outline-none overflow-x-hidden overflow-y-auto flex flex-col items-center
+}
+
+.modal {
+  @apply z-10 bg-white rounded-lg p-3 w-full md:w-3/4 lg:w-2/4 my-7 lg:min-h-[300px]
+}
+
+.modalHeader {
+  @apply flex justify-end
+}
+
+.modalCloseButton {
+  @apply text-2xl leading-4 text-black opacity-30 cursor-pointer border-0 hover:opacity-40
+}
+
+.modalContent {
+  @apply px-4 pb-4
+}
