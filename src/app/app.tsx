@@ -24,18 +24,8 @@ const App = (): ReactElement => {
         </p>
       </div>
       <div className="flex justify-center gap-3 mt-4">
-        <Button
-          className={isLoginForm ? styles.btnActive : ''}
-          onClick={() => setIsLoginForm(true)}
-        >
-          Login
-        </Button>
-        <Button
-          className={!isLoginForm ? styles.btnActive : ''}
-          onClick={() => setIsLoginForm(false)}
-        >
-          Register
-        </Button>
+        <Button onClick={() => setIsLoginForm(true)}>Login</Button>
+        <Button onClick={() => setIsLoginForm(false)}>Register</Button>
       </div>
       <div className={styles.formWrapper}>{isLoginForm ? <LoginForm /> : <RegisterForm />}</div>
     </div>

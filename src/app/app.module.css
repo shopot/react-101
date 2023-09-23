@@ -10,10 +10,6 @@
   @apply mt-4 flex flex-col items-center p-8 border rounded-lg shadow-sm bg-white
 }
 
-.btnActive {
-  @apply bg-blue-50
-}
-
 .formWrapper {
   @apply flex justify-center w-auto mt-4
 }
