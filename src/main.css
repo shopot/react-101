@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer {
+  body {
+    font-family: Inter, sans-serif, ui-sans-serif, system-ui, -apple-system, Arial;
+  }
+}
+
+
 html, body {
   @apply h-full
 }
