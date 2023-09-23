@@ -323,6 +323,7 @@ const element = <h1>{title}</h1>;
 Документация по теме:
 
 - 🔗 [JSX Introduction](https://facebook.github.io/jsx/)
+- 🔗 [Babel transform React JSX](https://babeljs.io/docs/babel-plugin-transform-react-jsx)
 - 🔗 [Writing Markup with JSX](https://react.dev/learn/writing-markup-with-jsx)
 - 🔗 [JavaScript in JSX with Curly Braces](https://react.dev/learn/javascript-in-jsx-with-curly-braces)
 
