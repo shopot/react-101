@@ -187,7 +187,7 @@ export const App = () => {
 ```shell
 git clone https://github.com/shopot/react-101.git
 
-git checkout chapter-10
+git checkout chapter-19
 
 npm install
 
