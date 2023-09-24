@@ -4,10 +4,17 @@
 Clark): [A cartoon guide to Flux](https://code-cartoons.com/articles/a-cartoon-guide-to-flux/)
 
 📚 Содержание:
+
 - [Проблема](#проблема)
 - [Решение: однонаправленный поток данных](#решение-однонаправленный-поток-данных)
 - [Представление "персонажей" в системе Flux](#представление-персонажей-в-системе-flux)
+  - [The action creator](#the-action-creator---генератор-экшенов)
+  - [The dispatcher](#the-dispatcher---диспетчер)
+  - [The store](#the-store---хранилище-состояние-приложения)
+  - [The controller view and The view](#the-controller-view-and-the-view---контроллер-представления-и-представление)
 - [Как они работают вместе](#как-они-работают-вместе)
+  - [The setup - Настройка](#the-setup---настройка)
+  - [The data flow - Поток данных](#the-data-flow---поток-данных)
 
 ## Проблема
 
@@ -193,10 +200,8 @@ Flux это схема обработки данных или, как приня
 - 🔗 [A cartoon guide to Flux](https://code-cartoons.com/articles/a-cartoon-guide-to-flux/)
 - 🔗 [Flux
   Concepts by Facebook (GitHub)](https://github.com/facebookarchive/flux/tree/main/examples/flux-concepts)
-- 🔗 [Flux для глупых людей](https://habr.com/ru/articles/249279/)
 - 🔗 [Разбираемся с Flux, реактивной архитектурой от facebook](https://habr.com/ru/articles/246959/)
 - 🔗 [Красная нить MVC-Flux-Redux](https://habr.com/ru/companies/nordclan/articles/692492/)
-
 
 [⬆ Back to Top](#путеводитель-по-flux-в-картинках)
 
