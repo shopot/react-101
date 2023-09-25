@@ -1,76 +1,284 @@
-# 📚 React.js introducing
+# Vitest: Установка и базовая настройка
 
-Учебное пособие в виде конспекта для студентов курса [RS School React Course](https://rs.school/react).
+📚 Содержание:
 
-Разделы располагаются в порядке возрастания сложности, все примеры в разделах README.md написаны на JavaScript, там где
-есть уточнения с использованием TypeScript это указано.
+- [Установка Vitest](#установка-vitest)
+- [Настройка - файл vitest.config.ts](#настройка---файл-vitestconfigts)
+- [Настройка окружения - environment](#настройка-окружения---environment)
+- [Настройка среды выполнения - setupFiles](#настройка-среды-выполнения---setupfiles)
+- [Настройка покрытия - Coverage](#настройка-покрытия---coverage)
+- [Настройка алисов из Vite](#настройка-алисов-из-vite)
+- [Команды для запуска](#команды-для-запуска)
 
-Примеры кода в разделах написаны
-на [TypeScript](https://www.typescriptlang.org/) + [Tailwind CSS](https://tailwindcss.com/).
+## Установка Vitest
 
-- 📘 [Знакомство с JSX](https://github.com/shopot/react-101/tree/chapter-01) - _chapter-01_
-- 📘 [Отрисовка элементов](https://github.com/shopot/react-101/tree/chapter-02) - _chapter-02_
-- 📘 [Компоненты - одна из основных концепций React](https://github.com/shopot/react-101/tree/chapter-03) - _chapter-03_
-- 📘 [Условный рендеринг](https://github.com/shopot/react-101/tree/chapter-04) - _chapter-04_
-- 📘 [Обработка событий](https://github.com/shopot/react-101/tree/chapter-05) - _chapter-05_
-- 📘 [Списки и ключи - React Key Concepts](https://github.com/shopot/react-101/tree/chapter-06) - _chapter-06_
-- 📘 [Состояние: память компонента, знакомство с useState](https://github.com/shopot/react-101/tree/chapter-07) -
-  _chapter-07_
-- 📘 [Применение стилей CSS - краткий обзор](https://github.com/shopot/react-101/tree/chapter-08) - _chapter-08_
-- 📘 [React DOM компоненты - компоненты форм](https://github.com/shopot/react-101/tree/chapter-09) - _chapter-09_
-- 📘 [Совместное использование состояния между компонентами](https://github.com/shopot/react-101/tree/chapter-10) -
-  _chapter-10_
-- 📘 [Знакомство с хуком useEffect](https://github.com/shopot/react-101/tree/chapter-11) - _chapter-11_
-- 📘 [Руководство React Quiz App - Мыслим как React](https://github.com/shopot/react-101/tree/chapter-12) - _chapter-12_
-- 📘 [Получение данных - Fetching data](https://github.com/shopot/react-101/tree/chapter-13) - _chapter-13_
-- 📘 [Маршрутизация в SPA - React Routing](https://github.com/shopot/react-101/tree/chapter-14) - _chapter-14_
-- 📘 [Знакомство с хуком useReducer](https://github.com/shopot/react-101/tree/chapter-15) - _chapter-15_
-- 📘 [Знакомство с хуком useRef](https://github.com/shopot/react-101/tree/chapter-16) - _chapter-16_
-- 📘 [Знакомство с хуком useContext](https://github.com/shopot/react-101/tree/chapter-17) - _chapter-17_
-- 📘 [Работа с формами - обзор библиотеки React Hook Form](https://github.com/shopot/react-101/tree/chapter-18) - _chapter-18_
-- 📘 [Знакомство с React API: createPortal](https://github.com/shopot/react-101/tree/chapter-19) - _chapter-19_
-- 📘 [Путеводитель по Flux в картинках](https://github.com/shopot/react-101/tree/chapter-20) - _chapter-20_  
+🔗 [Docs: Scaffolding Your First Vite Project](https://vitejs.dev/guide/#scaffolding-your-first-vite-project)
 
-<details>
-  <summary>Примеры приложений (деплой):</summary>
-
-- 🔗 [Приложение Todo App](https://todo-app-ab1e50.netlify.app) - [chapter-09](https://github.com/shopot/react-101/tree/chapter-09), [chapter-15](https://github.com/shopot/react-101/tree/chapter-15), [chapter-17](https://github.com/shopot/react-101/tree/chapter-17)
-- 🔗 [Приложение React Roadmap (Accordion)](https://react-roadmap-ab1e50.netlify.app) - [chapter-10](https://github.com/shopot/react-101/tree/chapter-10)
-- 🔗 [Приложение с примерами useEffect](https://react-use-effect-ab1e50.netlify.app) - [chapter-11](https://github.com/shopot/react-101/tree/chapter-11)
-- 🔗 [Приложение React Quiz App](https://quiz-app-ab1e50.netlify.app) - [chapter-12](https://github.com/shopot/react-101/tree/chapter-12)
-- 🔗 [Приложение Fetching Data](https://fetch-data-ab1e50.netlify.app) - [chapter-13](https://github.com/shopot/react-101/tree/chapter-13)
-- 🔗 [Приложение с React Router](https://react-router-ab1e50.netlify.app) - [chapter-14](https://github.com/shopot/react-101/tree/chapter-14)
-- 🔗 [Приложение с примерами useRef](https://react-useref-ab1e50.netlify.app) - [chapter-16](https://github.com/shopot/react-101/tree/chapter-16)
-- 🔗 [Приложение с примерами React Hook Form](https://react-hook-form-ab1e50.netlify.app) - [chapter-18](https://github.com/shopot/react-101/tree/chapter-18)
-
-</details>
-
-<details>
-  <summary>Information</summary>
-
-Для работы с примерами кода клонируйте репозиторий
+Установка пакета Vitest
+и [библиотеки для тестирования React](https://testing-library.com/docs/react-testing-library/intro) через NPM:
 
 ```shell
-git clone https://github.com/shopot/react-101.git
-cd react-101
+npm install -D vitest @testing-library/react
 ```
 
-Выберите раздел на который вы хотите перейти (например chapter-02)
+[⬆ Back to Top](#vitest-установка-и-базовая-настройка)
+
+## Настройка - файл vitest.config.ts
+
+Существует два способа настройки Vitest:
+
+1. через `vite.config.ts`
+2. через `vitest.config.ts` - имеет наибольший приоритет
+
+Настройка на основе `vitest.config.ts` используется если вы хотите использовать раздельную конфигурацию для тестирования
+или ваше приложение не использует Vite.
+
+Vitest поддерживает те же расширения вашего файла конфигурации, что и
+Vite: `.js`, `.mjs`, `.cjs`, `.ts`, `.cts`, `.mts`.
+
+⛔ Vitest не поддерживает расширение `.json`.
+
+Создайте файл `vitest.config.ts` в корне проекта следующего содержания:
+
+```ts
+// vitest.config.ts
+import {defineConfig} from 'vitest/config';
+
+export default defineConfig({
+  test: {
+    globals: true, // Provide global APIs for explicitness
+  },
+});
+```
+
+Функция `defineConfig()` принимает аргументом JavaScript объект, для определения конфигурационных параметров.
+Основная настройка Vitest описывается в свойстве `test`, весь список доступных параметров доступен на странице
+официальной документации [Configuring Vitest](https://vitest.dev/config/)
+
+`globals: true` - включает глобальные API (методы `describe`, `it`, `test`, `expect` будет импортированы глобально),
+которые делают
+доступ к функциональности явным и легким для разработчика, по умолчанию отключено.
+
+[⬆ Back to Top](#vitest-установка-и-базовая-настройка)
+
+## Настройка окружения - environment
+
+Следующим шагом необходимо установить и настроить окружение (environment) DOM API, которое будет использоваться для
+тестирования.
 
 ```shell
-git checkout chapter-02
+npm install -D jsdom
 ```
 
-Установите зависимости
+```js
+// vitest.config.ts
+import { defineConfig } from 'vitest/config';
+
+export default defineConfig({
+  test: {
+    globals: true, // Provide global APIs for explicitness
+    environment: 'jsdom', // The environment that will be used for testing
+  },
+});
+```
+
+Средой выполнения по умолчанию в Vitest является среда Node.js. Для тестирования веб-приложений необходимо использовать
+среду выполнения подобную браузеру [jsdom](https://github.com/jsdom/jsdom)
+или [happy-dom](https://github.com/capricorn86/happy-dom).
+
+[jsdom](https://github.com/jsdom/jsdom) и [happy-dom](https://github.com/capricorn86/happy-dom) - это реализация
+веб-браузера на языке JavaScript без графического интерфейса для тестирования и веб-скрейпинга реальных веб-приложений,
+которая включает в себя множество веб-стандартов WHATWG [DOM](https://dom.spec.whatwg.org/)
+и [HTM](https://html.spec.whatwg.org/multipage/).
+
+Добавив блок комментария или комментарий `@vitest-environment` в верхней части файла, вы можете указать другую среду,
+которая будет использоваться для всех тестов в этом файле:
+
+Docblock style:
+
+```js
+/**
+ * @vitest-environment jsdom
+ */
+
+test('use jsdom in this test file', () => {
+  const element = document.createElement('div');
+  expect(element).not.toBeNull();
+});
+```
+
+Comment style:
+
+```js
+// @vitest-environment happy-dom
+
+test('use happy-dom in this test file', () => {
+  const element = document.createElement('div')
+  expect(element).not.toBeNull()
+})
+```
+
+Для совместимости с Jest также существует `@jest-environment`:
+
+```js
+/**
+ * @jest-environment jsdom
+ */
+
+test('use jsdom in this test file', () => {
+  const element = document.createElement('div')
+  expect(element).not.toBeNull()
+})
+```
+
+[⬆ Back to Top](#vitest-установка-и-базовая-настройка)
+
+## Настройка среды выполнения - setupFiles
+
+`setupFiles` - позволяет указать модули (пути к файлам JavaScript или TypeScript), которые должны быть загружены перед
+запуском тестов. Эти модули могут содержать код, который необходим для инициализации и настройки среды выполнения
+тестов, например, подключение дополнительных библиотек, настройка мок-объектов, определение глобальных переменных и так
+далее.
+
+```js
+// vitest.config.ts
+import { defineConfig } from 'vitest/config';
+
+export default defineConfig({
+  test: {
+    // ...
+    setupFiles: ['src/tests/setup.jsdom.ts'],
+  },
+});
+```
+
+В этом файле нужно добавить импорт `@testing-library/jest-dom`, это позволит использовать в Vitest функции сопоставления
+из дополнительной библиотеки [jest-dom](https://testing-library.com/docs/ecosystem-jest-dom)
+
+> Jest-DOM Matchers: toBeInTheDocument(), toHaveTextContent(), toHaveAttribute(), toBeInTheDocument(), etc.
+
+предварительно установив сам
+пакет:
 
 ```shell
-npm install
+npm install -D @testing-library/jest-dom
 ```
 
-Запустите dev-сервер
+```js
+// src/tests/setup.jsdom.ts
+import '@testing-library/jest-dom';
+```
+
+Это один из примеров расширения функциональности Vitest за счет стороннего API.
+
+[⬆ Back to Top](#vitest-установка-и-базовая-настройка)
+
+## Настройка покрытия - Coverage
+
+Покрытие кода - это метрика, указывающая на то, какое количество кода проекта было проверено модульными тестами.
+
+Vitest поддерживает покрытие нативного кода через [v8](https://v8.dev/blog/javascript-code-coverage) и покрытие
+инструментированного кода через [istanbul](https://istanbul.js.org/).
+
+> Инструментация кода означает добавление дополнительных конструкций или вызовов в исходный код, чтобы собирать
+> информацию во время выполнения программы. В случае Istanbul, инструментация используется для сбора информации о том,
+> какие участки кода были выполнены в ходе тестирования.
+
+Для настройки [v8](https://v8.dev/blog/javascript-code-coverage) необходимо установить пакет `@vitest/coverage-v8` и
+добавить соответствующие настройки в раздел `test`:
 
 ```shell
-npm run dev
+npm install -D @vitest/coverage-v8
 ```
 
-</details>
+```js
+// vitest.config.ts
+import { defineConfig } from 'vitest/config';
+
+export default defineConfig({
+  test: {
+    // ...
+    coverage: {
+      // Coverage Providers: "v8" or "istanbul" or your custom provider
+      provider: 'v8',
+      // Coverage reporters to use
+      reporter: ['text'],
+      // Coverage folder location
+      reportsDirectory: './tests/unit/coverage',
+    },
+  },
+});
+```
+
+Страница официальной документации [Coverage](https://vitest.dev/guide/coverage.html)
+
+[⬆ Back to Top](#vitest-установка-и-базовая-настройка)
+
+### Настройка алисов из Vite
+
+Если в конфигурации Vite есть настройка алисов, например с использованием префикса `@`, то в файл конфигурации Vitest то
+же необходимо включить поддержку алисов для корректного импорта:
+
+```js
+// vitest.config.ts
+import { defineConfig } from 'vitest/config';
+import { resolve } from 'node:path';
+
+export default defineConfig({
+  resolve: {
+    alias: [{find: '@', replacement: resolve(__dirname, './src')}],
+  },
+  test: {
+    // ...
+  },
+})
+;
+```
+
+Итоговый листинг файла конфигурации Vitest:
+
+```js
+// vitest.config.ts
+import { defineConfig } from 'vitest/config';
+import { resolve } from 'node:path';
+
+export default defineConfig({
+  resolve: {
+    alias: [{find: '@', replacement: resolve(__dirname, './src')}],
+  },
+  test: {
+    environment: 'jsdom',
+    globals: true,
+    setupFiles: ['src/shared/lib/test/setup.jsdom.ts'],
+    coverage: {
+      provider: 'v8',
+      reporter: ['text'],
+      reportsDirectory: './tests/unit/coverage',
+    },
+    css: false, // Должен ли обрабатываться CSS
+  },
+});
+```
+
+[⬆ Back to Top](#vitest-установка-и-базовая-настройка)
+
+### Команды для запуска
+
+Чтобы запускать тесты через `npm run`, добавьте в `package.json` в раздел `scripts` следующие команды:
+
+```
+"test": "vitest run",
+"coverage": "vitest run --coverage"
+```
+
+На этом установка и базовая настройка Vitest будет завершена.
+
+Документация по теме:
+
+- 🔗 [React Testing Library](https://testing-library.com/docs/react-testing-library/intro)
+- 🔗 [Jest-DOM Testing Library](https://testing-library.com/docs/ecosystem-jest-dom/)
+- 🔗 [Vitest: Getting Started](https://vitest.dev/guide/)
+- 🔗 [Vitest: Code Coverage](https://vitest.dev/guide/coverage.html)
+- 🔗 [Vitest: Config Reference](https://vitest.dev/config/)
+
+[⬆ Back to Top](#vitest-установка-и-базовая-настройка)
