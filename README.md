@@ -268,7 +268,6 @@ export default defineConfig({
 вашем `tsconfig.json`.
 
 ```json
-// tsconfig.json
 {
   "compilerOptions": {
     "types": [
