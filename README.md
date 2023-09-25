@@ -8,7 +8,7 @@
 - [Настройка среды выполнения - setupFiles](#настройка-среды-выполнения---setupfiles)
 - [Настройка покрытия - Coverage](#настройка-покрытия---coverage)
 - [Настройка алиасов из Vite](#настройка-алиасов-из-vite)
-- [Настройка tsconfig.json](#настройка-tsconfigjson)
+- [Настройка tsconfig.json и eslint](#настройка-tsconfigjson-и-eslint)
 - [Команды для запуска](#команды-для-запуска)
 
 ## Установка Vitest
@@ -262,7 +262,7 @@ export default defineConfig({
 
 [⬆ Back to Top](#vitest-установка-и-базовая-настройка)
 
-### Настройка tsconfig.json
+### Настройка tsconfig.json и eslint
 
 Чтобы TypeScript работал с глобальными API (`globals: true`), добавьте `vitest/globals` в поле типов в
 вашем `tsconfig.json`.
@@ -277,8 +277,20 @@ export default defineConfig({
   }
 }
 ```
+
 [https://vitest.dev/config/#globals](https://vitest.dev/config/#globals)
 
+Указать файл `tsconfig.node.json` в `parserOptions.project` в файле конфигурации ESLint:
+
+```
+"project": ["./tsconfig.json", "./tsconfig.node.json"]
+```
+
+Указать файл `vitest.config.ts` для включения в программу в файле конфигурации `tsconfig.node.json`:
+
+```
+"include": ["vite.config.ts", "vitest.config.ts"]
+```
 
 [⬆ Back to Top](#vitest-установка-и-базовая-настройка)
 
