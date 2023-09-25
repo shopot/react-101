@@ -1,4 +1,4 @@
-import { defineConfig } from 'vitest/config';
+import { defineConfig, configDefaults } from 'vitest/config';
 import { resolve } from 'node:path';
 
 export default defineConfig({
@@ -8,11 +8,14 @@ export default defineConfig({
   test: {
     environment: 'jsdom',
     globals: true,
-    setupFiles: ['src/tests/setup.jsdom.ts'],
+    setupFiles: ['src/__tests__/setup.jsdom.ts'],
     coverage: {
+      all: true,
       provider: 'v8',
       reporter: ['text'],
       reportsDirectory: './tests/unit/coverage',
+      include: ['src/**'],
+      exclude: [...configDefaults.exclude, 'src/main.tsx', 'src/**/*.d.ts'],
     },
     css: false, // Должен ли обрабатываться CSS
   },

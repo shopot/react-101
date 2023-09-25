@@ -147,7 +147,7 @@ import { defineConfig } from 'vitest/config';
 export default defineConfig({
   test: {
     // ...
-    setupFiles: ['src/tests/setup.jsdom.ts'],
+    setupFiles: ['src/__tests__/setup.jsdom.ts'],
   },
 });
 ```
@@ -164,7 +164,7 @@ npm install -D @testing-library/jest-dom
 ```
 
 ```js
-// src/tests/setup.jsdom.ts
+// src/__tests__/setup.jsdom.ts
 import '@testing-library/jest-dom';
 ```
 
@@ -192,18 +192,24 @@ npm install -D @vitest/coverage-v8
 
 ```js
 // vitest.config.ts
-import { defineConfig } from 'vitest/config';
+import { defineConfig, configDefaults } from 'vitest/config';
 
 export default defineConfig({
   test: {
     // ...
     coverage: {
+      // Whether to include all files, including the untested ones into report.
+      all: true,
       // Coverage Providers: "v8" or "istanbul" or your custom provider
       provider: 'v8',
       // Coverage reporters to use
       reporter: ['text'],
       // Coverage folder location
       reportsDirectory: './tests/unit/coverage',
+      // List of files included in coverage as glob patterns
+      include: ['src/**'],
+      // List of files excluded from coverage as glob patterns.
+      exclude: [...configDefaults.exclude, 'src/main.tsx', 'src/**/*.d.ts'],
     },
   },
 });
@@ -239,21 +245,24 @@ export default defineConfig({
 
 ```js
 // vitest.config.ts
-import { defineConfig } from 'vitest/config';
+import { defineConfig, configDefaults } from 'vitest/config';
 import { resolve } from 'node:path';
 
 export default defineConfig({
   resolve: {
-    alias: [{find: '@', replacement: resolve(__dirname, './src')}],
+    alias: [{ find: '@', replacement: resolve(__dirname, './src') }],
   },
   test: {
     environment: 'jsdom',
     globals: true,
-    setupFiles: ['src/tests/setup.jsdom.ts'],
+    setupFiles: ['src/__tests__/setup.jsdom.ts'],
     coverage: {
+      all: true,
       provider: 'v8',
       reporter: ['text'],
       reportsDirectory: './tests/unit/coverage',
+      include: ['src/**'],
+      exclude: [...configDefaults.exclude, 'src/main.tsx', 'src/**/*.d.ts'],
     },
     css: false, // Должен ли обрабатываться CSS
   },
