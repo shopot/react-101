@@ -32,14 +32,11 @@
     ]
   },
   "include": [
-    "src",
+    "src"
   ],
   "references": [
     {
       "path": "./tsconfig.node.json"
     }
-  ],
-  "exclude": [
-    "**/*.test.ts"
   ]
 }
