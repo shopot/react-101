@@ -23,7 +23,7 @@
     "sourceType": "module",
     "tsconfigRootDir": ".",
     "project": [
-      "./tsconfig.json"
+      "./tsconfig.json", "./tsconfig.node.json"
     ]
   },
   // Configuring third-party plugins
@@ -64,8 +64,5 @@
     "@typescript-eslint/no-var-requires": "off",
     "react/jsx-uses-react": "off",
     "react/react-in-jsx-scope": "off"
-  },
-  "ignorePatterns": [
-    "vite.config.ts"
-  ]
+  }
 }
