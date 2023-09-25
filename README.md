@@ -8,6 +8,7 @@
 - [Настройка среды выполнения - setupFiles](#настройка-среды-выполнения---setupfiles)
 - [Настройка покрытия - Coverage](#настройка-покрытия---coverage)
 - [Настройка алиасов из Vite](#настройка-алиасов-из-vite)
+- [Настройка tsconfig.json](#настройка-tsconfigjson)
 - [Команды для запуска](#команды-для-запуска)
 
 ## Установка Vitest
@@ -56,8 +57,7 @@ export default defineConfig({
 официальной документации [Configuring Vitest](https://vitest.dev/config/)
 
 `globals: true` - включает глобальные API (методы `describe`, `it`, `test`, `expect` будет импортированы глобально),
-которые делают
-доступ к функциональности явным и легким для разработчика, по умолчанию отключено.
+которые делают доступ к функциональности явным и легким для разработчика, по умолчанию отключено.
 
 [⬆ Back to Top](#vitest-установка-и-базовая-настройка)
 
@@ -157,8 +157,7 @@ export default defineConfig({
 
 > Jest-DOM Matchers: toBeInTheDocument(), toHaveTextContent(), toHaveAttribute(), toBeInTheDocument(), etc.
 
-предварительно установив сам
-пакет:
+предварительно установив сам пакет определение типов:
 
 ```shell
 npm install -D @testing-library/jest-dom
@@ -216,7 +215,8 @@ export default defineConfig({
 
 ### Настройка алиасов из Vite
 
-Если в конфигурации Vite есть настройка алиасов, например с использованием префикса `@`, то в файл конфигурации Vitest то
+Если в конфигурации Vite есть настройка алиасов, например с использованием префикса `@`, то в файл конфигурации Vitest
+то
 же необходимо включить поддержку алиасов для корректного импорта:
 
 ```js
@@ -258,6 +258,24 @@ export default defineConfig({
     css: false, // Должен ли обрабатываться CSS
   },
 });
+```
+
+[⬆ Back to Top](#vitest-установка-и-базовая-настройка)
+
+### Настройка tsconfig.json
+
+Чтобы TypeScript работал с глобальными API (`globals: true`), добавьте `vitest/globals` в поле типов в
+вашем `tsconfig.json`.
+
+```json
+// tsconfig.json
+{
+  "compilerOptions": {
+    "types": [
+      "vitest/globals"
+    ]
+  }
+}
 ```
 
 [⬆ Back to Top](#vitest-установка-и-базовая-настройка)
