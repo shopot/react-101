@@ -249,7 +249,7 @@ export default defineConfig({
   test: {
     environment: 'jsdom',
     globals: true,
-    setupFiles: ['src/shared/lib/test/setup.jsdom.ts'],
+    setupFiles: ['src/tests/setup.jsdom.ts'],
     coverage: {
       provider: 'v8',
       reporter: ['text'],
