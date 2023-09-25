@@ -157,7 +157,7 @@ export default defineConfig({
 
 > Jest-DOM Matchers: toBeInTheDocument(), toHaveTextContent(), toHaveAttribute(), toBeInTheDocument(), etc.
 
-предварительно установив сам пакет определение типов:
+предварительно установив сам пакет:
 
 ```shell
 npm install -D @testing-library/jest-dom
