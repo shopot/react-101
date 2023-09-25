@@ -277,6 +277,8 @@ export default defineConfig({
   }
 }
 ```
+[https://vitest.dev/config/#globals](https://vitest.dev/config/#globals)
+
 
 [⬆ Back to Top](#vitest-установка-и-базовая-настройка)
 
