@@ -15,6 +15,6 @@ export const TodoList = ({ todos, onToggleComplete, onRemove }: Props): ReactEle
 
 type Props = {
   todos: TodoState;
-  onToggleComplete: (todoId: number) => void;
-  onRemove: (todoId: number) => void;
+  onToggleComplete: (todoId: string) => void;
+  onRemove: (todoId: string) => void;
 };

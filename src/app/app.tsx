@@ -9,11 +9,11 @@ import { addNewTodo, removeTodo, toggleCompleted, todoReducer } from '@/reducers
 const App = (): ReactElement => {
   const [todos, dispatch] = useReducer(todoReducer, []);
 
-  const handleAddTodo = (title: string) => dispatch(addNewTodo(title));
+  const handleAddTodo = (todoId: string, title: string) => dispatch(addNewTodo(todoId, title));
 
-  const handleRemoveTodo = (todoId: number) => dispatch(removeTodo(todoId));
+  const handleRemoveTodo = (todoId: string) => dispatch(removeTodo(todoId));
 
-  const handleToggleTodo = (todoId: number) => dispatch(toggleCompleted(todoId));
+  const handleToggleTodo = (todoId: string) => dispatch(toggleCompleted(todoId));
 
   return (
     <div className={styles.appContainer}>
