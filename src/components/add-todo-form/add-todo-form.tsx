@@ -18,6 +18,7 @@ export const AddTodoForm = ({ onAddTodo }: Props): ReactElement => {
       return;
     }
 
+    // Генерируем новый id
     const id: string = uuidv4();
 
     // Вызываем метод полученный через пропсы от родительского компонента
