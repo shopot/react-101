@@ -1,4 +1,5 @@
 import { ReactElement, useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
 import styles from './add-todo-form.module.css';
 
@@ -17,9 +18,11 @@ export const AddTodoForm = ({ onAddTodo }: Props): ReactElement => {
       return;
     }
 
+    const id: string = uuidv4();
+
     // Вызываем метод полученный через пропсы от родительского компонента
     // и передаем туда обработанное значение title из переменной состояния
-    onAddTodo(trimmedValue);
+    onAddTodo(id, trimmedValue);
 
     // Сбрасываем input через переменную состояния
     setTitle('');
@@ -43,5 +46,5 @@ export const AddTodoForm = ({ onAddTodo }: Props): ReactElement => {
 };
 
 type Props = {
-  onAddTodo: (title: string) => void;
+  onAddTodo: (todoId: string, title: string) => void;
 };

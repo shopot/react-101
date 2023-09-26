@@ -26,6 +26,6 @@ export const TodoItem = ({ todo, onToggleComplete, onRemove }: Props) => {
 
 type Props = {
   todo: Todo;
-  onToggleComplete: (todoId: number) => void;
-  onRemove: (todoId: number) => void;
+  onToggleComplete: (todoId: string) => void;
+  onRemove: (todoId: string) => void;
 };

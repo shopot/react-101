@@ -4,12 +4,12 @@ import styles from './app.module.css';
 
 import { TodoList } from '@/components/todo-list';
 import { AddTodoForm } from '@/components/add-todo-form';
-import { Todo } from '@/types';
+import { TodoState } from '@/types';
 
 // Начальное значение для переменной состояния todos
-const initialState = [
+const initialState: TodoState = [
   {
-    id: 1,
+    id: '9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d',
     title: 'learn in the tutorial are fundamental to building any React app',
     completed: false,
   },
@@ -18,13 +18,10 @@ const initialState = [
 const App = (): ReactElement => {
   // Объявляем переменную состояния для хранения списка todo при помощи useState()
   // начальное значение - массив с одним элементом
-  const [todos, setTodos] = useState<Todo[]>(initialState);
-
-  // Функция для получения последнего id списка
-  const getLastId = () => (todos.length ? todos[todos.length - 1].id : 0);
+  const [todos, setTodos] = useState<TodoState>(initialState);
 
   // Метод для переключения статуса completed
-  const handleToggleTodo = (todoId: number) => {
+  const handleToggleTodo = (todoId: string) => {
     // Обновляем значение completed
     const newTodos = todos.map((t) => {
       if (t.id === todoId) {
@@ -39,7 +36,7 @@ const App = (): ReactElement => {
   };
 
   // Метод для удаления todo по id
-  const handleRemoveTodo = (todoId: number) => {
+  const handleRemoveTodo = (todoId: string) => {
     // Удаляем элемент из массива
     const newTodos = todos.filter(({ id }) => id !== todoId);
 
@@ -48,9 +45,9 @@ const App = (): ReactElement => {
   };
 
   // Метод для добавления нового todo массив из todo
-  const handleAddTodo = (title: string) => {
+  const handleAddTodo = (todoId: string, title: string) => {
     // Добавляем в него новый элемент
-    const newTodos = [...todos, { id: getLastId() + 1, title, completed: false }];
+    const newTodos = [...todos, { id: todoId, title, completed: false }];
 
     // Обновляем переменную состояния новым значением из списка todo
     setTodos(newTodos);
