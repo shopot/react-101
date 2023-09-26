@@ -233,6 +233,29 @@ export default defineConfig({
 > Паттерны glob - это специфичные шаблоны, используемые для поиска и выборки файлов, основанные на символах-шаблонах,
 > таких как "*" и "?"
 
+Список файлов по умолчанию из `coverageConfigDefaults.exclude` (актуальный список доступен
+на [странице официальной документации](https://vitest.dev/config/#coverage-exclude)):
+
+```js
+[
+  'coverage/**',
+  'dist/**',
+  'packages/*/test?(s)/**',
+  '**/*.d.ts',
+  '**/virtual:*',
+  '**/__x00__*',
+  '**/\x00*',
+  'cypress/**',
+  'test?(s)/**',
+  'test?(-*).?(c|m)[jt]s?(x)',
+  '**/*{.,-}{test,spec}.?(c|m)[jt]s?(x)',
+  '**/__tests__/**',
+  '**/{karma,rollup,webpack,vite,vitest,jest,ava,babel,nyc,cypress,tsup,build}.config.*',
+  '**/vitest.{workspace,projects}.[jt]s?(on)',
+  '**/.{eslint,mocha,prettier}rc.{?(c|m)js,yml}',
+]
+```
+
 Страница официальной документации [Coverage](https://vitest.dev/guide/coverage.html)
 
 [⬆ Back to Top](#vitest-установка-и-базовая-настройка)
