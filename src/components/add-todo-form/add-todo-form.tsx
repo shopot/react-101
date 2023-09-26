@@ -1,6 +1,4 @@
 import { ReactElement, useState } from 'react';
-import { v4 as uuidv4 } from 'uuid';
-
 import styles from './add-todo-form.module.css';
 
 import { Button } from '@/shared/ui';
@@ -20,9 +18,7 @@ export const AddTodoForm = (): ReactElement => {
       return;
     }
 
-    const id: string = uuidv4();
-
-    dispatch(addNewTodo(id, trimmedValue));
+    dispatch(addNewTodo(trimmedValue));
 
     setTitle('');
   };
