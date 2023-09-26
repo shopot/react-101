@@ -386,6 +386,7 @@ export const TodoList = () => {
 ```jsx
 // src/components/add-todo-form/add-todo-form.jsx
 import { useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
 import { addNewTodo } from '@/reducers/todo';
 import { useTodoDispatch } from '@/contexts';
@@ -396,7 +397,11 @@ export const AddTodoForm = () => {
   // Используем хук для получения dispatch из контекста
   const dispatch = useTodoDispatch();
 
-  const handleClick = () => dispatch(addNewTodo(title));
+  const handleClick = () => {
+    const id = uuidv4();
+
+    dispatch(addNewTodo(id, title))
+  };
 
   return (
     <form>

@@ -1,5 +1,5 @@
 export type Todo = {
-  id: number;
+  id: string;
   title: string;
   completed: boolean;
 };
@@ -8,6 +8,6 @@ export type TodoState = Todo[];
 
 export type TodoAction = {
   type: string;
-  todoId?: number;
+  todoId?: string;
   title?: string;
 };
