@@ -1,3 +1,5 @@
+import { v4 as uuidv4 } from 'uuid';
+
 import { TodoAction, TodoState } from './types';
 import { ADD_NEW_TODO, REMOVE_TODO, TOGGLE_COMPLETED } from './actions';
 
@@ -6,11 +8,13 @@ export const todoReducer = (state: TodoState, action: TodoAction): TodoState => 
 
   switch (type) {
     case ADD_NEW_TODO: {
-      if (!title || !todoId) {
+      if (!title) {
         break;
       }
 
-      return [...state, { id: todoId, title, completed: false }];
+      const id: string = uuidv4();
+
+      return [...state, { id, title, completed: false }];
     }
 
     case REMOVE_TODO: {

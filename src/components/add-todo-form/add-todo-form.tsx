@@ -1,5 +1,4 @@
 import { ReactElement, useState } from 'react';
-import { v4 as uuidv4 } from 'uuid';
 
 import styles from './add-todo-form.module.css';
 
@@ -15,9 +14,7 @@ export const AddTodoForm = ({ onAddTodo }: Props): ReactElement => {
       return;
     }
 
-    const id: string = uuidv4();
-
-    onAddTodo(id, trimmedValue);
+    onAddTodo(trimmedValue);
 
     setTitle('');
   };
@@ -40,5 +37,5 @@ export const AddTodoForm = ({ onAddTodo }: Props): ReactElement => {
 };
 
 type Props = {
-  onAddTodo: (todoId: string, title: string) => void;
+  onAddTodo: (title: string) => void;
 };

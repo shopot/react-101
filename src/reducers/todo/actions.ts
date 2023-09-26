@@ -10,11 +10,7 @@ export const TOGGLE_COMPLETED = 'TOGGLE_COMPLETED';
 /*
  * Action Creators
  */
-export const addNewTodo = (todoId: string, title: string): TodoAction => ({
-  type: ADD_NEW_TODO,
-  todoId,
-  title,
-});
+export const addNewTodo = (title: string): TodoAction => ({ type: ADD_NEW_TODO, title });
 
 export const removeTodo = (todoId: string): TodoAction => ({ type: REMOVE_TODO, todoId });
 

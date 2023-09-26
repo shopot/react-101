@@ -40,8 +40,11 @@ const App = () => {
     setTodos(newTodos);
   };
 
-  const handleAddTodo = (todoId, title) => {
-    const newTodos = [...todos, {id: todoId, title, completed: false}];
+  const handleAddTodo = (title) => {
+
+    const id = uuidv4();
+    
+    const newTodos = [...todos, {id, title, completed: false}];
 
     setTodos(newTodos);
   };
@@ -229,10 +232,12 @@ export const todoReducer = (state, action) => {
 
   switch (type) {
     case 'add_new_todo': {
-      if (!title || !todoId) {
+      if (!title) {
         break;
       }
 
+      const id = uuidv4();
+      
       return [...state, {id: todoId, title, completed: false}];
     }
 
@@ -277,7 +282,7 @@ import { todoReducer } from '@/reducers/todo';
 const App = () => {
   const [todos, dispatch] = useReducer(todoReducer, []);
 
-  const handleAddTodo = (todoId, title) => dispatch({type: 'add_new_todo', todoId, title});
+  const handleAddTodo = (title) => dispatch({type: 'add_new_todo', title});
 
   const handleRemoveTodo = (todoId) => dispatch({type: 'remove_todo', todoId});
 
@@ -343,7 +348,6 @@ export const TOGGLE_COMPLETED = 'TOGGLE_COMPLETED';
 ```js
 dispatch({
   type: 'ADD_NEW_TODO',
-  todoId: '9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d',
   title: 'Learn React.js'
 });
 ```
@@ -352,7 +356,7 @@ dispatch({
 
 ```js
 // src/reducers/todo/actions.js
-export const addNewTodo = (todoId, title) => ({type: ADD_NEW_TODO, todoId, title});
+export const addNewTodo = (title) => ({type: ADD_NEW_TODO, title});
 ```
 
 И затем импортировать его для вызова в компонент:
@@ -365,7 +369,7 @@ import { addNewTodo } from '@/reducers/todo';
 
 const App = () => {
   //...
-  const handleAddTodo = (todoId, title) => dispatch(addNewTodo(todoId, title));
+  const handleAddTodo = (title) => dispatch(addNewTodo(title));
 
   //...
 }
@@ -388,20 +392,19 @@ export const ADD_NEW_TODO = 'ADD_NEW_TODO';
 export const REMOVE_TODO = 'REMOVE_TODO';
 export const TOGGLE_COMPLETED = 'TOGGLE_COMPLETED';
 
-export const addNewTodo = (todoId, title) => ({type: ADD_NEW_TODO, todoId, title});
+export const addNewTodo = (title) => ({type: ADD_NEW_TODO, title});
 
 export const removeTodo = (todoId) => ({type: REMOVE_TODO, todoId});
 
-export const toggleCompleted = (todoId) => ({
-  type: TOGGLE_COMPLETED,
-  todoId,
-});
+export const toggleCompleted = (todoId) => ({type: TOGGLE_COMPLETED, todoId});
 ```
 
 `reducer.js`
 
 ```jsx
 // src/reducers/todo/reducer.js
+import { v4 as uuidv4 } from 'uuid';
+
 import { ADD_NEW_TODO, REMOVE_TODO, TOGGLE_COMPLETED } from './actions';
 
 export const todoReducer = (state, action) => {
@@ -409,11 +412,13 @@ export const todoReducer = (state, action) => {
 
   switch (type) {
     case ADD_NEW_TODO: {
-      if (!title || !todoId) {
+      if (!title) {
         break;
       }
 
-      return [...state, {id: todoId, completed: false}];
+      const id = uuidv4();
+
+      return [...state, {id, completed: false}];
     }
 
     case REMOVE_TODO: {
@@ -448,7 +453,7 @@ import { addNewTodo, removeTodo, toggleCompleted, todoReducer } from '@/reducers
 const App = () => {
   const [todos, dispatch] = useReducer(todoReducer, []);
 
-  const handleAddTodo = (todoId, title) => dispatch(addNewTodo(todoId, title));
+  const handleAddTodo = (title) => dispatch(addNewTodo(title));
 
   const handleRemoveTodo = (todoId) => dispatch(removeTodo(todoId));
 
