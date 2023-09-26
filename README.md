@@ -192,7 +192,7 @@ npm install -D @vitest/coverage-v8
 
 ```js
 // vitest.config.ts
-import { defineConfig, configDefaults } from 'vitest/config';
+import { defineConfig, coverageConfigDefaults } from 'vitest/config';
 
 export default defineConfig({
   test: {
@@ -203,17 +203,35 @@ export default defineConfig({
       // Coverage Providers: "v8" or "istanbul" or your custom provider
       provider: 'v8',
       // Coverage reporters to use
-      reporter: ['text'],
+      reporter: ['text', 'html'],
       // Coverage folder location
       reportsDirectory: './tests/unit/coverage',
       // List of files included in coverage as glob patterns
       include: ['src/**'],
       // List of files excluded from coverage as glob patterns.
-      exclude: [...configDefaults.exclude, 'src/main.tsx', 'src/**/*.d.ts'],
+      exclude: [...coverageConfigDefaults.exclude, 'src/main.tsx', 'src/**/*.d.ts'],
     },
   },
 });
 ```
+
+Описание настроек `test:coverage`:
+
+- `all` - включать ли в отчет все файлы, включая те у которых нет тестов, то есть все файлы согласно шаблону `include`;
+- `provider` - какой инструмент будет использоваться для проверки покрытия кода модульными тестами;
+- `reporter` - перечисление репортеров (reporters) которые будут создавать отчеты о покрытии кода в соответствующих
+  форматах, доступны `text`, `html`, `clover`, `json`. Репортер `text` соответствует консольному выводу, он не создает
+  файлы отчета; Репортер `clover` создает отчет в формате XML.
+- `reportsDirectory` - указание где именно будет создаваться директория для файлов с отчетами, для формата `text`
+  директория не будет создаваться, так как этот формат соответствует консольному выводу;
+- `include` - это список файлов, которые будут включены для оценки покрытия с использованием шаблонов glob;
+- `exclude` - это список файлов, которые будут исключены из оценки покрытия с использованием шаблонов glob, если вы
+  определили список в `test.coverage.exclude`, то он заменит настройки по умолчанию `coverageConfigDefaults.exclude`,
+  для того что бы сохранить настройки по умолчанию и объединить их с вашими настройками, нужно
+  включить `coverageConfigDefaults.exclude` в список `exclude`;
+
+> Паттерны glob - это специфичные шаблоны, используемые для поиска и выборки файлов, основанные на символах-шаблонах,
+> таких как "*" и "?"
 
 Страница официальной документации [Coverage](https://vitest.dev/guide/coverage.html)
 
@@ -245,12 +263,12 @@ export default defineConfig({
 
 ```js
 // vitest.config.ts
-import { defineConfig, configDefaults } from 'vitest/config';
+import { defineConfig, coverageConfigDefaults } from 'vitest/config';
 import { resolve } from 'node:path';
 
 export default defineConfig({
   resolve: {
-    alias: [{ find: '@', replacement: resolve(__dirname, './src') }],
+    alias: [{find: '@', replacement: resolve(__dirname, './src')}],
   },
   test: {
     environment: 'jsdom',
@@ -259,10 +277,10 @@ export default defineConfig({
     coverage: {
       all: true,
       provider: 'v8',
-      reporter: ['text'],
+      reporter: ['text', 'html'],
       reportsDirectory: './tests/unit/coverage',
       include: ['src/**'],
-      exclude: [...configDefaults.exclude, 'src/main.tsx', 'src/**/*.d.ts'],
+      exclude: [...coverageConfigDefaults.exclude, 'src/main.tsx', 'src/**/*.d.ts'],
     },
     css: false, // Должен ли обрабатываться CSS
   },
