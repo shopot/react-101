@@ -1,4 +1,4 @@
-import { defineConfig, configDefaults } from 'vitest/config';
+import { defineConfig, coverageConfigDefaults } from 'vitest/config';
 import { resolve } from 'node:path';
 
 export default defineConfig({
@@ -12,10 +12,10 @@ export default defineConfig({
     coverage: {
       all: true,
       provider: 'v8',
-      reporter: ['text'],
+      reporter: ['text', 'html'],
       reportsDirectory: './tests/unit/coverage',
       include: ['src/**'],
-      exclude: [...configDefaults.exclude, 'src/main.tsx', 'src/**/*.d.ts'],
+      exclude: [...coverageConfigDefaults.exclude, 'src/main.tsx', 'src/**/*.d.ts'],
     },
     css: false, // Должен ли обрабатываться CSS
   },
