@@ -504,7 +504,6 @@ describe('App', () => {
   it('renders App component', () => {
     render(<App />);
 
-    // Fails
     expect(screen.getByText(/Searches for JavaScript/)).toBeNull();
   });
 });
