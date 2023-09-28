@@ -524,7 +524,6 @@ describe('App', () => {
   it('renders App component', () => {
     render(<App />);
 
-    // Fails
     expect(screen.queryByText(/Searches for JavaScript/)).toBeNull();
   });
 });
