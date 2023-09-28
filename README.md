@@ -348,9 +348,14 @@ export default defineConfig({
 Чтобы запускать тесты через `npm run`, добавьте в `package.json` в раздел `scripts` следующие команды:
 
 ```
-"test": "vitest run",
+"test": "vitest",
 "coverage": "vitest run --coverage"
 ```
+
+По умолчанию команда запуска `vitest` стартует в режиме **vitest watch**, в этом режиме Vitest следит за изменениями и
+перезапускает тесты при их изменении, данный режим работает только в _development environment_, при запуске в CI
+(Continuous Integration) `vitest` будет игнорировать **vitest watch** и будет выполняться в режиме **vitest run**, то
+есть запускаться один раз для всего набора тестов.
 
 На этом установка и базовая настройка Vitest будет завершена.
 
@@ -359,7 +364,9 @@ export default defineConfig({
 - 🔗 [React Testing Library](https://testing-library.com/docs/react-testing-library/intro)
 - 🔗 [Jest-DOM Testing Library](https://testing-library.com/docs/ecosystem-jest-dom/)
 - 🔗 [Vitest: Getting Started](https://vitest.dev/guide/)
+- 🔗 [Command Line Interface ](https://vitest.dev/guide/cli.html)
 - 🔗 [Vitest: Code Coverage](https://vitest.dev/guide/coverage.html)
 - 🔗 [Vitest: Config Reference](https://vitest.dev/config/)
+
 
 [⬆ Back to Top](#vitest-установка-и-базовая-настройка)
