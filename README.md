@@ -43,7 +43,7 @@
 Для работы с утверждениями, Testing Library включает в себя дополнительную библиотеку `@testing-library/jest-dom`,
 которая предоставляет собственные средства сопоставления (matchers) элементов DOM для Jest.
 
-[⬆ Back to Top](#testing-library)
+[⬆ Back to Top](#обзор-react-testing-library)
 
 ### Чем не является эта библиотека
 
@@ -54,7 +54,7 @@ DOM Testing Library работает с любой средой выполнен
 например [Jest](https://jestjs.io/), [Mocha](https://mochajs.org/) + [JSDOM](https://github.com/jsdom/jsdom)
 или реальным браузером.
 
-[⬆ Back to Top](#testing-library)
+[⬆ Back to Top](#обзор-react-testing-library)
 
 ### Чего следует избегать при использовании Testing Library
 
@@ -69,7 +69,7 @@ Testing Library рекомендует избегать тестирования
 - Методы жизненного цикла компонента
 - Дочерние компоненты
 
-[⬆ Back to Top](#testing-library)
+[⬆ Back to Top](#обзор-react-testing-library)
 
 ## Queries - запросы
 
@@ -96,7 +96,7 @@ test('should show login form', () => {
 })
 ```
 
-[⬆ Back to Top](#testing-library)
+[⬆ Back to Top](#обзор-react-testing-library)
 
 ### Типы запросов
 
@@ -118,7 +118,7 @@ test('should show login form', () => {
 | `queryBy...`  | Return null | Return element | Throw error | No                  |
 | `findBy...`   | Throw error | Return element | Throw error | Yes                 |
 
-[⬆ Back to Top](#testing-library)
+[⬆ Back to Top](#обзор-react-testing-library)
 
 #### Для нескольких элементов
 
@@ -141,7 +141,7 @@ test('should show login form', () => {
 | `queryAllBy...` | Return []   | Return array | Return array | No                  |
 | `findAllBy...`  | Throw error | Return array | Return array | Yes                 |
 
-[⬆ Back to Top](#testing-library)
+[⬆ Back to Top](#обзор-react-testing-library)
 
 ### Приоритет запросов
 
@@ -179,7 +179,7 @@ test('should show login form', () => {
 1. **getByTestId** - пользователь не может видеть (или слышать) их, поэтому это рекомендуется только в тех случаях,
    когда вы не можете сопоставить их по роли или тексту или это не имеет смысла (например, если текст динамический).
 
-[⬆ Back to Top](#testing-library)
+[⬆ Back to Top](#обзор-react-testing-library)
 
 ## Vitest с React Testing Library
 
@@ -241,7 +241,7 @@ describe('true is truthy and false is falsy', () => {
 вы можете дать ему дальнейшие инструкции. Если вы меняете файл, будь то исходный код или файл теста, Vitest снова
 запускает все ваши тесты.
 
-[⬆ Back to Top](#testing-library)
+[⬆ Back to Top](#обзор-react-testing-library)
 
 ## React Testing Library - Рендеринг компонента
 
@@ -327,7 +327,7 @@ describe('App', () => {
 компонентами React, точно так же как реальный пользователь. То, что видит пользователь - это просто отрендеренный
 HTML-код из ваших React компонентов, именно его вы и получаете в качестве результата рендеринга с использованием RTL.
 
-[⬆ Back to Top](#testing-library)
+[⬆ Back to Top](#обзор-react-testing-library)
 
 ## React Testing Library - выбор элементов
 
@@ -513,7 +513,7 @@ describe('App', () => {
 - **AltText**: getByAltText(): `<img alt="profile" />`
 - **DisplayValue**: getByDisplayValue(): `<input value="JavaScript" />`
 
-[⬆ Back to Top](#testing-library)
+[⬆ Back to Top](#обзор-react-testing-library)
 
 ## Поиск на основе запросов queryBy и findBy
 
@@ -535,7 +535,7 @@ describe('App', () => {
 - `findByAltText`
 - `findByDisplayValue`
 
-[⬆ Back to Top](#testing-library)
+[⬆ Back to Top](#обзор-react-testing-library)
 
 ### В чем разница между getBy и queryBy?
 
@@ -579,7 +579,7 @@ describe('App', () => {
 Поэтому каждый раз, когда требуется утверждение, что элемента нет, нужно использовать **queryBy**. В противном случае по
 умолчанию используется **getBy**.
 
-[⬆ Back to Top](#testing-library)
+[⬆ Back to Top](#обзор-react-testing-library)
 
 ### Когда использовать findBy?
 
@@ -661,7 +661,7 @@ describe('App', () => {
 });
 ```
 
-[⬆ Back to Top](#testing-library)
+[⬆ Back to Top](#обзор-react-testing-library)
 
 ### Функции сопоставления - Assertive functions
 
@@ -705,7 +705,7 @@ describe('App', () => {
 - [`toBePartiallyChecked`](https://github.com/testing-library/jest-dom#tobepartiallychecked)
 - [`toHaveErrorMessage`](https://github.com/testing-library/jest-dom#tohaveerrormessage)
 
-[⬆ Back to Top](#testing-library)
+[⬆ Back to Top](#обзор-react-testing-library)
 
 ## Запуск событий DOM - fireEvent
 
@@ -860,7 +860,7 @@ describe('App', () => {
 которые
 должны отрендериться в результате выполнения асинхронных операций.
 
-[⬆ Back to Top](#testing-library)
+[⬆ Back to Top](#обзор-react-testing-library)
 
 ## Взаимодействие с пользователем - userEvent
 
@@ -909,7 +909,7 @@ describe('App', () => {
 
 [Ссылка](https://testing-library.com/docs/user-event/intro) на официальную документацию **API userEvent**.
 
-[⬆ Back to Top](#testing-library)
+[⬆ Back to Top](#обзор-react-testing-library)
 
 Документация по теме:
 
