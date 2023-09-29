@@ -78,3 +78,4 @@ npm run dev
 ## 📚 React Testing
 
 - 📙 [Vitest: Установка и базовая настройка](https://github.com/shopot/react-101/tree/react-testing-01)
+- 📙 [Обзор React Testing Library](https://github.com/shopot/react-101/tree/react-testing-02)
