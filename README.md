@@ -66,7 +66,7 @@ React.createElement('div', {className: 'sidebar'});
 const vdom = <img src={logo} className="app-logo" alt="logo" />;
 
 // Скомпилируется в:
-React.createElement('img', {className: 'title', src: '...', alt: 'logo'});
+React.createElement('img', {className: 'app-logo', src: '...', alt: 'logo'});
 ```
 
 **[⬆ Back to Top](#знакомство-с-jsx)**
@@ -236,8 +236,8 @@ const vdom = (
 
 ### Логические значения, null и undefined игнорируются
 
-Значения `false`, `null`, `undefined` и `true` - валидные дочерние компоненты. Просто они не рендерятся. Эти *
-*JSX-выражения** будут рендерить одно и то же:
+Значения `false`, `null`, `undefined` и `true` - валидные дочерние пустые элементы. Просто они не рендерятся. 
+Эти **JSX-выражения** будут рендерить одно и то же:
 
 ```jsx
 <div />
