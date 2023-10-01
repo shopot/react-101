@@ -21,7 +21,7 @@ export const CharacterDetail = ({characterId}) => {
     const fetchData = async (id) => {
       const response = await fetch(`https://rickandmortyapi.com/api/character/${id}/`);
       const newData = await response.json();
-      setData(newData);
+      setCharacter(newData);
     };
 
     fetchData(characterId);
@@ -62,7 +62,7 @@ export const CharacterDetail = ({characterId}) => {
       const newData = await response.json();
 
       if (active) {
-        setData(newData);
+        setCharacter(newData);
       }
     };
 
