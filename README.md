@@ -8,28 +8,28 @@
 Примеры кода в разделах написаны
 на [TypeScript](https://www.typescriptlang.org/) + [Tailwind CSS](https://tailwindcss.com/).
 
-- 📘 [Знакомство с JSX](https://github.com/shopot/react-101/tree/chapter-01) - _chapter-01_
-- 📘 [Отрисовка элементов](https://github.com/shopot/react-101/tree/chapter-02) - _chapter-02_
-- 📘 [Компоненты - одна из основных концепций React](https://github.com/shopot/react-101/tree/chapter-03) - _chapter-03_
-- 📘 [Условный рендеринг](https://github.com/shopot/react-101/tree/chapter-04) - _chapter-04_
-- 📘 [Обработка событий](https://github.com/shopot/react-101/tree/chapter-05) - _chapter-05_
-- 📘 [Списки и ключи - React Key Concepts](https://github.com/shopot/react-101/tree/chapter-06) - _chapter-06_
-- 📘 [Состояние: память компонента, знакомство с useState](https://github.com/shopot/react-101/tree/chapter-07) -
+* 📘 [Знакомство с JSX](https://github.com/shopot/react-101/tree/chapter-01) - _chapter-01_
+* 📘 [Отрисовка элементов](https://github.com/shopot/react-101/tree/chapter-02) - _chapter-02_
+* 📘 [Компоненты - одна из основных концепций React](https://github.com/shopot/react-101/tree/chapter-03) - _chapter-03_
+* 📘 [Условный рендеринг](https://github.com/shopot/react-101/tree/chapter-04) - _chapter-04_
+* 📘 [Обработка событий](https://github.com/shopot/react-101/tree/chapter-05) - _chapter-05_
+* 📘 [Списки и ключи - React Key Concepts](https://github.com/shopot/react-101/tree/chapter-06) - _chapter-06_
+* 📘 [Состояние: память компонента, знакомство с useState](https://github.com/shopot/react-101/tree/chapter-07) -
   _chapter-07_
-- 📘 [Применение стилей CSS - краткий обзор](https://github.com/shopot/react-101/tree/chapter-08) - _chapter-08_
-- 📘 [React DOM компоненты - компоненты форм](https://github.com/shopot/react-101/tree/chapter-09) - _chapter-09_
-- 📘 [Совместное использование состояния между компонентами](https://github.com/shopot/react-101/tree/chapter-10) -
+* 📘 [Применение стилей CSS - краткий обзор](https://github.com/shopot/react-101/tree/chapter-08) - _chapter-08_
+* 📘 [React DOM компоненты - компоненты форм](https://github.com/shopot/react-101/tree/chapter-09) - _chapter-09_
+* 📘 [Совместное использование состояния между компонентами](https://github.com/shopot/react-101/tree/chapter-10) -
   _chapter-10_
-- 📘 [Знакомство с хуком useEffect](https://github.com/shopot/react-101/tree/chapter-11) - _chapter-11_
-- 📘 [Руководство React Quiz App - Мыслим как React](https://github.com/shopot/react-101/tree/chapter-12) - _chapter-12_
-- 📘 [Получение данных - Fetching data](https://github.com/shopot/react-101/tree/chapter-13) - _chapter-13_
-- 📘 [Маршрутизация в SPA - React Routing](https://github.com/shopot/react-101/tree/chapter-14) - _chapter-14_
-- 📘 [Знакомство с хуком useReducer](https://github.com/shopot/react-101/tree/chapter-15) - _chapter-15_
-- 📘 [Знакомство с хуком useRef](https://github.com/shopot/react-101/tree/chapter-16) - _chapter-16_
-- 📘 [Знакомство с хуком useContext](https://github.com/shopot/react-101/tree/chapter-17) - _chapter-17_
-- 📘 [Работа с формами - обзор библиотеки React Hook Form](https://github.com/shopot/react-101/tree/chapter-18) - _chapter-18_
-- 📘 [Знакомство с React API: createPortal](https://github.com/shopot/react-101/tree/chapter-19) - _chapter-19_
-- 📘 [Путеводитель по Flux в картинках](https://github.com/shopot/react-101/tree/chapter-20) - _chapter-20_  
+* 📘 [Знакомство с хуком useEffect](https://github.com/shopot/react-101/tree/chapter-11) - _chapter-11_
+* 📘 [Руководство React Quiz App - Мыслим как React](https://github.com/shopot/react-101/tree/chapter-12) - _chapter-12_
+* 📘 [Получение данных - Fetching data](https://github.com/shopot/react-101/tree/chapter-13) - _chapter-13_
+* 📘 [Маршрутизация в SPA - React Routing](https://github.com/shopot/react-101/tree/chapter-14) - _chapter-14_
+* 📘 [Знакомство с хуком useReducer](https://github.com/shopot/react-101/tree/chapter-15) - _chapter-15_
+* 📘 [Знакомство с хуком useRef](https://github.com/shopot/react-101/tree/chapter-16) - _chapter-16_
+* 📘 [Знакомство с хуком useContext](https://github.com/shopot/react-101/tree/chapter-17) - _chapter-17_
+* 📘 [Работа с формами - обзор библиотеки React Hook Form](https://github.com/shopot/react-101/tree/chapter-18) - _chapter-18_
+* 📘 [Знакомство с React API: createPortal](https://github.com/shopot/react-101/tree/chapter-19) - _chapter-19_
+* 📘 [Путеводитель по Flux в картинках](https://github.com/shopot/react-101/tree/chapter-20) - _chapter-20_  
 
 <details>
   <summary>Примеры приложений (деплой):</summary>
@@ -77,5 +77,6 @@ npm run dev
 
 ## 📚 React Testing
 
-- 📙 [Vitest: Установка и базовая настройка](https://github.com/shopot/react-101/tree/react-testing-01)
-- 📙 [Обзор React Testing Library](https://github.com/shopot/react-101/tree/react-testing-02)
+* 📙 [Основы тестирования](https://github.com/shopot/react-101/tree/react-testing-01)
+* 📙 [Vitest: Установка и базовая настройка](https://github.com/shopot/react-101/tree/react-testing-02)
+* 📙 [Обзор React Testing Library](https://github.com/shopot/react-101/tree/react-testing-03)
