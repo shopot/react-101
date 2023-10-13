@@ -310,6 +310,11 @@ export default defineConfig({
 });
 ```
 
+Для установки всех пакетов одной командой:
+```shell
+npm run install -D vitest jsdom @testing-library/jest-dom @testing-library/react @vitest/coverage-v8
+```
+
 [⬆ Back to Top](#vitest-установка-и-базовая-настройка)
 
 ### Настройка tsconfig.json и eslint
