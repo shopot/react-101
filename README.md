@@ -354,6 +354,7 @@ npm run install -D vitest jsdom @testing-library/jest-dom @testing-library/react
 
 ```
 "test": "vitest",
+"test:run": "vitest run",
 "coverage": "vitest run --coverage"
 ```
 
