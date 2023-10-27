@@ -1,0 +1,3 @@
+.buttonRemove {
+  @apply h-10 w-10 text-red-500 cursor-pointer hover:text-red-700
+}
