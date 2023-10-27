@@ -1,23 +1,15 @@
 import { ReactElement } from 'react';
+import { useSelector } from 'react-redux';
 
 import styles from './todo-list.module.css';
 
-import { Todo } from '@/types';
 import { TodoItem } from '../todo-item';
+import { TodosState } from '@/store/todos/todos-reducer';
 
-export const TodoList = ({ todos, onToggleComplete, onRemove }: Props): ReactElement => {
-  // Формируем список JSX элементов из наших todo
-  // в качестве ключа используем todo.id
-  // передаем обработчики событий полученные из родительского компонента
-  const todoList = todos.map((todo) => (
-    <TodoItem key={todo.id} todo={todo} onToggleComplete={onToggleComplete} onRemove={onRemove} />
-  ));
+export const TodoList = (): ReactElement => {
+  const todos = useSelector((state: TodosState) => state.todos);
+
+  const todoList = todos.map((todo) => <TodoItem key={todo.id} todo={todo} />);
 
   return <div className={styles.todoList}>{todoList}</div>;
-};
-
-type Props = {
-  todos: Todo[];
-  onToggleComplete: (todoId: string) => void;
-  onRemove: (todoId: string) => void;
 };

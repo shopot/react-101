@@ -1,16 +1,14 @@
 import { ReactElement, useState } from 'react';
-import { v4 as uuidv4 } from 'uuid';
+import { useDispatch } from 'react-redux';
 
 import styles from './add-todo-form.module.css';
 
 import { Button } from '@/shared/ui';
 
-export const AddTodoForm = ({ onAddTodo }: Props): ReactElement => {
-  // Объявляем переменную состояния для контролируемого компонента input,
-  // начальное значение пустая строка
+export const AddTodoForm = (): ReactElement => {
   const [title, setTitle] = useState('');
+  const dispatch = useDispatch();
 
-  // Объявляем обработчик событий для контролируемого компонента input
   const handleClick = (): void => {
     const trimmedValue = title.trim();
 
@@ -18,14 +16,8 @@ export const AddTodoForm = ({ onAddTodo }: Props): ReactElement => {
       return;
     }
 
-    // Генерируем новый id
-    const id: string = uuidv4();
+    dispatch({ type: 'todos/addNewTodo', payload: trimmedValue });
 
-    // Вызываем метод полученный через пропсы от родительского компонента
-    // и передаем туда обработанное значение title из переменной состояния
-    onAddTodo(id, trimmedValue);
-
-    // Сбрасываем input через переменную состояния
     setTitle('');
   };
 
@@ -44,8 +36,4 @@ export const AddTodoForm = ({ onAddTodo }: Props): ReactElement => {
       </div>
     </form>
   );
-};
-
-type Props = {
-  onAddTodo: (todoId: string, title: string) => void;
 };
