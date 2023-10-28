@@ -1,1 +1,1 @@
-export { ButtonRemove } from './button-remove.tsx';
+export { ButtonRemove } from './button-remove';

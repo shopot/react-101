@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import styles from './add-todo-form.module.css';
 
 import { Button } from '@/shared/ui';
+import { addNewTodo } from '@/store/todos';
 
 export const AddTodoForm = (): ReactElement => {
   const [title, setTitle] = useState('');
@@ -16,7 +17,7 @@ export const AddTodoForm = (): ReactElement => {
       return;
     }
 
-    dispatch({ type: 'todos/addNewTodo', payload: trimmedValue });
+    dispatch(addNewTodo(trimmedValue));
 
     setTitle('');
   };

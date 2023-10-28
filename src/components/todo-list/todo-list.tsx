@@ -4,10 +4,10 @@ import { useSelector } from 'react-redux';
 import styles from './todo-list.module.css';
 
 import { TodoItem } from '../todo-item';
-import { TodosState } from '@/store/todos/todos-reducer';
+import { selectTodos } from '@/store/todos';
 
 export const TodoList = (): ReactElement => {
-  const todos = useSelector((state: TodosState) => state.todos);
+  const todos = useSelector(selectTodos);
 
   const todoList = todos.map((todo) => <TodoItem key={todo.id} todo={todo} />);
 
