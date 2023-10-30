@@ -1,11 +1,11 @@
-import { ReactElement } from 'react';
+import { JSX } from 'react';
 
 import styles from './app.module.css';
 
 import { TodoList } from '@/components/todo-list';
 import { AddTodoForm } from '@/components/add-todo-form';
 
-const App = (): ReactElement => {
+const App = (): JSX.Element => {
   return (
     <div className={styles.appContainer}>
       <h1 className={styles.header}>Todo App</h1>

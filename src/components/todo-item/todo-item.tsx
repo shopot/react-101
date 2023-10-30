@@ -4,19 +4,16 @@ import { useDispatch } from 'react-redux';
 import styles from './todo-item.module.css';
 
 import { ButtonRemove } from '@/shared/ui';
-import { removeTodo, Todo, toggleCompleted } from '@/store/todos';
+import { removeTodo, Todo, toggleTodoCompleted } from '@/store/todos-slice';
+import { AppDispatch } from '@/store';
 
-export const TodoItem = ({ todo }: Props): ReactElement => {
+type TodoItemProps = {
+  todo: Todo;
+};
+
+export const TodoItem = ({ todo }: TodoItemProps): ReactElement => {
   const { id, title, completed } = todo;
-  const dispatch = useDispatch();
-
-  const handleToggleCompleted = (id: string) => {
-    dispatch(toggleCompleted(id));
-  };
-
-  const handleRemove = (id: string) => {
-    dispatch(removeTodo(id));
-  };
+  const dispatch = useDispatch<AppDispatch>();
 
   const completedClass = completed ? styles.todoTitleThrough : '';
 
@@ -25,17 +22,13 @@ export const TodoItem = ({ todo }: Props): ReactElement => {
       <div className={styles.todoInputWrapper}>
         <input
           checked={completed}
-          onChange={() => handleToggleCompleted(id)}
+          onChange={() => dispatch(toggleTodoCompleted(id))}
           type="checkbox"
           className={styles.todoInput}
         />
       </div>
       <div className={`${styles.todoTitle} ${completedClass}`}>{title}</div>
-      <ButtonRemove onCLick={() => handleRemove(id)} />
+      <ButtonRemove onCLick={() => dispatch(removeTodo(id))} />
     </div>
   );
-};
-
-type Props = {
-  todo: Todo;
 };

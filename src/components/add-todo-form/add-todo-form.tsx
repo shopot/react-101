@@ -1,14 +1,15 @@
-import { ReactElement, useState } from 'react';
+import { JSX, useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 import styles from './add-todo-form.module.css';
 
 import { Button } from '@/shared/ui';
-import { addNewTodo } from '@/store/todos';
+import { addNewTodo } from '@/store/todos-slice';
+import { AppDispatch } from '@/store';
 
-export const AddTodoForm = (): ReactElement => {
+export const AddTodoForm = (): JSX.Element => {
   const [title, setTitle] = useState('');
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
 
   const handleClick = (): void => {
     const trimmedValue = title.trim();
