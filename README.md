@@ -456,7 +456,7 @@ Reselect позволяет кешировать результаты выбор
 
 ### Добавление нового Todo
 
-Добавление нового Todo в список с использованием хука `useAppDispatch()` и действия (action) `addNewTodo`.
+Добавление нового Todo в список используйте хук `useAppDispatch()` и действие (action) `addNewTodo`.
 
 ```tsx
 // src/components/add-todo-form/add-todo-form.tsx
