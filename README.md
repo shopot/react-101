@@ -9,7 +9,7 @@
   - [Подготовка файла для Redux Store](#подготовка-файла-для-redux-store)
   - [Установка связи между Redux Store и приложением React](#установка-связи-между-redux-store-и-приложением-react)
   - [Создание слайс-редюсера (slice reducer)](#создание-слайс-редюсера-slice-reducer)
-  - [Добавление редюсера в `store`](#добаление-редюсера-в-store)
+  - [Добавление редюсера в `store`](#добавление-редюсера-в-store)
   - [Использование Redux Store в компонентах](#использование-redux-store-в-компонентах)
   - [Типизация useSelector и useDispatch](#типизация-useselector-и-usedispatch)
   - [Чтение списка Todo](#чтение-списка-todo)
@@ -25,7 +25,7 @@
 **RTK** подходит как для новых пользователей Redux, настраивающих свой первый проект, так и для опытных разработчиков,
 которые хотят упростить существующее приложение.
 
-⬆ [Back to Top](#обзор-библиотеки-redux-toolkit)
+⬆ [Back to Top](#знакомство-с-redux-toolkit)
 
 ## Redux Toolkit на примере приложения Todo
 
@@ -45,7 +45,7 @@ npm install @reduxjs/toolkit react-redux
 Устанавливать библиотеку `redux` больше не требуется, она и еще ряд библиотек (`immer`, `redux-thunk`, `reselect`)
 устанавливаются автоматически в качестве зависимостей вместе с установкой `@reduxjs/toolkit`.
 
-⬆ [Back to Top](#обзор-библиотеки-redux-toolkit)
+⬆ [Back to Top](#знакомство-с-redux-toolkit)
 
 ### Подготовка файла для Redux Store
 
@@ -67,7 +67,7 @@ export const store = configureStore({
 });
 ```
 
-⬆ [Back to Top](#обзор-библиотеки-redux-toolkit)
+⬆ [Back to Top](#знакомство-с-redux-toolkit)
 
 ### Установка связи между Redux Store и приложением React
 
@@ -96,7 +96,7 @@ createRoot(document.getElementById('root')!).render(
 В дальнейшем каждый компонент, который нуждается в доступе к глобальному состоянию, может использовать хуки из
 пакета `react-redux` для подключения к Redux Store и получения требуемых данных или выполнения действий над данными.
 
-⬆ [Back to Top](#обзор-библиотеки-redux-toolkit)
+⬆ [Back to Top](#знакомство-с-redux-toolkit)
 
 ### Создание слайс-редюсера (slice reducer)
 
@@ -231,7 +231,7 @@ export default todosSlice.reducer;
 ничего не возвращают в отличии от классического подхода с использованием редюсеров, где логика в редюсерах была
 иммутабельной.
 
-⬆ [Back to Top](#обзор-библиотеки-redux-toolkit)
+⬆ [Back to Top](#знакомство-с-redux-toolkit)
 
 ### Добавление редюсера в `store`
 
@@ -328,7 +328,7 @@ export const store = configureStore({
   могут
   быть сторонние расширения, которые модифицируют поведение Redux Store.
 
-⬆ [Back to Top](#обзор-библиотеки-redux-toolkit)
+⬆ [Back to Top](#знакомство-с-redux-toolkit)
 
 ### Использование Redux Store в компонентах
 
@@ -383,7 +383,7 @@ const handleSomeAction = () => {
 деталей связанных с объектом `store`, это то что принято назвать "best practices" и рекомендовано к использованию самими
 разработчиками Redux.
 
-⬆ [Back to Top](#обзор-библиотеки-redux-toolkit)
+⬆ [Back to Top](#знакомство-с-redux-toolkit)
 
 ### Типизация useSelector и useDispatch
 
@@ -415,7 +415,7 @@ export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
 ```
 
-⬆ [Back to Top](#обзор-библиотеки-redux-toolkit)
+⬆ [Back to Top](#знакомство-с-redux-toolkit)
 
 ### Чтение списка Todo
 
@@ -467,7 +467,7 @@ Reselect позволяет кешировать результаты выбор
 состояния. Это особенно полезно, когда вы делаете сложные вычисления или фильтрацию данных. Выборки будут
 пересчитываться только в случае изменения зависимых данных, что снижает нагрузку на приложение.
 
-⬆ [Back to Top](#обзор-библиотеки-redux-toolkit)
+⬆ [Back to Top](#знакомство-с-redux-toolkit)
 
 ### Добавление нового Todo
 
@@ -503,13 +503,13 @@ export const AddTodoForm = (): JSX.Element => {
 };
 ```
 
-⬆ [Back to Top](#обзор-библиотеки-redux-toolkit)
+⬆ [Back to Top](#знакомство-с-redux-toolkit)
 
 ### Использование асинхронных действий
 
 ...coming soon
 
-⬆ [Back to Top](#обзор-библиотеки-redux-toolkit)
+⬆ [Back to Top](#знакомство-с-redux-toolkit)
 
 ## Пример приложения Todo
 
@@ -527,8 +527,8 @@ npm install
 npm run dev
 ```
 
-⬆ [Back to Top](#обзор-библиотеки-redux-toolkit)
+⬆ [Back to Top](#знакомство-с-redux-toolkit)
 
 Документация по теме:
 
-⬆ [Back to Top](#обзор-библиотеки-redux-toolkit)
+⬆ [Back to Top](#знакомство-с-redux-toolkit)
