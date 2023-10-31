@@ -1,13 +1,13 @@
 import { JSX } from 'react';
-import { useSelector } from 'react-redux';
 
 import styles from './todo-list.module.css';
 
 import { TodoItem } from '../todo-item';
-import { TodosState } from '@/store/todos-slice';
+import { useAppSelector } from '@/store';
+import { selectTodos } from '@/store/todos-slice';
 
 export const TodoList = (): JSX.Element => {
-  const todos = useSelector((state: TodosState) => state.todos);
+  const todos = useAppSelector(selectTodos);
 
   const todoList = todos.map((todo) => <TodoItem key={todo.id} todo={todo} />);
 

@@ -1,19 +1,18 @@
-import { ReactElement } from 'react';
-import { useDispatch } from 'react-redux';
+import { JSX } from 'react';
 
 import styles from './todo-item.module.css';
 
 import { ButtonRemove } from '@/shared/ui';
 import { removeTodo, Todo, toggleTodoCompleted } from '@/store/todos-slice';
-import { AppDispatch } from '@/store';
+import { useAppDispatch } from '@/store';
 
 type TodoItemProps = {
   todo: Todo;
 };
 
-export const TodoItem = ({ todo }: TodoItemProps): ReactElement => {
+export const TodoItem = ({ todo }: TodoItemProps): JSX.Element => {
   const { id, title, completed } = todo;
-  const dispatch = useDispatch<AppDispatch>();
+  const dispatch = useAppDispatch();
 
   const completedClass = completed ? styles.todoTitleThrough : '';
 
