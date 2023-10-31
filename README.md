@@ -4,7 +4,17 @@
 
 📚 Содержание
 
-
+- [Redux Toolkit на примере приложения Todo](#redux-toolkit-на-примере-приложения-todo)
+  - [Установка Redux Toolkit](#установка-redux-toolkit)
+  - [Подготовка файла для Redux Store](#подготовка-файла-для-redux-store)
+  - [Установка связи между Redux Store и приложением React](#установка-связи-между-redux-store-и-приложением-react)
+  - [Создание слайс-редюсера (slice reducer)](#создание-слайс-редюсера-slice-reducer)
+  - [Добавление редюсера в `store`](#добаление-редюсера-в-store)
+  - [Использование Redux Store в компонентах](#использование-redux-store-в-компонентах)
+  - [Типизация useSelector и useDispatch](#типизация-useselector-и-usedispatch)
+  - [Чтение списка Todo](#чтение-списка-todo)
+  - [Добавление нового Todo](#добавление-нового-todo)
+- [Пример приложения Todo](#пример-приложения-todo)
 
 > Redux Toolkit (RTK) - Официальный набор инструментов для эффективной разработки Redux.
 
@@ -47,13 +57,12 @@ npm install @reduxjs/toolkit react-redux
 
 ```tsx
 // src/store/store.ts
-import {configureStore} from '@reduxjs/toolkit';
+import { configureStore } from '@reduxjs/toolkit';
 
 export const store = configureStore({
   // Reducers Map Object
   reducer: {
-    todos: () => {
-    },
+    todos: () => {},
   },
 });
 ```
@@ -68,12 +77,12 @@ export const store = configureStore({
 
 ```tsx
 // src/main.tsx
-import {StrictMode} from 'react';
-import {createRoot} from 'react-dom/client';
-import {Provider} from 'react-redux';
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import { Provider } from 'react-redux';
 
 import App from '@/app/app';
-import {store} from '@/store';
+import { store } from '@/store';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -148,7 +157,7 @@ function addNewTodo(state, action) {
 
 Как видно из примера, функция получает текущее состояние (`state`) слайса и объект `action` в котором есть свойство
 `payload`. Свойство `payload` будет содержать любые данные переданные в качестве аргументов в генератор действия (
-action-creator). Генераторы действий автоматичски создаются функцией `createSlice()` с именами соответствующими
+action-creator). Генераторы действий автоматически создаются функцией `createSlice()` с именами соответствующими
 функциям-редюсерам, например для примера выше будет создан генератор действия с названием `addNewTodo`:
 
 ```jsx
@@ -163,8 +172,8 @@ dispatch(addNewTodo('Create a new todo from this action.'));
 
 ```tsx
 // src/store/todos-slice.ts
-import {createSlice, PayloadAction} from '@reduxjs/toolkit';
-import {v4 as uuidv4} from 'uuid';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { v4 as uuidv4 } from 'uuid';
 
 export type Todo = {
   id: string;
@@ -193,7 +202,7 @@ export const todosSlice = createSlice({
     },
 
     removeTodo: (state, action: PayloadAction<string>) => {
-      state.todos = state.todos.filter(({id}) => id !== action.payload);
+      state.todos = state.todos.filter(({ id }) => id !== action.payload);
     },
 
     toggleTodoCompleted: (state, action: PayloadAction<string>) => {
@@ -210,7 +219,7 @@ export const todosSlice = createSlice({
   },
 });
 
-export const {addNewTodo, removeTodo, toggleTodoCompleted} = todosSlice.actions;
+export const { addNewTodo, removeTodo, toggleTodoCompleted } = todosSlice.actions;
 
 export default todosSlice.reducer;
 ```
@@ -224,13 +233,13 @@ export default todosSlice.reducer;
 
 ⬆ [Back to Top](#обзор-библиотеки-redux-toolkit)
 
-### Добаление редюсера в `store`
+### Добавление редюсера в `store`
 
 Теперь нужно внести изменения в ранее созданный файл с `configureStore()`:
 
 ```tsx
 // src/store/store.ts
-import {configureStore} from '@reduxjs/toolkit';
+import { configureStore } from '@reduxjs/toolkit';
 
 import todosReducer from './todos-slice';
 
@@ -265,7 +274,7 @@ import entity2Reducer from './entity2-slice';
 export const store = configureStore({
   reducer: {
     entity1: entity1Reducer,
-    entity2: entity2Reducer
+    entity2: entity2Reducer,
   },
 });
 ```
@@ -276,7 +285,7 @@ export const store = configureStore({
 /* JavaScript */
 
 // srs/store/root-reducer.js
-import { combineReducers } from '@reduxjs/toolkit'
+import { combineReducers } from '@reduxjs/toolkit';
 
 import entity1Reducer from '@/features/entity1/entity1-slice';
 import entity2Reducer from '@/features/entity2/entity2-slice';
@@ -284,8 +293,8 @@ import entity2Reducer from '@/features/entity2/entity2-slice';
 export const rootReducer = combineReducers({
   // Define a top-level state field named `entity1`, handled by `entity1Reducer`
   entity1: entity1Reducer,
-  entity2: entity1Reducer
-})
+  entity2: entity1Reducer,
+});
 ```
 
 ```js
@@ -310,7 +319,7 @@ export const store = configureStore({
   slice reducers)
 - **middleware** - Некоторый массив Redux middleware (промежуточное ПО, связующее программное
   обеспечение, посредник), по умолчанию включает уже некоторые middleware,
-  например  [redux-thunk](https://github.com/reduxjs/redux-thunk) для работы с асинхронными действиями.
+  например [redux-thunk](https://github.com/reduxjs/redux-thunk) для работы с асинхронными действиями.
 - **devTools** - Включить ли интеграцию с Redux DevTools. По умолчанию включено.
 - **preloadedState** - Начальное состояние, аналогичное начальному состоянию `createStore()`. Это можно использовать для
   гидратации состояния, полученного от сервера в универсальных приложениях, или для восстановления ранее сериализованной
@@ -329,7 +338,7 @@ export const store = configureStore({
 - **useSelector()** - Для чтения данных из Redux Store;
 - **useDispatch()** - Для отправки действий в Redux Store
 
-Хук  `useSelector()` принимает в качестве аргумента колбэк-функцию, и возвращает значение вычисленное на основе текущего
+Хук `useSelector()` принимает в качестве аргумента колбэк-функцию, и возвращает значение вычисленное на основе текущего
 состояния Redux Store, каждый раз когда меняется состояние Redux Store меняется, хук возвращает новое значение тем самым
 вызывая повторный рендеринг.
 
@@ -338,7 +347,7 @@ export const store = configureStore({
 Пример с использованием `useSelector()`:
 
 ```ts
-import {useSelector} from 'react-redux';
+import { useSelector } from 'react-redux';
 
 const todos = useSelector((state) => state.todos);
 ```
@@ -357,7 +366,7 @@ const dispatch = useDispatch();
 //...
 const handleSomeAction = () => {
   dispatch(someAction());
-}
+};
 ```
 
 Будет эквивалентом для:
@@ -367,23 +376,25 @@ import { store } from '@/store';
 //...
 const handleSomeAction = () => {
   store.dispatch(someAction());
-}
+};
 ```
 
 Правильнее использовать вариант с хуком `useDispatch()`, так как это уровень абстракции который позволяет не зависеть от
 деталей связанных с объектом `store`, это то что принято назвать "best practices" и рекомендовано к использованию самими
 разработчиками Redux.
 
+⬆ [Back to Top](#обзор-библиотеки-redux-toolkit)
+
 ### Типизация useSelector и useDispatch
 
 Для того что каждый раз не передавать типы при вызове хуков (данные хуки являются дженериками), достаточно создать свои
-хуки-обертки над  `useSelector()` и `useDispatch()`:
+хуки-обертки над `useSelector()` и `useDispatch()`:
 
 ```ts
 // src/store/hooks.ts
-import {useDispatch, useSelector, type TypedUseSelectorHook} from 'react-redux';
+import { useDispatch, useSelector, type TypedUseSelectorHook } from 'react-redux';
 
-import type {RootState, AppDispatch} from './store';
+import type { RootState, AppDispatch } from './store';
 
 // Use throughout your app instead of plain `useDispatch` and `useSelector`
 export const useAppDispatch: () => AppDispatch = useDispatch;
@@ -403,6 +414,8 @@ export type RootState = ReturnType<typeof store.getState>;
 
 export type AppDispatch = typeof store.dispatch;
 ```
+
+⬆ [Back to Top](#обзор-библиотеки-redux-toolkit)
 
 ### Чтение списка Todo
 
@@ -430,13 +443,13 @@ export const selectTodos = (state: TodosState) => state.todos;
 
 ```tsx
 // src/components/todo-list/todo-list.tsx
-import {JSX} from 'react';
+import { JSX } from 'react';
 
 import styles from './todo-list.module.css';
 
-import {TodoItem} from '../todo-item';
-import {useAppSelector} from '@/store';
-import {selectTodos} from '@/store/todos-slice';
+import { TodoItem } from '../todo-item';
+import { useAppSelector } from '@/store';
+import { selectTodos } from '@/store/todos-slice';
 
 export const TodoList = (): JSX.Element => {
   const todos = useAppSelector(selectTodos);
@@ -448,11 +461,13 @@ export const TodoList = (): JSX.Element => {
 ```
 
 Поимо обычного использования хука `useSelector()`, существует утилита `createSelector` из
-библиотеки  [Reselect](https://github.com/reduxjs/reselect).
+библиотеки [Reselect](https://github.com/reduxjs/reselect).
 
 Reselect позволяет кешировать результаты выборок данных, что позволяет уменьшить количество вычислений при изменении
 состояния. Это особенно полезно, когда вы делаете сложные вычисления или фильтрацию данных. Выборки будут
 пересчитываться только в случае изменения зависимых данных, что снижает нагрузку на приложение.
+
+⬆ [Back to Top](#обзор-библиотеки-redux-toolkit)
 
 ### Добавление нового Todo
 
@@ -460,10 +475,10 @@ Reselect позволяет кешировать результаты выбор
 
 ```tsx
 // src/components/add-todo-form/add-todo-form.tsx
-import {JSX, useState} from 'react';
+import { JSX, useState } from 'react';
 
-import {addNewTodo} from '@/store/todos-slice';
-import {useAppDispatch} from '@/store';
+import { addNewTodo } from '@/store/todos-slice';
+import { useAppDispatch } from '@/store';
 
 export const AddTodoForm = (): JSX.Element => {
   const [title, setTitle] = useState('');
@@ -480,11 +495,19 @@ export const AddTodoForm = (): JSX.Element => {
   return (
     <form>
       <input value={title} onChange={(e) => setTitle(e.target.value)} />
-      <button type="button" onCLick={handleClick}>Add new</button>
+      <button type="button" onCLick={handleClick}>
+        Add new
+      </button>
     </form>
   );
 };
 ```
+
+⬆ [Back to Top](#обзор-библиотеки-redux-toolkit)
+
+### Использование асинхронных действий
+
+...coming soon
 
 ⬆ [Back to Top](#обзор-библиотеки-redux-toolkit)
 
