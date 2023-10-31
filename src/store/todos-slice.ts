@@ -1,5 +1,6 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { v4 as uuidv4 } from 'uuid';
+import { todosApi } from '@/api/todos-api';
 
 export type Todo = {
   id: string;
@@ -9,15 +10,17 @@ export type Todo = {
 
 export type TodosState = {
   todos: Todo[];
+  loading: boolean;
 };
 
 const initialState: TodosState = {
-  todos: [
-    { id: '9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d', title: 'Learn React', completed: true },
-    { id: '1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed', title: 'Learn Redux', completed: false },
-    { id: '6ec0bd7f-11c0-43da-975e-2a8ad9ebae0b', title: 'Build something fun!', completed: false },
-  ],
+  todos: [],
+  loading: false,
 };
+
+export const fetchTodos = createAsyncThunk('todos/getTodods', async () => {
+  return (await todosApi.getAllTodos()) as Todo[];
+});
 
 export const todosSlice = createSlice({
   name: 'todos',
@@ -47,10 +50,22 @@ export const todosSlice = createSlice({
       });
     },
   },
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchTodos.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(fetchTodos.fulfilled, (state, { payload }) => {
+        state.todos = payload;
+
+        state.loading = false;
+      });
+  },
 });
 
 export const { addNewTodo, removeTodo, toggleTodoCompleted } = todosSlice.actions;
 
 export const selectTodos = (state: TodosState) => state.todos;
+export const selectLoading = (state: TodosState) => state.loading;
 
 export default todosSlice.reducer;

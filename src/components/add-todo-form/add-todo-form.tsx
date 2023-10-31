@@ -13,7 +13,7 @@ export const AddTodoForm = (): JSX.Element => {
   const handleClick = (): void => {
     const trimmedValue = title.trim();
 
-    if (!trimmedValue) {
+    if (trimmedValue) {
       dispatch(addNewTodo(trimmedValue));
 
       setTitle('');

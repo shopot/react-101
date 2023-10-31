@@ -1,3 +1,7 @@
 .todoList {
   @apply flex flex-col items-start py-2
 }
+
+.loader {
+  @apply flex justify-center items-center pt-6
+}
