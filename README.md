@@ -638,6 +638,7 @@ export const TodoList = (): JSX.Element => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
+    // Передаем действие вызывая thunk-функцию в store
     void dispatch(fetchTodos());
   }, [dispatch]);
 
