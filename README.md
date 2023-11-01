@@ -523,7 +523,7 @@ export const TodoList = (): JSX.Element => {
 
   useEffect(() => {
     const fetchTodos = async () => {
-      const todos = await todosApi.getAllTodos();
+      const todos = await getTodos();
 
       dispatch(loadTodos(data));
     };
@@ -578,7 +578,7 @@ Middleware может выполнять дополнительные дейст
 
 ```ts
 export const fetchTodos = createAsyncThunk('todos/fetchTodos', async () => {
-  return (await todosApi.getAllTodos()) as Todo[];
+  return (await getTodos()) as Todo[];
 });
 ```
 
