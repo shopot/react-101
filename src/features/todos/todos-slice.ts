@@ -1,17 +1,8 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { v4 as uuidv4 } from 'uuid';
-import { todosApi } from '@/api/todos-api';
 
-export type Todo = {
-  id: string;
-  title: string;
-  completed: boolean;
-};
-
-export type TodosState = {
-  todos: Todo[];
-  loading: boolean;
-};
+import { todosApi } from '@/services';
+import { Todo, TodosState } from './types';
 
 const initialState: TodosState = {
   todos: [],
@@ -66,6 +57,7 @@ export const todosSlice = createSlice({
 export const { addNewTodo, removeTodo, toggleTodoCompleted } = todosSlice.actions;
 
 export const selectTodos = (state: TodosState) => state.todos;
+
 export const selectLoading = (state: TodosState) => state.loading;
 
-export default todosSlice.reducer;
+export const todosReducer = todosSlice.reducer;

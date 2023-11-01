@@ -2,15 +2,13 @@ import { JSX } from 'react';
 
 import styles from './app.module.css';
 
-import { TodoList } from '@/components/todo-list';
-import { AddTodoForm } from '@/components/add-todo-form';
+import { TodosPage } from '@/pages';
 
 const App = (): JSX.Element => {
   return (
     <div className={styles.appContainer}>
       <h1 className={styles.header}>Todo App</h1>
-      <AddTodoForm />
-      <TodoList />
+      <TodosPage />
     </div>
   );
 };

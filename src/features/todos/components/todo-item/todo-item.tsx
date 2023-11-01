@@ -2,9 +2,11 @@ import { JSX } from 'react';
 
 import styles from './todo-item.module.css';
 
-import { ButtonRemove } from '@/shared/ui';
-import { removeTodo, Todo, toggleTodoCompleted } from '@/store/todos-slice';
 import { useAppDispatch } from '@/store';
+import { ButtonRemove } from '@/features/ui';
+
+import { removeTodo, toggleTodoCompleted } from '../../todos-slice';
+import { Todo } from '../../types';
 
 type TodoItemProps = {
   todo: Todo;

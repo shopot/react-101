@@ -2,8 +2,8 @@ import { JSX, useState } from 'react';
 
 import styles from './add-todo-form.module.css';
 
-import { Button } from '@/shared/ui';
-import { addNewTodo } from '@/store/todos-slice';
+import { Button } from '@/features/ui';
+import { addNewTodo } from '../../todos-slice';
 import { useAppDispatch } from '@/store';
 
 export const AddTodoForm = (): JSX.Element => {

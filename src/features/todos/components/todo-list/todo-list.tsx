@@ -2,9 +2,9 @@ import { JSX, useEffect } from 'react';
 
 import styles from './todo-list.module.css';
 
-import { TodoItem } from '../todo-item';
+import { TodoItem } from '../todo-item/todo-item';
 import { useAppDispatch, useAppSelector } from '@/store';
-import { fetchTodos, selectLoading, selectTodos } from '@/store/todos-slice';
+import { fetchTodos, selectLoading, selectTodos } from '@/features/todos/todos-slice';
 
 export const TodoList = (): JSX.Element => {
   const todos = useAppSelector(selectTodos);
