@@ -2,7 +2,7 @@ import { JSX, useState } from 'react';
 
 import styles from './add-todo-form.module.css';
 
-import { Button } from '@/features/ui';
+import { Button } from '@/components/button';
 import { addNewTodo } from '../../todos-slice';
 import { useAppDispatch } from '@/store';
 

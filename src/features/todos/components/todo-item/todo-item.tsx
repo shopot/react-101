@@ -3,7 +3,7 @@ import { JSX } from 'react';
 import styles from './todo-item.module.css';
 
 import { useAppDispatch } from '@/store';
-import { ButtonRemove } from '@/features/ui';
+import { ButtonRemove } from '@/components/button-remove';
 
 import { removeTodo, toggleTodoCompleted } from '../../todos-slice';
 import { Todo } from '../../types';
