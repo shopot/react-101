@@ -9,7 +9,7 @@ const initialState: TodosState = {
   loading: false,
 };
 
-export const fetchTodos = createAsyncThunk('todos/getTodods', async () => {
+export const fetchTodos = createAsyncThunk('todos/fetchTodos', async () => {
   return (await todosApi.getAllTodos()) as Todo[];
 });
 
