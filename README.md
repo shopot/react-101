@@ -447,6 +447,9 @@ const todos = useAppSelector((state) => state.todos);
 
 ```ts
 export const selectTodos = (state: TodosState) => state.todos;
+
+// Второй селектор для получения значения loading
+export const selectLoading = (state: TodosState) => state.loading;
 ```
 
 Теперь это отдельная функция селектор, и полный листинг чтения данных в компоненте `<TodoList>` c
