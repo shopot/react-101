@@ -671,11 +671,11 @@ npm run dev
 
 Документация по теме:
 
-- [Redux Toolkit](https://redux-toolkit.js.org/introduction/getting-started)
-- [Redux Toolkit API: createSlice](https://redux-toolkit.js.org/api/createSlice)
-- [Redux Toolkit API: createAsyncThunk](https://redux-toolkit.js.org/api/createAsyncThunk)
-- [Redux Toolkit API:createReducer](https://redux-toolkit.js.org/api/createReducer)
-- [Usage With TypeScript](https://redux-toolkit.js.org/usage/usage-with-typescript)
-- [How to Use Redux and Redux Toolkit – Tutorial for Beginners](https://www.freecodecamp.org/news/redux-and-redux-toolkit-for-beginners/)
+- 🔗 [Redux Toolkit](https://redux-toolkit.js.org/introduction/getting-started)
+- 🔗 [Redux Toolkit API: createSlice](https://redux-toolkit.js.org/api/createSlice)
+- 🔗 [Redux Toolkit API: createAsyncThunk](https://redux-toolkit.js.org/api/createAsyncThunk)
+- 🔗 [Redux Toolkit API:createReducer](https://redux-toolkit.js.org/api/createReducer)
+- 🔗 [Usage With TypeScript](https://redux-toolkit.js.org/usage/usage-with-typescript)
+- 🔗 [How to Use Redux and Redux Toolkit – Tutorial for Beginners](https://www.freecodecamp.org/news/redux-and-redux-toolkit-for-beginners/)
 
 ⬆ [Back to Top](#знакомство-с-redux-toolkit)
