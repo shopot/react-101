@@ -50,6 +50,11 @@ export const todosSlice = createSlice({
         state.todos = payload;
 
         state.loading = false;
+      })
+      .addCase(fetchTodos.rejected, (state, action) => {
+        console.log(action.error);
+
+        state.loading = false;
       });
   },
 });
