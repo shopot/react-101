@@ -4,10 +4,8 @@ const data = [
   { id: '6ec0bd7f-11c0-43da-975e-2a8ad9ebae0b', title: 'Build something fun!', completed: false },
 ];
 
-export const todosApi = {
-  getAllTodos: () => {
-    return new Promise((resolve) => {
-      setTimeout(() => resolve(data), 1000);
-    });
-  },
+export const getTodos = () => {
+  return new Promise((resolve) => {
+    setTimeout(() => resolve(data), 1000);
+  });
 };

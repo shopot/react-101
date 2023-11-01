@@ -1,8 +1,8 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { v4 as uuidv4 } from 'uuid';
 
-import { todosApi } from '@/services';
 import { Todo, TodosState } from './types';
+import { getTodos } from './api/get-todos';
 
 const initialState: TodosState = {
   todos: [],
@@ -10,7 +10,7 @@ const initialState: TodosState = {
 };
 
 export const fetchTodos = createAsyncThunk('todos/fetchTodos', async () => {
-  return (await todosApi.getAllTodos()) as Todo[];
+  return (await getTodos()) as Todo[];
 });
 
 export const todosSlice = createSlice({
