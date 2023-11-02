@@ -7,7 +7,7 @@ import { useAddTodoMutation } from '../../api/todos-api';
 
 export const AddTodoForm = (): JSX.Element => {
   const [title, setTitle] = useState('');
-  const [addTodo, { isLoading: isUpdating }] = useAddTodoMutation();
+  const [addTodo] = useAddTodoMutation();
 
   const handleClick = (): void => {
     const trimmedValue = title.trim();
@@ -18,8 +18,6 @@ export const AddTodoForm = (): JSX.Element => {
       setTitle('');
     }
   };
-
-  console.log(isUpdating);
 
   return (
     <form className={styles.formWrapper}>

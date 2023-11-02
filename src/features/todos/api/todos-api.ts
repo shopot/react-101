@@ -46,17 +46,29 @@ export const todosApi = createApi({
       invalidatesTags: ['Todos'],
     }),
 
-    toggleTodoCompleted: build.mutation<Todo, Partial<Todo>>({
-      query(data) {
-        const { id, completed, ...rest } = data;
+    toggleTodoCompleted: build.mutation<void, Pick<Todo, 'id'> & Partial<Todo>>({
+      query: ({ id, ...patch }) => ({
+        url: `${QUERY_ENDPOINT}/${id}`,
+        method: 'PATCH',
+        body: patch,
+      }),
+      onQueryStarted({ id, ...patch }, { dispatch, queryFulfilled }) {
+        if (!id) {
+          return;
+        }
 
-        return {
-          url: `${QUERY_ENDPOINT}/${id}`,
-          method: 'PUT',
-          body: { ...rest, completed: !completed },
-        };
+        const patchResult = dispatch(
+          todosApi.util.updateQueryData('getTodos', undefined, (draft) => {
+            const index = draft.findIndex((todo: Todo) => todo.id === id);
+
+            if (index !== -1) {
+              draft[index].completed = Boolean(patch.completed);
+            }
+          })
+        );
+
+        queryFulfilled.catch(patchResult.undo);
       },
-      invalidatesTags: ['Todos'],
     }),
   }),
 });

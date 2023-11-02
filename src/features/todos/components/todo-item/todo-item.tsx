@@ -18,18 +18,26 @@ export const TodoItem = ({ todo }: TodoItemProps): JSX.Element => {
 
   const completedClass = completed ? styles.todoTitleThrough : '';
 
+  const handleChange = () => {
+    void toggleTodoCompleted({ id, completed: !completed });
+  };
+
+  const handleDelete = () => {
+    void deleteTodo(id);
+  };
+
   return (
     <div className={styles.todoRow}>
       <div className={styles.todoInputWrapper}>
         <input
           checked={completed}
-          onChange={() => void toggleTodoCompleted(todo)}
+          onChange={handleChange}
           type="checkbox"
           className={styles.todoInput}
         />
       </div>
       <div className={`${styles.todoTitle} ${completedClass}`}>{title}</div>
-      <ButtonRemove onCLick={() => void deleteTodo(id)} />
+      <ButtonRemove onCLick={handleDelete} />
     </div>
   );
 };
