@@ -2,11 +2,10 @@ import { JSX } from 'react';
 
 import styles from './todo-item.module.css';
 
-import { useAppDispatch } from '@/store';
 import { ButtonRemove } from '@/components/button-remove';
 
-import { removeTodo, toggleTodoCompleted } from '../../todos-slice';
 import { Todo } from '../../types';
+import { useDeleteTodoMutation, useToggleTodoCompletedMutation } from '../../api/todos-api';
 
 type TodoItemProps = {
   todo: Todo;
@@ -14,7 +13,8 @@ type TodoItemProps = {
 
 export const TodoItem = ({ todo }: TodoItemProps): JSX.Element => {
   const { id, title, completed } = todo;
-  const dispatch = useAppDispatch();
+  const [deleteTodo] = useDeleteTodoMutation();
+  const [toggleTodoCompleted] = useToggleTodoCompletedMutation();
 
   const completedClass = completed ? styles.todoTitleThrough : '';
 
@@ -23,13 +23,13 @@ export const TodoItem = ({ todo }: TodoItemProps): JSX.Element => {
       <div className={styles.todoInputWrapper}>
         <input
           checked={completed}
-          onChange={() => dispatch(toggleTodoCompleted(id))}
+          onChange={() => void toggleTodoCompleted(todo)}
           type="checkbox"
           className={styles.todoInput}
         />
       </div>
       <div className={`${styles.todoTitle} ${completedClass}`}>{title}</div>
-      <ButtonRemove onCLick={() => dispatch(removeTodo(id))} />
+      <ButtonRemove onCLick={() => void deleteTodo(id)} />
     </div>
   );
 };

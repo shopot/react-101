@@ -1,25 +1,22 @@
-import { JSX, useEffect } from 'react';
+import { JSX } from 'react';
 
 import styles from './todo-list.module.css';
 
 import { TodoItem } from '../todo-item/todo-item';
-import { useAppDispatch, useAppSelector } from '@/store';
-import { fetchTodos, selectLoading, selectTodos } from '@/features/todos/todos-slice';
+import { useGetTodosQuery } from '../../api/todos-api';
 
 export const TodoList = (): JSX.Element => {
-  const todos = useAppSelector(selectTodos);
-  const isLoading = useAppSelector(selectLoading);
-  const dispatch = useAppDispatch();
+  const { data: todos, isLoading, isError } = useGetTodosQuery();
 
-  useEffect(() => {
-    void dispatch(fetchTodos());
-  }, [dispatch]);
+  if (isError) {
+    return <div>Something went wrong</div>;
+  }
 
   if (isLoading) {
     return <div className={styles.loader}>Loading...</div>;
   }
 
-  const todoList = todos.map((todo) => <TodoItem key={todo.id} todo={todo} />);
+  const todoList = todos?.map((todo) => <TodoItem key={todo.id} todo={todo} />) || 'No data!';
 
   return <div className={styles.todoList}>{todoList}</div>;
 };

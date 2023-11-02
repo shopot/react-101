@@ -3,22 +3,23 @@ import { JSX, useState } from 'react';
 import styles from './add-todo-form.module.css';
 
 import { Button } from '@/components/button';
-import { addNewTodo } from '../../todos-slice';
-import { useAppDispatch } from '@/store';
+import { useAddTodoMutation } from '../../api/todos-api';
 
 export const AddTodoForm = (): JSX.Element => {
   const [title, setTitle] = useState('');
-  const dispatch = useAppDispatch();
+  const [addTodo, { isLoading: isUpdating }] = useAddTodoMutation();
 
   const handleClick = (): void => {
     const trimmedValue = title.trim();
 
     if (trimmedValue) {
-      dispatch(addNewTodo(trimmedValue));
+      void addTodo({ title: trimmedValue });
 
       setTitle('');
     }
   };
+
+  console.log(isUpdating);
 
   return (
     <form className={styles.formWrapper}>
