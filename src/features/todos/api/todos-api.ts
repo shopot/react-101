@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/dist/query/react';
 import { v4 as uuidv4 } from 'uuid';
 
 import { API_URL } from '@/config';
-import { Todo } from '../types';
+import { Todo, TodosApiState } from '../types';
 
 const QUERY_ENDPOINT = '/todos';
 
@@ -14,9 +14,17 @@ export const todosApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: API_URL }),
 
   endpoints: (build) => ({
-    getTodos: build.query<Todo[], void>({
-      query: () => `${QUERY_ENDPOINT}`,
+    getTodos: build.query<TodosApiState, void>({
+      query: () => `${QUERY_ENDPOINT}?_limit=10`,
       providesTags: ['Todos'],
+      transformResponse: (response: Todo[], meta) => {
+        const totalCount = Number(meta?.response?.headers.get('X-Total-Count') || response.length);
+
+        return {
+          results: response,
+          totalCount,
+        };
+      },
     }),
 
     addTodo: build.mutation<Todo, Partial<Todo>>({
@@ -58,11 +66,11 @@ export const todosApi = createApi({
         }
 
         const patchResult = dispatch(
-          todosApi.util.updateQueryData('getTodos', undefined, (draft) => {
-            const index = draft.findIndex((todo: Todo) => todo.id === id);
+          todosApi.util.updateQueryData('getTodos', undefined, ({ results }) => {
+            const index = results.findIndex((todo: Todo) => todo.id === id);
 
             if (index !== -1) {
-              draft[index].completed = Boolean(patch.completed);
+              results[index].completed = Boolean(patch.completed);
             }
           })
         );

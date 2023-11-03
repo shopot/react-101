@@ -6,7 +6,7 @@ import { TodoItem } from '../todo-item/todo-item';
 import { useGetTodosQuery } from '../../api/todos-api';
 
 export const TodoList = (): JSX.Element => {
-  const { data: todos, isLoading, isError } = useGetTodosQuery();
+  const { data = { results: [], totalCount: 0 }, isLoading, isError } = useGetTodosQuery();
 
   if (isError) {
     return <div>Something went wrong</div>;
@@ -16,7 +16,9 @@ export const TodoList = (): JSX.Element => {
     return <div className={styles.loader}>Loading...</div>;
   }
 
-  const todoList = todos?.map((todo) => <TodoItem key={todo.id} todo={todo} />) || 'No data!';
+  const { results } = data;
+
+  const todoList = results.map((todo) => <TodoItem key={todo.id} todo={todo} />) || 'No data!';
 
   return <div className={styles.todoList}>{todoList}</div>;
 };
