@@ -32,7 +32,7 @@ server.use(router);
 
 server.listen(PORT, () => {
   console.log(`Server is running on: http://localhost:${PORT}`);
-  console.log(`API endpoint: http://localhost:${PORT}/api/todos`);
+  console.log(`API baseUrl: http://localhost:${PORT}/api`);
 });
 
 // Export the Server API
