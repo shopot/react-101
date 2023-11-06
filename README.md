@@ -559,7 +559,7 @@ type UseMutation = (
   options?: UseMutationStateOptions
 ) => [UseMutationTrigger, UseMutationResult | SelectedUseMutationResult]
 ```
-Первый объект это функция-триггер, в которая запускает обновление данных на основе предоставленного аргумента.
+Первый объект это функция-триггер, которая запускает обновление данных на основе предоставленного аргумента.
 Второй объект это состояния запроса, содержащий текущее состояние загрузки и метаданные о запросе или значения, возвращаемые опцией [selectFromResult](https://redux-toolkit.js.org/rtk-query/usage/queries#selecting-data-from-a-query-result), где это применимо.
 
 Для того что запустить мутацию, вы должны вызвать  функцию-триггер и передать в нее аргументы для `build.mutation`.
