@@ -1,15 +1,15 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 
-import { todosApi } from '@/features/todos';
+import { todosApiSlice } from '@/features/todos';
 
 export const rootReducer = combineReducers({
-  [todosApi.reducerPath]: todosApi.reducer,
+  [todosApiSlice.reducerPath]: todosApiSlice.reducer,
 });
 
 export const store = configureStore({
   reducer: rootReducer,
   devTools: true, // Defaults to true.
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(todosApi.middleware),
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(todosApiSlice.middleware),
 });
 
 export type RootState = ReturnType<typeof store.getState>;

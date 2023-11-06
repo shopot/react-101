@@ -5,14 +5,13 @@ import styles from './todo-item.module.css';
 import { ButtonRemove } from '@/components/button-remove';
 
 import { Todo } from '../../types';
-import { useDeleteTodoMutation, useToggleTodoCompletedMutation } from '../../api/todos-api';
+import { useDeleteTodoMutation, useToggleTodoCompletedMutation } from '../../api/todos-api-slice';
 
 type TodoItemProps = {
   todo: Todo;
 };
 
-export const TodoItem = ({ todo }: TodoItemProps): JSX.Element => {
-  const { id, title, completed } = todo;
+export const TodoItem = ({ todo: { id, title, completed, color } }: TodoItemProps): JSX.Element => {
   const [deleteTodo] = useDeleteTodoMutation();
   const [toggleTodoCompleted] = useToggleTodoCompletedMutation();
 
@@ -36,7 +35,9 @@ export const TodoItem = ({ todo }: TodoItemProps): JSX.Element => {
           className={styles.todoInput}
         />
       </div>
-      <div className={`${styles.todoTitle} ${completedClass}`}>{title}</div>
+      <div className={`${styles.todoTitle} ${completedClass}`} style={{ color }}>
+        {title}
+      </div>
       <ButtonRemove onCLick={handleDelete} />
     </div>
   );

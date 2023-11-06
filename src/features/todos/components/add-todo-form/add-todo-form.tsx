@@ -3,7 +3,7 @@ import { JSX, useState } from 'react';
 import styles from './add-todo-form.module.css';
 
 import { Button } from '@/components/button';
-import { useAddTodoMutation } from '../../api/todos-api';
+import { useAddTodoMutation } from '../../api/todos-api-slice';
 
 export const AddTodoForm = (): JSX.Element => {
   const [title, setTitle] = useState('');

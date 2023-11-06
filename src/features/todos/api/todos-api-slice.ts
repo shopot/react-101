@@ -2,11 +2,12 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { v4 as uuidv4 } from 'uuid';
 
 import { API_URL } from '@/config';
-import { Todo, TodosApiState } from '../types';
+import { Todo } from '../types';
+import { getRandomColor } from '../helpers';
 
-const QUERY_ENDPOINT = '/todos';
+const TODOS_API_ENDPOINT = '/todos';
 
-export const todosApi = createApi({
+export const todosApiSlice = createApi({
   tagTypes: ['Todos'],
 
   reducerPath: 'todosApi',
@@ -14,29 +15,24 @@ export const todosApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: API_URL }),
 
   endpoints: (build) => ({
-    getTodos: build.query<TodosApiState, void>({
-      query: () => `${QUERY_ENDPOINT}?_limit=10`,
+    getTodos: build.query<Todo[], void>({
+      query: () => `${TODOS_API_ENDPOINT}`,
       providesTags: ['Todos'],
-      transformResponse: (response: Todo[], meta) => {
-        const totalCount = Number(meta?.response?.headers.get('X-Total-Count') || response.length);
-
-        return {
-          results: response,
-          totalCount,
-        };
+      transformResponse: (response: Todo[]) => {
+        return response.map((todo) => ({ ...todo, color: getRandomColor() }));
       },
     }),
 
     addTodo: build.mutation<Todo, Partial<Todo>>({
-      query(body) {
+      query: (todoData) => {
         const newTodo = {
-          ...body,
+          ...todoData,
           completed: false,
           id: uuidv4(),
         };
 
         return {
-          url: `${QUERY_ENDPOINT}`,
+          url: `${TODOS_API_ENDPOINT}`,
           method: 'POST',
           body: newTodo,
         };
@@ -44,33 +40,33 @@ export const todosApi = createApi({
       invalidatesTags: ['Todos'],
     }),
 
-    deleteTodo: build.mutation<{ success: boolean; id: string }, string>({
+    deleteTodo: build.mutation<unknown, string>({
       query(id) {
         return {
-          url: `${QUERY_ENDPOINT}/${id}`,
+          url: `${TODOS_API_ENDPOINT}/${id}`,
           method: 'DELETE',
         };
       },
       invalidatesTags: ['Todos'],
     }),
 
-    toggleTodoCompleted: build.mutation<void, Pick<Todo, 'id'> & Partial<Todo>>({
+    toggleTodoCompleted: build.mutation<unknown, Pick<Todo, 'id'> & Partial<Todo>>({
       query: ({ id, ...patch }) => ({
-        url: `${QUERY_ENDPOINT}/${id}`,
+        url: `${TODOS_API_ENDPOINT}/${id}`,
         method: 'PATCH',
         body: patch,
       }),
-      onQueryStarted({ id, ...patch }, { dispatch, queryFulfilled }) {
+      onQueryStarted: ({ id, completed }, { dispatch, queryFulfilled }) => {
         if (!id) {
           return;
         }
 
         const patchResult = dispatch(
-          todosApi.util.updateQueryData('getTodos', undefined, ({ results }) => {
-            const index = results.findIndex((todo: Todo) => todo.id === id);
+          todosApiSlice.util.updateQueryData('getTodos', undefined, (draft) => {
+            const index = draft.findIndex((todo: Todo) => todo.id === id);
 
             if (index !== -1) {
-              results[index].completed = Boolean(patch.completed);
+              draft[index].completed = Boolean(completed);
             }
           })
         );
@@ -86,4 +82,4 @@ export const {
   useAddTodoMutation,
   useDeleteTodoMutation,
   useToggleTodoCompletedMutation,
-} = todosApi;
+} = todosApiSlice;
