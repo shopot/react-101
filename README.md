@@ -15,11 +15,11 @@
   * [Создание Mutation endpoint'а - deleteTodo](#создание-mutation-endpointа---deletetodo-)
   * [Создание Mutation endpoint'а - toggleTodoCompleted](#создание-mutation-endpointа---toggletodocompleted)
   * [Экспорт хуков из API Slice](#экспорт-хуков-из-api-slice)
+  * [Добавление API Slice в Redux Store](#добавление-api-slice-в-redux-store-)
   * [Обзор API Slices: React Hooks](#обзор-api-slices-react-hooks)
   * [Чтение данных - useGetTodosQuery](#чтение-данных---usegettodosquery)
   * [Изменение данных useDeleteTodoMutation и useToggleTodoCompletedMutation](#изменение-данных-usedeletetodomutation-и-usetoggletodocompletedmutation)
   * [Добавление данных useAddTodoMutation](#добавление-данных-useaddtodomutation)
-
 
 **RTK Query** - это библиотека в составе Redux Toolkit, предназначенная для упрощения работы с сетевыми запросами в Redux-приложениях. Она предоставляет удобный и декларативный способ определения взаимодействия с API, автоматически генерируя actions, reducers и хуки для работы с данными.
 
@@ -385,6 +385,42 @@ export const {
 Эти хуки создаются автоматически на основе ваших endpoint'ов и используются в ваших компонентах React.
 
 Ниже представлен небольшой обзор списка хуков, которые автоматически генерируются для API Slice и его endpoint'ов. 
+
+⬆ [Back to Top](#знакомство-с-rtk-query)
+
+### Добавление API Slice в Redux Store  
+
+Существует два метода добавления API Slice в Redux Store:
+
+1. Добавление API Slice через ApiProvider из RTK Query, этот метод аналогичен подключению Redux Store через `<Provider />`, только вместо `store` используется API Slice:
+    ```tsx
+    import { ApiProvider } from '@reduxjs/toolkit/query/react';
+    import { todosApiSlice } from "./todos-api-slice";
+    //..
+    <ApiProviderProvider api={todosApiSlice}>
+      <App />
+    </ApiProviderProvider>
+    ```
+2. Добавление в существующий `store` по аналогии со Slice созданным через функцию `createSlice()`:
+    ```tsx
+    import { combineReducers, configureStore } from '@reduxjs/toolkit';
+    import { todosApiSlice } from '@/features/todos';
+    
+    export const rootReducer = combineReducers({
+      [todosApiSlice.reducerPath]: todosApiSlice.reducer,
+    });
+    
+    export const store = configureStore({
+      reducer: rootReducer,
+      devTools: true, // Defaults to true.
+      middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(todosApiSlice.middleware),
+    });
+    ```
+    Здесь API Slice, созданный функцией `createApi()` подключается в виде редюсера в Root Reducer и в качестве middleware.
+
+Первый способ подключения не требует установки пакета `react-redux`, так RTK Query не использует хуки и компоненты из этого пакета.
+
+В исходном приложении Todo, которое используется в качестве примера будет задействован второй способ подключения в существующий Redux Store. 
 
 ⬆ [Back to Top](#знакомство-с-rtk-query)
 
