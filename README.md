@@ -32,6 +32,7 @@
 * 📘 [Путеводитель по Flux в картинках](https://github.com/shopot/react-101/tree/chapter-20) - _chapter-20_
 * 📘 [Знакомство с Redux](https://github.com/shopot/react-101/tree/chapter-21) - _chapter-21_
 * 📘 [Знакомство с Redux Toolkit](https://github.com/shopot/react-101/tree/chapter-22) - _chapter-22_
+* 📘 [Знакомство с RTK Query](https://github.com/shopot/react-101/tree/rtk-query)
 
 <details>
   <summary>Примеры приложений (деплой):</summary>
