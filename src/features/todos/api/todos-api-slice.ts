@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { v4 as uuidv4 } from 'uuid';
 
 import { API_URL } from '@/config';
-import { Todo } from '../types';
+import { Todo, TodosState } from '../types';
 import { getRandomColor } from '../helpers';
 
 const TODOS_API_ENDPOINT = '/todos';
@@ -15,11 +15,16 @@ export const todosApiSlice = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: API_URL }),
 
   endpoints: (build) => ({
-    getTodos: build.query<Todo[], void>({
+    getTodos: build.query<TodosState, void>({
       query: () => `${TODOS_API_ENDPOINT}`,
       providesTags: ['Todos'],
-      transformResponse: (response: Todo[]) => {
-        return response.map((todo) => ({ ...todo, color: getRandomColor() }));
+      transformResponse: (response: Todo[], meta) => {
+        const totalCount = Number(meta?.response?.headers.get('X-Total-Count') || response.length);
+
+        return {
+          results: response.map((todo) => ({ ...todo, color: getRandomColor() })),
+          totalCount,
+        };
       },
     }),
 
@@ -62,11 +67,11 @@ export const todosApiSlice = createApi({
         }
 
         const patchResult = dispatch(
-          todosApiSlice.util.updateQueryData('getTodos', undefined, (draft) => {
-            const index = draft.findIndex((todo: Todo) => todo.id === id);
+          todosApiSlice.util.updateQueryData('getTodos', undefined, ({ results }) => {
+            const index = results.findIndex((todo: Todo) => todo.id === id);
 
             if (index !== -1) {
-              draft[index].completed = Boolean(completed);
+              results[index].completed = Boolean(completed);
             }
           })
         );

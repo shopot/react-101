@@ -4,3 +4,8 @@ export type Todo = {
   completed: boolean;
   color?: string;
 };
+
+export type TodosState = {
+  results: Todo[];
+  totalCount: number;
+};
