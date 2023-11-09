@@ -2,14 +2,16 @@ import { JSX } from 'react';
 
 import styles from './app.module.css';
 
-import { TodosPage } from '@/pages';
+import { AppRoutes } from '@/routes';
+import { AppProvider } from '@/providers/app-provider';
 
 const App = (): JSX.Element => {
   return (
-    <div className={styles.appContainer}>
-      <h1 className={styles.header}>Todo App</h1>
-      <TodosPage />
-    </div>
+    <AppProvider>
+      <div className={styles.appContainer}>
+        <AppRoutes />
+      </div>
+    </AppProvider>
   );
 };
 
