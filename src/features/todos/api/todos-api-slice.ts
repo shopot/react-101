@@ -6,24 +6,31 @@ import { Todo, TodosState } from '../types';
 import { getRandomColor } from '../helpers';
 
 const TODOS_API_ENDPOINT = '/todos';
+const MAX_ITEM_PER_PAGE = 6;
 
 export const todosApiSlice = createApi({
   tagTypes: ['Todos'],
 
-  reducerPath: 'todosApi',
+  reducerPath: 'todosApiSlice',
 
   baseQuery: fetchBaseQuery({ baseUrl: API_URL }),
 
+  keepUnusedDataFor: 0,
+
   endpoints: (build) => ({
-    getTodos: build.query<TodosState, void>({
-      query: () => `${TODOS_API_ENDPOINT}`,
+    getTodos: build.query<TodosState, number>({
+      query: (page = 1) => `${TODOS_API_ENDPOINT}?_page=${page}&_limit=${MAX_ITEM_PER_PAGE}`,
+
       providesTags: ['Todos'],
-      transformResponse: (response: Todo[], meta) => {
+
+      transformResponse: (response: Todo[], meta, arg) => {
         const totalCount = Number(meta?.response?.headers.get('X-Total-Count') || response.length);
 
         return {
           results: response.map((todo) => ({ ...todo, color: getRandomColor() })),
           totalCount,
+          totalPages: Math.floor(totalCount / MAX_ITEM_PER_PAGE),
+          currentPage: arg,
         };
       },
     }),
@@ -56,18 +63,27 @@ export const todosApiSlice = createApi({
     }),
 
     toggleTodoCompleted: build.mutation<unknown, Pick<Todo, 'id'> & Partial<Todo>>({
-      query: ({ id, ...patch }) => ({
+      query: ({ id, completed = false }) => ({
         url: `${TODOS_API_ENDPOINT}/${id}`,
         method: 'PATCH',
-        body: patch,
+        body: { completed },
       }),
-      onQueryStarted: ({ id, completed }, { dispatch, queryFulfilled }) => {
+
+      onQueryStarted: ({ id, completed }, { dispatch, queryFulfilled, getState }) => {
         if (!id) {
           return;
         }
 
+        console.log(getState());
+
+        // const result = todosApiSlice.util
+        //   .selectInvalidatedBy(getState(), ['Todos'])
+        //   .find((desc) => desc.endpointName === 'getTodos');
+
+        // const pageArg = Number(result?.originalArgs || 1);
+
         const patchResult = dispatch(
-          todosApiSlice.util.updateQueryData('getTodos', undefined, ({ results }) => {
+          todosApiSlice.util.updateQueryData('getTodos', 1, ({ results }) => {
             const index = results.findIndex((todo: Todo) => todo.id === id);
 
             if (index !== -1) {

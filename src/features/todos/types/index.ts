@@ -8,4 +8,6 @@ export type Todo = {
 export type TodosState = {
   results: Todo[];
   totalCount: number;
+  totalPages: number;
+  currentPage: number;
 };
