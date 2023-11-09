@@ -1,5 +1,8 @@
 import { Suspense, ReactNode, JSX } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
+import { Provider } from 'react-redux';
+
+import { store } from '@/store';
 
 type AppProviderProps = {
   children: ReactNode;
@@ -8,7 +11,9 @@ type AppProviderProps = {
 export const AppProvider = ({ children }: AppProviderProps): JSX.Element => {
   return (
     <Suspense fallback={<div>Loader...</div>}>
-      <Router>{children}</Router>
+      <Provider store={store}>
+        <Router>{children}</Router>
+      </Provider>
     </Suspense>
   );
 };
