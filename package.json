@@ -17,6 +17,8 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
+    "backend:install": "cd ./backend && npm install",
+    "backend:start": "cd ./backend && npm run start",
     "lint": "tsc --noEmit && eslint ./src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
