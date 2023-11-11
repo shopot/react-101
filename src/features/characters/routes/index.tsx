@@ -1,13 +1,18 @@
-import { Characters } from './characters';
-import { Character } from './character';
-
 export const charactersRoutes = [
   {
     path: 'characters',
-    element: <Characters />,
+    async lazy() {
+      const { Characters } = await import('./characters');
+
+      return { Component: Characters };
+    },
   },
   {
     path: 'characters/:characterId',
-    element: <Character />,
+    async lazy() {
+      const { Character } = await import('./character');
+
+      return { Component: Character };
+    },
   },
 ];
