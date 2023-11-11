@@ -6,6 +6,6 @@ describe('Render App component', () => {
   it('should be render with some text', () => {
     render(<App />);
 
-    expect(screen.getByText('Hello React')).toBeInTheDocument();
+    expect(screen.getByText('Hello The Rick and Morty')).toBeInTheDocument();
   });
 });
