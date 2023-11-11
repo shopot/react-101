@@ -4,7 +4,7 @@ import styles from './add-todo-form.module.css';
 
 import { Button } from '@/components/button';
 import { addNewTodo } from '../../todos-slice';
-import { useAppDispatch } from '@/store';
+import { useAppDispatch } from 'src/stores';
 
 export const AddTodoForm = (): JSX.Element => {
   const [title, setTitle] = useState('');

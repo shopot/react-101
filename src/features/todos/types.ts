@@ -6,5 +6,7 @@ export type Todo = {
 
 export type TodosState = {
   todos: Todo[];
-  loading: boolean;
+  isLoading: boolean;
+  isError: boolean;
+  error: string;
 };
