@@ -2,18 +2,18 @@ import { http, HttpResponse } from 'msw';
 
 import { API_URL } from '@/config';
 
-import { mockCharacters } from '../../mocks';
+import { db } from '../db';
 
 export const character = [
   // Get all items
   http.get(`${API_URL}/character`, () => {
     return HttpResponse.json({
-      results: mockCharacters,
+      results: db.characters,
     });
   }),
 
   // Get an item by id
   http.get(`${API_URL}/character/:id`, () => {
-    return HttpResponse.json(mockCharacters[0]);
+    return HttpResponse.json(db.characters[0]);
   }),
 ];

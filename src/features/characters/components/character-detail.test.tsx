@@ -2,7 +2,7 @@ import { render, waitFor, screen } from '@testing-library/react';
 import { BrowserRouter, MemoryRouter, Route, Routes } from 'react-router-dom';
 
 import { CharacterDetail } from './character-detail';
-import { mockCharacters } from '@/__tests__/mocks';
+import { db } from '@/__tests__/server';
 
 describe('Test CharactersList', () => {
   test('displays Loading...', () => {
@@ -12,7 +12,7 @@ describe('Test CharactersList', () => {
   });
 
   test('should render data of character when it is fetched from API', async () => {
-    const charactersName = mockCharacters[0].name;
+    const charactersName = db.characters[0].name;
 
     render(
       <MemoryRouter initialEntries={['/characters/1']}>

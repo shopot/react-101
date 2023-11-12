@@ -2,9 +2,15 @@ import '@testing-library/jest-dom';
 import { cleanup } from '@testing-library/react';
 
 import { server } from './server';
+import { initializeDb } from './server/db';
+import { characterGenerator } from './data-generators';
 
 // Enable the API mocking before tests.
 beforeAll(() => {
+  const data = [characterGenerator(), characterGenerator()];
+
+  initializeDb(data);
+
   server.listen();
 });
 

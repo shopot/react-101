@@ -2,11 +2,11 @@ import { render, waitFor, screen } from '@testing-library/react';
 import { createMemoryRouter, RouterProvider } from 'react-router-dom';
 
 import { charactersRoutes } from './index';
-import { mockCharacters } from '@/__tests__/mocks';
+import { db } from '@/__tests__/server';
 
 describe('Characters routes', () => {
   test('event route', async () => {
-    const charactersName = mockCharacters[0].name;
+    const charactersName = db.characters[0].name;
 
     const router = createMemoryRouter([...charactersRoutes], {
       initialEntries: ['/characters', '/characters/1'],
