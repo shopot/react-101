@@ -2,7 +2,7 @@ import { render, waitFor, screen } from '@testing-library/react';
 import { BrowserRouter, MemoryRouter, Route, Routes } from 'react-router-dom';
 
 import { CharacterDetail } from './character-detail';
-import { db } from '@/__tests__/server';
+import { db } from '@/test/server';
 
 describe('Test CharactersList', () => {
   test('displays Loading...', () => {

@@ -2,7 +2,7 @@ import { render, waitFor, screen } from '@testing-library/react';
 import { createMemoryRouter, RouterProvider } from 'react-router-dom';
 
 import { charactersRoutes } from './index';
-import { db } from '@/__tests__/server';
+import { db } from '@/test/server';
 
 describe('Characters routes', () => {
   test('event route', async () => {
