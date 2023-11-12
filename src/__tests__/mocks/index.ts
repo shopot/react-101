@@ -1,0 +1,1 @@
+export { mockCharacters } from './characters';
