@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 
 import { Character } from '../types';
 import { getCharacter } from '../api/get-character';
+import { Loader } from '@/components/loader';
 
 export const CharacterDetail = (): JSX.Element => {
   const { characterId = '' } = useParams<'characterId'>();
@@ -23,7 +24,7 @@ export const CharacterDetail = (): JSX.Element => {
   }, [characterId]);
 
   if (!character) {
-    return <div>Loading...</div>;
+    return <Loader />;
   }
 
   const { name, image, status, gender } = character;

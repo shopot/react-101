@@ -3,6 +3,7 @@ import { JSX, useEffect, useState } from 'react';
 import { getCharacters } from '@/features/characters/api/get-characters';
 import { Character } from '@/features/characters/types';
 import { Link } from 'react-router-dom';
+import { Loader } from '@/components/loader';
 
 export const CharactersList = (): JSX.Element => {
   const [characters, setCharacters] = useState<Character[] | undefined>();
@@ -18,7 +19,7 @@ export const CharactersList = (): JSX.Element => {
   }, []);
 
   if (!characters) {
-    return <div>Loading...</div>;
+    return <Loader />;
   }
 
   const charactersList = characters.map(({ id, name }) => (
