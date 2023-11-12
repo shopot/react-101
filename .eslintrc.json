@@ -2,6 +2,7 @@
   "env": {
     "browser": true,
     "es6": true,
+    "jest": true,
     "node": true
   },
   "extends": [
@@ -23,7 +24,8 @@
     "sourceType": "module",
     "tsconfigRootDir": ".",
     "project": [
-      "./tsconfig.json", "./tsconfig.node.json"
+      "./tsconfig.json",
+      "./tsconfig.node.json"
     ]
   },
   // Configuring third-party plugins
@@ -36,8 +38,21 @@
   // Resolve imports
   "settings": {
     "import/resolver": {
+      "node": {
+        "extensions": [
+          ".cjs",
+          ".js",
+          ".jsx",
+          ".ts",
+          ".tsx"
+        ]
+      },
       "typescript": {
-        "project": "./tsconfig.json"
+        "project": "./tsconfig.json",
+        "extensions": [
+          ".ts",
+          ".tsx"
+        ]
       }
     },
     "react": {
