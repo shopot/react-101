@@ -5,7 +5,7 @@ import { Character } from '@/features/characters/types';
 import { Link } from 'react-router-dom';
 
 export const CharactersList = (): JSX.Element => {
-  const [characters, setCharacters] = useState<Character[]>();
+  const [characters, setCharacters] = useState<Character[] | undefined>();
 
   useEffect(() => {
     const fetchData = async () => {

@@ -1,4 +1,4 @@
-import { createBrowserRouter, Navigate, Outlet } from 'react-router-dom';
+import { Navigate, Outlet } from 'react-router-dom';
 
 import { NotFound } from '@/features/misc';
 import { charactersRoutes } from '@/features/characters';
@@ -11,7 +11,7 @@ const ContainerLayout = () => {
   );
 };
 
-export const router = createBrowserRouter([
+export const routers = [
   {
     path: '/',
     element: <ContainerLayout />,
@@ -24,4 +24,4 @@ export const router = createBrowserRouter([
       ...charactersRoutes,
     ],
   },
-]);
+];
