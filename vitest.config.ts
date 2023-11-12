@@ -15,7 +15,12 @@ export default defineConfig({
       reporter: ['text', 'html'],
       reportsDirectory: './tests/unit/coverage',
       include: ['src/**'],
-      exclude: [...coverageConfigDefaults.exclude, 'src/main.tsx', 'src/**/*.d.ts'],
+      exclude: [
+        ...coverageConfigDefaults.exclude,
+        'src/main.tsx',
+        'src/**/*.d.ts',
+        'src/**/types/*.ts',
+      ],
     },
     css: false, // Должен ли обрабатываться CSS
   },
