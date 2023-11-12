@@ -1,11 +1,35 @@
-import { render, screen } from '@testing-library/react';
+import { userEvent } from '@testing-library/user-event';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { render, screen, waitFor } from '@testing-library/react';
 
 import App from './app';
+import { routers } from '@/routes';
 
-describe('Render App component', () => {
-  it('should be render with some text', () => {
+export const renderWithRouter = (route = '/') => {
+  window.history.pushState({}, 'Test page', route);
+
+  return {
+    user: userEvent.setup(),
+    ...render(<RouterProvider router={createBrowserRouter(routers)} />),
+  };
+};
+
+describe('Render App', () => {
+  test('full app rendering/navigating', async () => {
     render(<App />);
 
-    expect(screen.getByText('Hello The Rick and Morty')).toBeInTheDocument();
+    await waitFor(() => {
+      expect(screen.getByText('Characters List Page')).toBeInTheDocument();
+    });
+  });
+
+  test('landing on a bad page shows 404 page', async () => {
+    renderWithRouter('/something-that-does-not-match');
+
+    await waitFor(() => {
+      expect(screen.getByText('404 Not Found!')).toBeInTheDocument();
+
+      screen.debug();
+    });
   });
 });
