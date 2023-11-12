@@ -51,7 +51,7 @@ MSW регистрирует `Service Worker`, который прослушив
 
 ## Структура проекта
 
-Документация по архитектуре [Bulletproof React](https://github.com/alan2207/bulletproof-react/blob/master/docs/project-structure.md)
+Документация по архитектуре [Bulletproof React](https://github.com/alan2207/bulletproof-react)
 
 > Простая, масштабируемая и мощная архитектура для создания готовых к использованию приложений React.
 
