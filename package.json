@@ -20,6 +20,7 @@
     "lint": "tsc --noEmit && eslint ./src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "test": "vitest",
+    "test:verbose": "vitest run --reporter verbose",
     "coverage": "vitest run --coverage"
   },
   "dependencies": {
