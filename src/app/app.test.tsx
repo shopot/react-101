@@ -28,8 +28,6 @@ describe('Render App', () => {
 
     await waitFor(() => {
       expect(screen.getByText('404 Not Found!')).toBeInTheDocument();
-
-      screen.debug();
     });
   });
 });
