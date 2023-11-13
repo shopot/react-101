@@ -282,6 +282,9 @@ npm run coverage
 
 Документация по теме:
 
-- 🔗 ...
+- 🔗 [Mock Service Worker](https://mswjs.io/docs/)
+- 🔗 [Vitest Testing Framework](https://vitest.dev/guide/)
+- 🔗 [Fake data generator library](https://fakerjs.dev/guide/)
+
 
 [⬆ Back to Top](#обзор-mock-service-worker-msw)
