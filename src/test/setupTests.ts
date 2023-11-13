@@ -7,9 +7,7 @@ import { characterGenerator } from './data-generators';
 
 // Enable the API mocking before tests.
 beforeAll(() => {
-  const data = [characterGenerator(), characterGenerator()];
-
-  initializeDb(data);
+  initializeDb([characterGenerator(), characterGenerator()]);
 
   server.listen();
 });
@@ -17,6 +15,7 @@ beforeAll(() => {
 // Reset any runtime request handlers we may add during the tests.
 afterEach(() => {
   cleanup();
+
   server.resetHandlers();
 });
 
