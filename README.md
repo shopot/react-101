@@ -83,3 +83,4 @@ npm run dev
 * 📙 [Основы тестирования](https://github.com/shopot/react-101/tree/react-testing-01)
 * 📙 [Vitest: Установка и базовая настройка](https://github.com/shopot/react-101/tree/react-testing-02)
 * 📙 [Обзор React Testing Library](https://github.com/shopot/react-101/tree/react-testing-03)
+* 📙 [Обзор Mock Service Worker (MSW)](https://github.com/shopot/react-101/tree/react-testing-msw)
