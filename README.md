@@ -143,9 +143,9 @@ src/test/server
 |
 +-- handlers
 |   |
-|   +---- character.ts
+|   +-- character.ts
 |   |
-|   +---- index.ts
+|   +-- index.ts
 |
 +-- db.ts
 |
