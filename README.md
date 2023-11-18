@@ -94,21 +94,34 @@ export const store = configureStore({
 Компонент `<Provider>` оборачивает весь корневой компонент приложения и предоставляет Redux Store всем компонентам
 внутри него.
 
+Компонент `<AppProvider />` будет комбинировать все возможные провайдеры в один, который будет использован в компоненте `<App />`
+
 ```tsx
-// src/main.tsx
-import { StrictMode } from 'react';
-import { createRoot } from 'react-dom/client';
+// src/providers/app-provider.tsx
+import { JSX, PropsWithChildren } from 'react';
 import { Provider } from 'react-redux';
 
-import App from '@/app/app';
-import { store } from '@/store';
+import { store } from '@/stores';
 
-createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
-  </StrictMode>
+export const AppProvider = ({ children }: PropsWithChildren): JSX.Element => (
+  <Provider store={store}>{children}</Provider>
+);
+```
+
+```tsx
+// src/app/app.tsx
+import { JSX } from 'react';
+
+import { AppProvider } from '@/providers/app-provider';
+import { Todos } from '@/features/todos';
+
+const App = (): JSX.Element => (
+  <AppProvider>
+    <div>
+      <h1 className={styles.header}>Todo App</h1>
+      <Todos />
+    </div>
+  </AppProvider>
 );
 ```
 
@@ -189,11 +202,11 @@ dispatch(addNewTodo('Create a new todo from this action.'));
 тремя функциями-редюсерами:
 
 ```tsx
-// src/features/todos/todos-slice.ts
+// src/features/todos/stores/todos-slice.ts
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { v4 as uuidv4 } from 'uuid';
 
-import { Todo, TodosState } from './types';
+import { TodosState } from '../types';
 
 const initialState: TodosState = {
   todos: [],
@@ -216,16 +229,12 @@ export const todosSlice = createSlice({
       state.todos = state.todos.filter(({ id }) => id !== action.payload);
     },
 
-    toggleTodoCompleted: (state, action: PayloadAction<string>) => {
-      state.todos = state.todos.map((todo) => {
-        if (todo.id === action.payload) {
-          return {
-            ...todo,
-            completed: !todo.completed,
-          };
-        }
-        return todo;
-      });
+    toggleTodoCompleted: ({ todos }, { payload }: PayloadAction<string>) => {
+      const todo = todos.find(({ id }) => id === payload);
+
+      if (todo) {
+        todo.completed = !todo.completed;
+      }
     },
   },
 });
@@ -602,7 +611,7 @@ thunk-функция добавляется в слайс через парам�
 Добавьте редюсеры для `fetchTodos()` в `extraReducers` функции `createSlice()`:
 
 ```ts
-// src/features/todos/todos-slice.ts
+// src/features/todos/stores/todos-slice.ts
 //...
 export const todosSlice = createSlice({
   name: 'todos',
@@ -631,9 +640,11 @@ export const todosSlice = createSlice({
 Теперь можно добавить начальную загрузку данных в компонент `<TodoList>`:
 
 ```tsx
-// src/features/todos/todos-slice.ts
+// src/features/todos/components/todo-list/todo-list.tsx
 //...
-import { fetchTodos, selectLoading, selectTodos } from '@/features/todos/todos-slice';
+import { TodoItem } from '../todo-item/todo-item';
+import { useAppDispatch, useAppSelector } from '@/stores';
+import { fetchTodos, selectLoading, selectTodos } from '../../stores/todos-slice';
 
 export const TodoList = (): JSX.Element => {
   const todos = useAppSelector(selectTodos);
@@ -641,17 +652,16 @@ export const TodoList = (): JSX.Element => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    // Передаем действие в store вызывая thunk-функцию
     void dispatch(fetchTodos());
   }, [dispatch]);
 
   if (isLoading) {
-    return <div className={styles.loader}>Loading...</div>;
+    return <div>Loading...</div>;
   }
 
   const todoList = todos.map((todo) => <TodoItem key={todo.id} todo={todo} />);
 
-  return <div className={styles.todoList}>{todoList}</div>;
+  return <>{todoList}</>;
 };
 ```
 

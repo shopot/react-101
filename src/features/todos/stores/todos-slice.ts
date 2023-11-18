@@ -1,5 +1,4 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { useSelector } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 
 import { TodosState } from '../types';
@@ -8,9 +7,7 @@ import { getTodos } from '../api/get-todos';
 
 const initialState: TodosState = {
   todos: [],
-  isLoading: false,
-  isError: false,
-  error: '',
+  loading: false,
 };
 
 export const fetchTodos = createAsyncThunk('todos/fetchTodos', async () => await getTodos());
@@ -31,16 +28,12 @@ export const todosSlice = createSlice({
       state.todos = state.todos.filter(({ id }) => id !== action.payload);
     },
 
-    toggleTodoCompleted: (state, action: PayloadAction<string>) => {
-      state.todos = state.todos.map((todo) => {
-        if (todo.id === action.payload) {
-          return {
-            ...todo,
-            completed: !todo.completed,
-          };
-        }
-        return todo;
-      });
+    toggleTodoCompleted: ({ todos }, { payload }: PayloadAction<string>) => {
+      const todo = todos.find(({ id }) => id === payload);
+
+      if (todo) {
+        todo.completed = !todo.completed;
+      }
     },
   },
   extraReducers: (builder) => {
@@ -63,10 +56,8 @@ export const todosSlice = createSlice({
 
 export const { addNewTodo, removeTodo, toggleTodoCompleted } = todosSlice.actions;
 
-export const useTodos = () => {
-  const { todos } = useSelector((state: TodosState) => ({ todos: state.todos }));
+export const selectTodos = (state: TodosState) => state.todos;
 
-  return { todos, isLoading };
-};
+export const selectLoading = (state: TodosState) => state.loading;
 
 export const todosReducer = todosSlice.reducer;

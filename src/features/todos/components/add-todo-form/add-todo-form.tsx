@@ -3,8 +3,8 @@ import { JSX, useState } from 'react';
 import styles from './add-todo-form.module.css';
 
 import { Button } from '@/components/button';
-import { addNewTodo } from '../../todos-slice';
-import { useAppDispatch } from 'src/stores';
+import { addNewTodo } from '../../stores/todos-slice';
+import { useAppDispatch } from '@/stores';
 
 export const AddTodoForm = (): JSX.Element => {
   const [title, setTitle] = useState('');

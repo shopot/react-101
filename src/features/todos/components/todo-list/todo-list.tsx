@@ -3,8 +3,8 @@ import { JSX, useEffect } from 'react';
 import styles from './todo-list.module.css';
 
 import { TodoItem } from '../todo-item/todo-item';
-import { useAppDispatch, useAppSelector } from 'src/stores';
-import { fetchTodos, selectLoading, selectTodos } from '@/features/todos/todos-slice';
+import { useAppDispatch, useAppSelector } from '@/stores';
+import { fetchTodos, selectLoading, selectTodos } from '../../stores/todos-slice';
 
 export const TodoList = (): JSX.Element => {
   const todos = useAppSelector(selectTodos);
