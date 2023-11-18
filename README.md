@@ -40,7 +40,7 @@
 - **Provider (Провайдер)** - Это компонент, в который оборачивают корневой компонент приложения, и который предоставляет доступ к  Redux Store всем компонентам внутри него;
 - **ApiProvider** - Это компонент, в который оборачивают корневой компонент приложения для доступа к **API Slice**, используется вместо `<Provider />`;
 - **Query endpoint** - Это объект, который содержат информацию о URL-адресе, методе запроса, и других параметрах, необходимых для выполнения запроса для получения данных (GET) с сервера;
-- **Mutation endpoint** - Это объект, который содержат информацию о URL-адресе, методе запроса, и других параметрах, необходимых для выполнения запроса для изменения данных (POST, UPDATE, PATCH, DELETE) на сервере;
+- **Mutation endpoint** - Это объект, который содержит информацию о URL-адресе, методе запроса, и других параметрах, необходимых для выполнения запроса для изменения данных (POST, UPDATE, PATCH, DELETE) на сервере;
 
 ⬆ [Back to Top](#знакомство-с-rtk-query)
 
@@ -399,9 +399,9 @@ export const {
     import { ApiProvider } from '@reduxjs/toolkit/query/react';
     import { todosApiSlice } from "./todos-api-slice";
     //..
-    <ApiProviderProvider api={todosApiSlice}>
+    <ApiProvider api={todosApiSlice}>
       <App />
-    </ApiProviderProvider>
+    </ApiProvider>
     ```
 2. Добавление в существующий `store` по аналогии со Slice созданным через функцию `createSlice()`:
     ```tsx
