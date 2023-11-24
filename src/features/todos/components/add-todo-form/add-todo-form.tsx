@@ -3,18 +3,15 @@ import { JSX, useState } from 'react';
 import styles from './add-todo-form.module.css';
 
 import { Button } from '@/components/button';
-import { useAddTodoMutation } from '../../api/todos-api-slice';
 
 export const AddTodoForm = (): JSX.Element => {
   const [title, setTitle] = useState('');
-  const [addTodo] = useAddTodoMutation();
 
   const handleClick = (): void => {
     const trimmedValue = title.trim();
 
     if (trimmedValue) {
-      void addTodo({ title: trimmedValue });
-
+      console.log('Add new todo:', trimmedValue);
       setTitle('');
     }
   };

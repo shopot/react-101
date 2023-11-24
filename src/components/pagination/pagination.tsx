@@ -3,36 +3,30 @@ import { JSX } from 'react';
 // import styles from './pagination.module.css';
 
 type PaginationProps = {
-  currentPage: number;
-  totalPages: number;
-  onPageChange: (value: number) => void;
+  page: number;
+  total: number;
+  onChange: (value: number) => void;
 };
 
-export const Pagination = ({
-  currentPage,
-  totalPages,
-  onPageChange,
-}: PaginationProps): JSX.Element => {
-  console.log(`totalPages: ${totalPages}`);
-
-  const buttonsList = Array(totalPages)
+export const Pagination = ({ page, total, onChange }: PaginationProps): JSX.Element => {
+  const links = Array(total)
     .fill(undefined)
     .map((_, index) => {
-      const num = index + 1;
+      const pageIndex = index + 1;
 
-      const computedClassName = num === currentPage ? 'active' : '';
+      const activeClass = pageIndex === page ? 'active' : '';
 
       return (
         <button
-          key={`page_${num}`}
+          key={`page_${pageIndex}`}
           type="button"
-          onClick={() => onPageChange(num)}
-          className={computedClassName}
+          onClick={() => onChange(pageIndex)}
+          className={activeClass}
         >
-          {index + 1}
+          {pageIndex}
         </button>
       );
     });
 
-  return <>{buttonsList}</>;
+  return <>{links}</>;
 };
