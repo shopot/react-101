@@ -173,7 +173,7 @@ class CounterStore {
   };
 
   decrement() {
-    this.value--;
+    this.value -= 1;
   };
 
   get double() {
@@ -223,7 +223,7 @@ class CounterStore {
   };
 
   decrement() {
-    this.value--;
+    this.value -= 1;
   };
 
   get double() {
@@ -257,7 +257,7 @@ const createCounterStore = () => {
     },
     
     decrement() {
-      this.value--;
+      this.value -= 1;
     },
     
     get double() {
@@ -460,7 +460,7 @@ export class CounterStore {
   };
 
   decrement() {
-    this.value--;
+    this.value -= 1;
   };
 
   get double() {
@@ -571,7 +571,7 @@ export const Counter = observer(() => {
       this.value += 1;
     },
     decrement() {
-      this.value--;
+      this.value -= 1;
     },
     get double() {
       return this.value * 2;
@@ -624,7 +624,7 @@ export const Counter = observer(() => {
       this.value += 1;
     },
     decrement() {
-      this.value--;
+      this.value -= 1;
     },
     get double() {
       return this.value * 2;
