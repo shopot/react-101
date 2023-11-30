@@ -812,8 +812,6 @@ type Post = {
   title: string;
 }
 
-interface ResponseGenerator extends Array<Post> {}
-
 class PostStore {
   posts: Post[] = [];
   state: 'pending' | 'done' | 'error' = 'pending';
@@ -831,7 +829,7 @@ class PostStore {
 
     try {
       // yield вместо await
-      const posts: ResponseGenerator = yield getPosts();
+      const posts = yield getPosts();
       this.posts = posts;
       this.state = 'done';
     } catch {
