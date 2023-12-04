@@ -929,6 +929,14 @@ export class PostSore {
 
 ⬆ [Back to Top](#знакомство-с-mobx)
 
+## MobX и ESLint
+
+Для ESLint есть плагин правилами [eslint-plugin-mobx](https://www.npmjs.com/package/eslint-plugin-mobx).
+
+Если вы используете деструктивное присваивание то ESLint будет выдавать сообщение об ошибке
+
+⬆ [Back to Top](#знакомство-с-mobx)
+
 ## Отладка MobX и DevTools
 
 Точно так же как и для Redux для MobX есть официальный плагин [mobx-devtools](https://github.com/mobxjs/mobx-devtools) для: 
