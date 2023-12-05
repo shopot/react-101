@@ -22,7 +22,7 @@ const rootReducer = combineReducers({
   counter: counterReducer,
 });
 
-export const store: Store<RootState, AnyAction> & {
+export const store: Store<RootState> & {
   dispatch: ThunkDispatch<RootState, null, AnyAction>;
 } = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)));
 

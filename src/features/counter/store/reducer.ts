@@ -1,11 +1,12 @@
 import { DECREMENT, INCREMENT, RESET } from './constants';
-import { CounterAction } from './actions';
-
-export type CounterState = number;
+import { CounterAction, CounterState } from './types';
 
 const initialState = 0;
 
-export const counterReducer = (state = initialState, action: CounterAction): CounterState => {
+export const counterReducer = (
+  state: CounterState = initialState,
+  action: CounterAction
+): CounterState => {
   switch (action.type) {
     case INCREMENT: {
       return state + 1;
