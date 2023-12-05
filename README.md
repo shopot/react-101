@@ -969,7 +969,7 @@ npm run dev
 
 - 🔗 [Three Principles](https://redux.js.org/understanding/thinking-in-redux/three-principles)
 - 🔗 [Redux Glossary](https://redux.js.org/understanding/thinking-in-redux/glossary)
-- 🔗 [What the heck is a 'thunk'?]() https://daveceddia.com/what-is-a-thunk/
+- 🔗 [What the heck is a 'thunk'?](https://daveceddia.com/what-is-a-thunk/)
 - 🔗 [Understanding Asynchronous Redux Actions with Redux Thunk](https://www.digitalocean.com/community/tutorials/redux-redux-thunk)
 - 🔗 [React Redux TypeScript Quick Start](https://react-redux.js.org/tutorials/typescript-quick-start)
 - 🔗 [Usage with TypeScript](https://react-redux.js.org/using-react-redux/usage-with-typescript)
