@@ -8,6 +8,7 @@ import { resetAsync } from '../../store/actions';
 
 export const CounterReset = (): JSX.Element => {
   const dispatch = useAppDispatch();
+
   const handleClick = () => {
     dispatch(resetAsync());
   };
