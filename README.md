@@ -904,6 +904,30 @@ export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 
 В примере Counter App используется подключение при помощи функции `compose` вместе с Redux DevTools. 
 
+Теперь можно вызвать асинхронное действие:
+
+```tsx
+import { JSX } from 'react';
+
+import { Button } from '@/components/button';
+import { useAppDispatch } from '@/store';
+import { resetAsync } from '../../store/actions';
+
+export const CounterReset = (): JSX.Element => {
+  const dispatch = useAppDispatch();
+  
+  const handleClick = () => {
+    dispatch(resetAsync());
+  };
+
+  return (
+    <div>
+      <Button onCLick={handleClick}>Reset</Button>
+    </div>
+  );
+};
+```
+
 ⬆ [Back to Top](#знакомство-с-redux)
 
 ## Об экосистеме Redux
