@@ -1,17 +1,18 @@
-import { ReactElement } from 'react';
+import { JSX } from 'react';
 
 import styles from './app.module.css';
 
-import { TodoList } from '@/components/todo-list';
-import { AddTodoForm } from '@/components/add-todo-form';
+import { AppProvider } from '@/providers/app-provider';
+import { Counter } from '@/features/counter';
 
-const App = (): ReactElement => {
+const App = (): JSX.Element => {
   return (
-    <div className={styles.appContainer}>
-      <h1 className={styles.header}>Todo App</h1>
-      <AddTodoForm />
-      <TodoList />
-    </div>
+    <AppProvider>
+      <div className={styles.appContainer}>
+        <h1 className={styles.header}>Counter App</h1>
+        <Counter />
+      </div>
+    </AppProvider>
   );
 };
 

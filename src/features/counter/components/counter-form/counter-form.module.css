@@ -1,0 +1,3 @@
+.controls {
+  @apply flex justify-center gap-2 mt-4
+}
