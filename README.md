@@ -907,6 +907,7 @@ export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 Теперь можно вызвать асинхронное действие:
 
 ```tsx
+// src/features/counter/components/counter-reset/counter-reset.tsx
 import { JSX } from 'react';
 
 import { Button } from '@/components/button';
