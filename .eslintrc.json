@@ -66,6 +66,7 @@
     "react/react-in-jsx-scope": "off"
   },
   "ignorePatterns": [
-    "vite.config.ts"
+    "vite.config.ts",
+    "counter.js"
   ]
 }
