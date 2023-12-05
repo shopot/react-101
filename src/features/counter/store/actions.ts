@@ -1,18 +1,23 @@
 import { DECREMENT, INCREMENT, RESET } from './constants';
 import { CounterDispatch } from './types';
 
-export const increment = {
+export const increment = () => ({
   type: INCREMENT,
-};
+});
 
-export const decrement = {
+export const decrement = () => ({
   type: DECREMENT,
-};
+});
 
-export const reset = () => {
+export const reset = () => ({
+  type: RESET,
+});
+
+export const resetAsync = () => {
   return (dispatch: CounterDispatch) => {
+    // To do something
     setTimeout(() => {
-      dispatch({ type: RESET });
+      dispatch(reset());
     }, 500);
   };
 };

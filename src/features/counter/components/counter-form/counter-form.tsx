@@ -10,11 +10,11 @@ export const CounterForm = (): JSX.Element => {
   const dispatch = useAppDispatch();
 
   const handleDecrement = () => {
-    dispatch(decrement);
+    dispatch(decrement());
   };
 
   const handleIncrement = () => {
-    dispatch(increment);
+    dispatch(increment());
   };
 
   return (

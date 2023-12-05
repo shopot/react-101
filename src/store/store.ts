@@ -13,7 +13,6 @@ declare global {
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 // Infer the `RootState` type from the all reducers
-
 type RootState = {
   counter: ReturnType<typeof counterReducer>;
 };
