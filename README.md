@@ -963,6 +963,13 @@ npm install
 npm run dev
 ```
 
+## Практика
+
+### Модуль Redux Base  
+
+Необходимо выполнить задание [Redux Base](https://github.com/shopot/todo-app-redux/blob/main/redux-base.md)
+
+
 ⬆ [Back to Top](#знакомство-с-redux)
 
 Документация по теме:
