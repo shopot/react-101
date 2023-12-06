@@ -63,6 +63,8 @@
 В предидущей версии **Counter App** у нас была thunk-функция `reset()`, в этой реализации мы заменим ее на другой метод `incrementByAmount()`, 
 который будет использовать вызов API `counterApi.getAmount()` и получать случайное число на которое будет увеличивать значение счетчика. 
 
+⬆ [Back to Top](#знакомство-с-redux-toolkit)
+
 ### План действий - Redux Toolkit Quick Start
 
 Давайте перечислим основные шаги для создания Redux Store для нашего приложения:
@@ -73,6 +75,8 @@
 4. Создать часть Redux Store в виде **Redux State Slice** при помощи функции `createSlice()`.
 5. Добавить **Slice Reducer** в Redux Store.
 6. Использовать Redux **State** и **Actions** в компонентах React.
+
+⬆ [Back to Top](#знакомство-с-redux-toolkit)
 
 ### Установка Redux Toolkit
 
