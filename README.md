@@ -485,7 +485,7 @@ export const DECREMENT = 'counter/DECREMENT';
 export const RESET = 'counter/RESET';
 ```
 
-Здесь используется соглашение об именовании констант вида `domain/ACTION` (старый вариант), в современной нотации для описания констант действий используется `domain/actionInCamelCase`.  
+Здесь используется соглашение об именовании значений констант вида `domain/ACTION` (старый вариант), в современной нотации для описания констант действий используется `domain/actionInCamelCase`.  
 
 ### types
 
