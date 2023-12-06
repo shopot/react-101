@@ -31,13 +31,13 @@
 * 📘 [Знакомство с React API: createPortal](https://github.com/shopot/react-101/tree/chapter-19) - _chapter-19_
 * 📘 [Путеводитель по Flux в картинках](https://github.com/shopot/react-101/tree/chapter-20) - _chapter-20_
 * 📘 [Знакомство с Redux](https://github.com/shopot/react-101/tree/redux-base) 
-* 📘 [Знакомство с Redux Toolkit](https://github.com/shopot/react-101/tree/chapter-22) - _chapter-22_
+* 📘 [Знакомство с Redux Toolkit (RTK)](https://github.com/shopot/react-101/tree/redux-toolkit-quick)
 * 📘 [Знакомство с RTK Query](https://github.com/shopot/react-101/tree/rtk-query)
 
 <details>
   <summary>Примеры приложений (деплой):</summary>
 
-- 🔗 [Приложение Todo App](https://todo-app-ab1e50.netlify.app) - [chapter-09](https://github.com/shopot/react-101/tree/chapter-09), [chapter-15](https://github.com/shopot/react-101/tree/chapter-15), [chapter-17](https://github.com/shopot/react-101/tree/chapter-17), [chapter-22](https://github.com/shopot/react-101/tree/chapter-22)
+- 🔗 [Приложение Todo App](https://todo-app-ab1e50.netlify.app) - [chapter-09](https://github.com/shopot/react-101/tree/chapter-09), [chapter-15](https://github.com/shopot/react-101/tree/chapter-15), [chapter-17](https://github.com/shopot/react-101/tree/chapter-17)
 - 🔗 [Приложение React Roadmap (Accordion)](https://react-roadmap-ab1e50.netlify.app) - [chapter-10](https://github.com/shopot/react-101/tree/chapter-10)
 - 🔗 [Приложение с примерами useEffect](https://react-use-effect-ab1e50.netlify.app) - [chapter-11](https://github.com/shopot/react-101/tree/chapter-11)
 - 🔗 [Приложение React Quiz App](https://quiz-app-ab1e50.netlify.app) - [chapter-12](https://github.com/shopot/react-101/tree/chapter-12)
