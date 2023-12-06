@@ -523,7 +523,6 @@ export type CounterAction = Increment | Decrement | Reset;
 ```ts
 // src/features/counter/store/actions.ts
 import { DECREMENT, INCREMENT, RESET } from './constants';
-import { CounterDispatch } from './types';
 
 export const increment = () => ({
   type: INCREMENT,
