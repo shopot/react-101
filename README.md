@@ -890,6 +890,7 @@ const rootReducer = combineReducers({
   counter: counterReducer,
 });
 
+// Расширяем тип для dispatch с использованем thunk-функций
 export const store: Store<RootState> & {
   dispatch: ThunkDispatch<RootState, null, AnyAction>;
 } = createStore(rootReducer, applyMiddleware(thunk));
@@ -899,9 +900,12 @@ export type AppDispatch = typeof store.dispatch;
 export const useAppDispatch: () => AppDispatch = useDispatch;
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 ```
-Просто убедитесь, что вы включили `thunk` в вызов `applyMiddleware`.
 
-В примере Counter App используется подключение при помощи функции `compose` вместе с Redux DevTools. 
+Для того что бы `dispatch`, возвращаемый из хука `useAppDispatch` понимал thunk-функции, необходимо расширить типизацию `store` как в примере выше.
+
+Включение `thunk` в вызов `applyMiddleware` добавляет middleware для обратки наших асинхронных действий.
+
+> В примере Counter App используется подключение при помощи функции `compose` вместе с Redux DevTools. 
 
 Теперь можно вызвать асинхронное действие:
 
