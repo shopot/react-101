@@ -2,10 +2,12 @@ import { JSX } from 'react';
 
 import styles from './counter-result.module.css';
 
-import { useCounter } from '../../store/selectors';
+import { useAppSelector } from '@/store';
+
+import { selectCount } from '../../stores/counter-slice';
 
 export const CounterResult = (): JSX.Element => {
-  const counter = useCounter();
+  const count = useAppSelector(selectCount);
 
-  return <div className={styles.result}>{counter}</div>;
+  return <div className={styles.result}>{count}</div>;
 };
