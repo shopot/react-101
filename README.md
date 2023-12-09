@@ -846,7 +846,7 @@ const someThunkFunction = () => {
 export const resetAsync = () => {
   return (dispatch: CounterDispatch) => {
     // To do something
-    setTimeout(() => {
+    return setTimeout(() => {
       dispatch(reset());
     }, 500);
   };
