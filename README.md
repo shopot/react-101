@@ -959,7 +959,7 @@ export const CounterReset = (): JSX.Element => {
 ```shell
 git clone https://github.com/shopot/react-101.git
 
-git checkout chapter-21
+git checkout redux-base
 
 npm install
 
