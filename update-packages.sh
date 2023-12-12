@@ -1,5 +1,7 @@
 #!/usr/bin/env sh
 
+TS_VERSION="5.2.2"
+
 update_packages() {
   arg1=$1
 
@@ -11,6 +13,8 @@ update_packages() {
     echo "npm install --save ${PACKAGES}" | sh
   else
     echo "Update devDependencies: ${PACKAGES}"
+
+    PACKAGES=`echo $PACKAGES | sed -s "s/ typescript@latest/ typescript@${TS_VERSION}/g"`;
 
     echo "npm install --save-dev ${PACKAGES}" | sh
   fi
