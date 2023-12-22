@@ -17,6 +17,8 @@
   * [Отправка действий в Redux Store](#отправка-действий-в-redux-store)
   * [Выполнение асинхронных действий](#выполнение-асинхронных-действий)
   * [Создание асинхронных действий с помощью createAsyncThunk](#создание-асинхронных-действий-с-помощью-createasyncthunk)
+* [Обработка результатов Thunk-функций](#обработка-результатов-thunk-функций)
+* [Пример с приложением Counter App](#пример-с-приложением-counter-app)
 
 > Redux Toolkit (RTK) - Официальный набор инструментов для эффективной разработки Redux.
 
@@ -35,6 +37,7 @@
 - **React Redux** - Это официальная библиотека для связывания Redux с React (React UI bindings layer ), npm пакет `react-redux`.
 - **Redux Toolkit (RTK)** - Это библиотека предназначенная для упрощения написания логики Redux, npm пакет `@reduxjs/toolkit`.
 - **Redux Thunk** - Thunk middleware для Redux. Он позволяет писать thunk-функции с асинхронной логикой внутри, которые могут взаимодействовать с методами Redux `dispatch()` и `getState()`.
+- **Thunk-функция** - Это функция, которая используется для отложенного выполнения действия (action) в асинхронном режиме. Вместо того, чтобы диспатчить действие напрямую, мы диспатчим thunk-функцию, которая может содержать логику асинхронных операций, таких как запросы к серверу или обращения к API.
 - **Immer** - Это небольшая библиотека, позволяющая более удобно работать с неизменяемым (immutable) состоянием.
 - **Reselect** - Библиотека для создания меморизированных функций-селекторов (selector). Обычно используется с Redux, но также может использоваться с любыми простыми неизменяемыми данными JS.
 - **Redux Store** - Глобальный стейт (state) приложения созданный с использованием библиотеки Redux или RTK
@@ -532,9 +535,60 @@ Middleware может выполнять дополнительные дейст
 `createAsyncThunk()` принимает два обязательных параметра (третий options - не обязательный):
 
 - **type** - Тип действия, строка в нотации `domain/actionInCamelCase`;
-- **payloadCreator** - Это функция, которая выполняет асинхронную операцию, она должна возвращать промис, который будет разрешен или отклонен в зависимости от успешности или не успешности операции.
+- **payloadCreator** - Это функция обратного вызова (callback), которая выполняет асинхронную операцию, она должна возвращать промис, который будет разрешен или отклонен в зависимости от успешности или не успешности операции.
 
-Предположим у нас есть некое API для выполнение запросов на backend-сервер, и в нем есть метод, который получает некое значение `amount`, которое мы будет прибавлять к нашему счетчику:
+**payloadCreator** будет вызываться всегда с двумя аргументами:
+
+  - **arg** - Это одно значение, содержащее первый параметр, который был передан генератору действия Thunk при его отправке. Это полезно для передачи таких значений, как идентификаторы элементов, которые могут потребоваться как часть запроса.  Если вам нужно передать несколько значений, передавайте их вместе в объекте при отправке (dispatch) thunk-функции.
+  - **thunkAPI** - Это объект содержащий все параметры, которые обычно передаются в thunk-функцию Redux, а также дополнительные параметры:
+    - `dispatch`: Redux Store метод `dispatch()`.
+    - `getState`: Redux Store метод `getState()`, возвращающий текущее состояние Redux Store.
+    - `extra`: «дополнительный аргумент», передаваемый промежуточному программному обеспечению Thunk при установке, если он доступен.
+    - `requestId`: уникальное значение идентификатора строки, которое было автоматически сгенерировано для идентификации этой последовательности запросов.
+    - `signal`: объект `AbortController.signal`, который можно использовать, чтобы узнать, пометила ли другая часть логики приложения этот запрос как требующий отмены.
+    - `rejectWithValue(value, [meta])`: `ignoreWithValue()` — это служебная функция, которую вы можете вернуть (или вызвать), чтобы вернуть отклоненный ответ с `payload` и метаданными.
+    - `fulfillWithValue(value, meta)`: `fillWithValue()` — это служебная функция, которую вы можете вернуть в генераторе действий в `fulfill` с определенным значением.
+
+Пример с использованием `thunkPAI.signal`:
+
+```ts
+import { createAsyncThunk } from '@reduxjs/toolkit'
+
+const fetchCharacterById = createAsyncThunk(
+  'characters/fetchById',
+  async (userId: string, { signal }) => {
+    const response = await fetch(`https://rickandmortyapi.com/api/character/${userId}`, {
+      signal,
+    })
+    
+    return await response.json()
+  }
+)
+```
+
+Еще один пример с `rejectWithValue()` c использованием `axios`:
+
+```ts
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import { isAxiosError } from 'axios';
+//...
+export const fetchAllCharacters = createAsyncThunk(
+  'characters/fetchAll',
+  async (_, { rejectWithValue }) => {
+    try {
+      return (await axios.get<Character[]>('/character')).data;
+    } catch (error: unknown) {
+      if (isAxiosError(error)) {
+        return rejectWithValue(error.response);
+      }
+
+      throw error;
+    }
+  }
+);
+```
+
+Предположим у нас есть некое API для выполнения запросов на backend-сервер, и в нем есть метод, который получает некое значение `amount`, которое мы будет прибавлять к нашему счетчику:
 
 ```ts
 // src/features/counter/api/counter-api.ts
@@ -625,6 +679,89 @@ export const CounterForm = (): JSX.Element => {
 ```
 
 Это упрощенный пример демонстрирующий использование асинхронной логики с Redux Toolkit.
+
+⬆ [Back to Top](#знакомство-с-redux-toolkit)
+
+## Обработка результатов Thunk-функций
+
+Thunk-функции (thunk action creator) могут возвращать результат при отправке их в Redux Store через вызов `dispatch`. 
+
+Thunk-функции, созданные с помощью `createAsyncThunk()`, всегда возвращают разрешенное обещание (resolved promise) с объектом действия `fulfilled` (action object) в случае успешного выполнения, либо с объектом действия `rejected` в случае ошибки.
+
+Обещание (Promise), возвращаемое диспатчем (dispacth) thunk-функции, имеет свойство `unwrap`, которое можно вызвать, чтобы получить данные успешно выполненного действия (fulfilled) или выбросить ошибку или, если доступно, данные, созданные с помощью `rejectWithValue()`, из отклоненного действия (rejected).
+
+```tsx
+// In the component
+
+const onClick = () => {
+  dispatch(fetchUserById(userId))
+    .unwrap()
+    .then((originalPromiseResult) => {
+      // handle result here
+    })
+    .catch((rejectedValueOrSerializedError) => {
+      // handle error here
+    })
+}
+```
+
+`async/await` синтаксис:
+
+```tsx
+// In the component
+
+const onClick = async () => {
+  try {
+    const originalPromiseResult = await dispatch(fetchUserById(userId)).unwrap()
+    // handle result here
+  } catch (rejectedValueOrSerializedError) {
+    // handle error here
+  }
+}
+```
+
+в большинстве случаев предпочтительнее использовать прикрепленное свойство `.unwrap()`, однако RTK также экспортирует функцию `unwrapResult()`, которую можно использовать для аналогичной цели:
+
+```tsx
+import { unwrapResult } from '@reduxjs/toolkit'
+
+// In the component
+const onClick = () => {
+  dispatch(fetchUserById(userId))
+    .then(unwrapResult)
+    .then((originalPromiseResult) => {
+      // handle result here
+    })
+    .catch((rejectedValueOrSerializedError) => {
+      // handle result here
+    })
+}
+```
+
+`async/await` синтаксис:
+
+```tsx
+import { unwrapResult } from '@reduxjs/toolkit'
+
+// In the component
+const onClick = async () => {
+  try {
+    const resultAction = await dispatch(fetchUserById(userId))
+    const originalPromiseResult = unwrapResult(resultAction)
+    // handle result here
+  } catch (rejectedValueOrSerializedError) {
+    // handle error here
+  }
+}
+```
+
+Свойство `unwrap` позволяет извлечь данные из успешно выполненного действия или выбросить ошибку из отклоненного действия.
+Это удобно, когда вам нужно получить результаты асинхронной операции и обработать их в соответствии с вашей логикой приложения.
+
+⬆ [Back to Top](#знакомство-с-redux-toolkit)
+
+
+## Пример с приложением Counter App
 
 Готовый пример с приложением находится в директории `src` раздела `redux-tollkit-quick`.
 
