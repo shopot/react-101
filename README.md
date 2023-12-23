@@ -567,7 +567,7 @@ const fetchCharacterById = createAsyncThunk(
 )
 ```
 
-Еще один пример с `rejectWithValue()` c использованием `axios`:
+Еще один пример с `thunkPAI.rejectWithValue()` c использованием `axios`:
 
 ```ts
 import { createAsyncThunk } from '@reduxjs/toolkit';
