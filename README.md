@@ -335,8 +335,6 @@ npm install
 npm run dev
 ```
 
-⬆ [Back to Top](#новые-возможности-в-redux-toolkit-20)
-
 Документация по теме:
 
 - 🔗 [Migrating to RTK 2.0 and Redux 5.0](https://redux-toolkit.js.org/usage/migrating-rtk-2)
