@@ -2,12 +2,14 @@ import { JSX } from 'react';
 
 import styles from './counter-result.module.css';
 
-import { useAppSelector } from '@/store';
-
-import { selectCount } from '../../stores/counter-slice';
+import { useCounter } from '../../stores/hooks';
 
 export const CounterResult = (): JSX.Element => {
-  const count = useAppSelector(selectCount);
+  const { data, isLoading } = useCounter();
 
-  return <div className={styles.result}>{count}</div>;
+  if (isLoading) {
+    return <div className={styles.loading}>Loading...</div>;
+  }
+
+  return <div className={styles.result}>{data}</div>;
 };

@@ -1,3 +1,7 @@
 .result {
-  @apply mx-auto text-center p-4 mt-4 text-2xl font-medium border border-gray-400 rounded shadow max-w-[230px]
+  @apply mx-auto text-center p-4 mt-4 text-2xl font-medium border border-gray-400 rounded shadow max-w-[230px] min-h-[66px]
+}
+
+.loading {
+  @apply mx-auto text-center p-4 mt-4 border border-gray-400 rounded shadow max-w-[230px] min-h-[66px]
 }
