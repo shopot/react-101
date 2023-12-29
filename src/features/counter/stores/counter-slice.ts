@@ -1,49 +1,65 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { RootState } from '@/store';
+import { PayloadAction } from '@reduxjs/toolkit';
 
+import { createSliceWithThunks } from '@/lib/redux';
 import { counterApi } from '../api/counter-api';
-
-export interface CounterState {
-  value: number;
-}
-
-// First, create the thunk
-export const incrementByAmount = createAsyncThunk('counter/incrementByAmount', async () => {
-  const response = await counterApi.getAmount();
-
-  return response.data;
-});
+import { CounterState } from '../types';
 
 const initialState: CounterState = {
+  loading: false,
   value: 0,
+  error: null,
 };
 
-const counterSlice = createSlice({
+const counterSlice = createSliceWithThunks({
   name: 'counter',
   initialState,
-  reducers: {
-    increment: (state) => {
-      state.value += 1;
-    },
+  reducers: (create) => ({
+    increment: create.reducer((state, action: PayloadAction<number>) => {
+      state.value += action.payload;
+    }),
 
-    decrement: (state) => {
-      state.value -= 1;
-    },
+    decrement: create.preparedReducer(
+      (num: number) => ({ payload: num * 2 }),
+      (state, action) => {
+        state.value -= action.payload;
+      }
+    ),
 
-    reset: (state) => {
+    reset: create.reducer((state) => {
       state.value = 0;
-    },
-  },
-  extraReducers: (builder) => {
-    builder.addCase(incrementByAmount.fulfilled, (state, { payload }) => {
-      state.value += payload;
-    });
+    }),
+
+    incrementByAmount: create.asyncThunk(
+      async (value: number) => {
+        const response = await counterApi.getAmount(value);
+
+        return response.data;
+      },
+      {
+        pending: (state) => {
+          state.loading = true;
+        },
+        rejected: (state, action) => {
+          state.error = action.payload ?? action.error;
+        },
+        fulfilled: (state, action) => {
+          state.value += action.payload;
+        },
+        settled: (state) => {
+          state.loading = false;
+        },
+      }
+    ),
+  }),
+  selectors: {
+    selectCount: (state) => state.value,
+    selectLoading: (state) => state.loading,
+    selectError: (state) => state.error,
   },
 });
 
-export const { increment, decrement, reset } = counterSlice.actions;
+export const { increment, decrement, incrementByAmount, reset } = counterSlice.actions;
 
-// Selectors
-export const selectCount = (state: RootState) => state.counter.value;
+export const { selectCount, selectLoading, selectError } = counterSlice.selectors;
 
 export default counterSlice.reducer;

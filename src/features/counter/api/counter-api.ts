@@ -1,11 +1,11 @@
 const delay = (ms: number) => new Promise((_) => setTimeout(_, ms));
 
 export const counterApi = {
-  getAmount: async () => {
+  getAmount: async (value: number) => {
     await delay(10);
 
     return {
-      data: Math.round(Math.random() * 100),
+      data: value + Math.round(Math.random() * 100),
     };
   },
 };
