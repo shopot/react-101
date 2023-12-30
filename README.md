@@ -986,7 +986,7 @@ spy(event => {
 
 ⬆ [Back to Top](#знакомство-с-mobx)
 
-📘 Документация по теме 
+Документация по теме: 
 
 - 🔗 [MobX-Cookbook (Russian)](https://mobx-cookbook.github.io/)
 - 🔗 [Официальная документация (English)](https://mobx.js.org/)
