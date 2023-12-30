@@ -178,6 +178,7 @@ const counterSlice = createSliceWithThunks({
           state.value += action.payload;
         },
         // settled вызывается как для отклоненных (rejected), так и для выполненных действий (fulfilled)
+        // аналог finally в инструкции try..catch
         settled: (state, action) => {
           state.loading = false
         },
