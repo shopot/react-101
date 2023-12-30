@@ -59,10 +59,10 @@ git clone https://github.com/shopot/react-101.git
 cd react-101
 ```
 
-Выберите раздел на который вы хотите перейти (например chapter-02)
+Выберите раздел на который вы хотите перейти (например redux-base)
 
 ```shell
-git checkout chapter-02
+git checkout redux-base
 ```
 
 Установите зависимости
@@ -85,3 +85,7 @@ npm run dev
 * 📙 [Vitest: Установка и базовая настройка](https://github.com/shopot/react-101/tree/react-testing-02)
 * 📙 [Обзор React Testing Library](https://github.com/shopot/react-101/tree/react-testing-03)
 * 📙 [Обзор Mock Service Worker (MSW)](https://github.com/shopot/react-101/tree/react-testing-msw)
+
+## 📚 Архитектура фронтенда и паттерны
+
+> Coming soon...
