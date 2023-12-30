@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.container {
+  @apply mx-auto mt-10 max-w-[800px]
+}
+
+h1{
+  @apply mb-2 mt-0 text-4xl font-medium leading-tight
+}
+
+h2 {
+  @apply mb-2 pt-4 mt-4 text-3xl font-medium leading-tight border-t
+}
