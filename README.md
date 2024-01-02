@@ -34,6 +34,7 @@
 * 📘 [Знакомство с Redux Toolkit (RTK)](https://github.com/shopot/react-101/tree/redux-toolkit-quick)
 * 📘 [Знакомство с RTK Query](https://github.com/shopot/react-101/tree/rtk-query)
 * 📘 [Новые возможности в Redux Toolkit 2.0](https://github.com/shopot/react-101/tree/redux-tollkit-2)
+* 📘 [Знакомство MobX](https://github.com/shopot/react-101/tree/mobx)
 
 <details>
   <summary>Примеры приложений (деплой):</summary>
