@@ -1,32 +1,40 @@
 import { JSX } from 'react';
 
-// import styles from './pagination.module.css';
+import styles from './pagination.module.css';
 
 type PaginationProps = {
-  page: number;
+  defaultCurrent: number;
+  defaultPageSize: number;
   total: number;
   onChange: (value: number) => void;
 };
 
-export const Pagination = ({ page, total, onChange }: PaginationProps): JSX.Element => {
-  const links = Array(total)
+export const Pagination = ({
+  defaultCurrent,
+  defaultPageSize,
+  total,
+  onChange,
+}: PaginationProps): JSX.Element => {
+  const totalPages = Math.ceil(total / defaultPageSize);
+
+  const links = Array(totalPages)
     .fill(undefined)
     .map((_, index) => {
       const pageIndex = index + 1;
 
-      const activeClass = pageIndex === page ? 'active' : '';
+      const className = pageIndex === defaultCurrent ? styles.activeItem : styles.item;
 
       return (
         <button
           key={`page_${pageIndex}`}
           type="button"
           onClick={() => onChange(pageIndex)}
-          className={activeClass}
+          className={className}
         >
           {pageIndex}
         </button>
       );
     });
 
-  return <>{links}</>;
+  return <div className={styles.pagination}>{links}</div>;
 };

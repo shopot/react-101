@@ -3,16 +3,20 @@ import { JSX, useState } from 'react';
 import styles from './add-todo-form.module.css';
 
 import { Button } from '@/components/button';
+import { todosStore } from '../../stores/todos-store';
 
 export const AddTodoForm = (): JSX.Element => {
-  const [title, setTitle] = useState('');
+  const [text, setText] = useState('');
 
-  const handleClick = (): void => {
-    const trimmedValue = title.trim();
+  const handleAddNewTodo = (): void => {
+    const trimmedValue = text.trim();
 
     if (trimmedValue) {
-      console.log('Add new todo:', trimmedValue);
-      setTitle('');
+      console.log('addTodo:', trimmedValue);
+
+      void todosStore.addTodo(trimmedValue);
+
+      setText('');
     }
   };
 
@@ -20,14 +24,14 @@ export const AddTodoForm = (): JSX.Element => {
     <form className={styles.formWrapper}>
       <div className={styles.formInputWrapper}>
         <input
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
+          value={text}
+          onChange={(e) => setText(e.target.value)}
           className={styles.formInput}
           type="text"
           placeholder="Add your new todo"
           aria-label="Add your new todo"
         />
-        <Button onCLick={handleClick}>Add new</Button>
+        <Button onCLick={handleAddNewTodo}>Add new</Button>
       </div>
     </form>
   );

@@ -1,7 +1,15 @@
 import { JSX } from 'react';
 
-import { TodoList } from '../components/todo-list/todo-list';
+import { TodosList } from '../components/todos-list/todos-list';
+import { AddTodoForm } from '../components/add-todo-form/add-todo-form';
+import { TodosPagination } from '../components/todos-pagination/todos-pagination';
 
 export const Todos = (): JSX.Element => {
-  return <TodoList />;
+  return (
+    <>
+      <AddTodoForm />
+      <TodosList />
+      <TodosPagination />
+    </>
+  );
 };
