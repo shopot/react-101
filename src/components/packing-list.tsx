@@ -1,6 +1,8 @@
-import { Item } from '@/components/item';
+import { JSX } from 'react';
 
-export const PackingList = () => {
+import { Item } from './item';
+
+export const PackingList = (): JSX.Element => {
   return (
     <section>
       <h1>Sally Ride's Packing List</h1>

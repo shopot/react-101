@@ -1,4 +1,11 @@
-export const Item = ({ name, isPacked }: Props) => {
+import { JSX } from 'react';
+
+type ItemProps = {
+  name: string;
+  isPacked: boolean;
+};
+
+export const Item = ({ name, isPacked }: ItemProps): JSX.Element => {
   let itemContent = name;
 
   if (isPacked) {
@@ -6,9 +13,4 @@ export const Item = ({ name, isPacked }: Props) => {
   }
 
   return <li className="item">{itemContent}</li>;
-};
-
-type Props = {
-  name: string;
-  isPacked: boolean;
 };
