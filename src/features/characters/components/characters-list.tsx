@@ -1,9 +1,9 @@
 import { JSX, useEffect, useState } from 'react';
-
-import { getCharacters } from '@/features/characters/api/get-characters';
-import { Character } from '@/features/characters/types';
 import { Link } from 'react-router-dom';
+
 import { Loader } from '@/components/loader';
+import { getCharacters } from '../api/get-characters';
+import type { Character } from '../types';
 
 export const CharactersList = (): JSX.Element => {
   const [characters, setCharacters] = useState<Character[] | undefined>();
