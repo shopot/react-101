@@ -2,7 +2,7 @@ import { makeAutoObservable, reaction, runInAction } from 'mobx';
 
 import { DEFAULT_ITEM_PER_PAGE } from '@/config';
 
-import { Todo } from '../types';
+import type { Todo } from '../types';
 import { todosApi } from '../api/todos-api';
 import { createId } from '@/lib/uuid';
 

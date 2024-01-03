@@ -4,7 +4,7 @@ import styles from './todo-item.module.css';
 
 import { ButtonRemove } from '@/components/button-remove';
 
-import { Todo } from '../../types';
+import type { Todo } from '../../types';
 import { todosStore } from '../../stores/todos-store';
 import { observer } from 'mobx-react-lite';
 

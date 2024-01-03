@@ -1,6 +1,6 @@
 import { AxiosInstance } from 'axios';
 
-import { Todo } from '../types';
+import type { Todo } from '../types';
 import { axios } from '@/lib/axios';
 
 class TodosApi {
