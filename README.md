@@ -548,7 +548,7 @@ export const reset = () => ({
 
 ```ts
 import { DECREMENT, INCREMENT, RESET } from './constants';
-import { CounterAction, CounterState } from './types';
+import type { CounterAction, CounterState } from './types';
 
 const initialState = 0;
 
@@ -599,8 +599,11 @@ export const useCounter = () => {
 
 ```ts
 // src/store/store.ts
-import { createStore, Store, combineReducers } from 'redux';
-import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
+import { createStore, combineReducers } from 'redux';
+import { useDispatch, useSelector } from 'react-redux';
+import type { Store } from 'redux';
+import type { TypedUseSelectorHook } from 'react-redux';
+
 
 import { counterReducer } from '@/features/counter';
 
@@ -661,7 +664,7 @@ ReactDOM.render(
 
 ```tsx
 // src/providers/app-provider.tsx
-import { JSX, PropsWithChildren } from 'react';
+import { JSX, type PropsWithChildren } from 'react';
 import { Provider } from 'react-redux';
 
 import { store } from '@/store';
@@ -863,8 +866,8 @@ export const resetAsync = () => {
 ```ts
 // src/features/counter/store/types.ts
 //...
-import { ThunkDispatch } from 'redux-thunk';
-import { AnyAction } from 'redux';
+import type { ThunkDispatch } from 'redux-thunk';
+import type { AnyAction } from 'redux';
 
 //...
 
@@ -878,9 +881,12 @@ export type CounterDispatch = ThunkDispatch<{ counter: CounterState }, null, Any
 
 ```ts
 // src/store/store.ts
-import { createStore, Store, AnyAction, combineReducers, applyMiddleware } from 'redux';
-import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
-import thunk, { ThunkDispatch } from 'redux-thunk';
+import { createStore, compose, combineReducers, applyMiddleware } from 'redux';
+import { useDispatch, useSelector } from 'react-redux';
+import thunk from 'redux-thunk';
+import type { Store, AnyAction } from 'redux';
+import type { TypedUseSelectorHook } from 'react-redux';
+import type { ThunkDispatch } from 'redux-thunk';
 
 import { counterReducer } from '@/features/counter';
 
