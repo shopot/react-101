@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { v4 as uuidv4 } from 'uuid';
 
 import { API_URL } from '@/config';
-import { Todo } from '../types';
+import type { Todo } from '../types';
 import { getRandomColor } from '../utils';
 
 const TODOS_API_ENDPOINT = '/todos';
