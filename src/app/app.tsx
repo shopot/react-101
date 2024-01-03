@@ -1,6 +1,8 @@
+import { JSX } from 'react';
+
 import { Toolbar } from '@/components/tool-bar';
 
-function App() {
+function App(): JSX.Element {
   const playMovie = () => alert('Playing!');
 
   const uploadImage = () => alert('Uploading!');
