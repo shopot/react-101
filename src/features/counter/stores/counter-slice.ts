@@ -1,8 +1,8 @@
-import { PayloadAction } from '@reduxjs/toolkit';
+import type { PayloadAction } from '@reduxjs/toolkit';
 
 import { createSliceWithThunks } from '@/lib/redux';
 import { counterApi } from '../api/counter-api';
-import { CounterState } from '../types';
+import type { CounterState } from '../types';
 
 const initialState: CounterState = {
   loading: false,
