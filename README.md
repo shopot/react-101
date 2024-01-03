@@ -11,7 +11,7 @@
 * 📘 [Знакомство с JSX](https://github.com/shopot/react-101/tree/jsx)
 * 📘 [Отрисовка элементов](https://github.com/shopot/react-101/tree/react-render)
 * 📘 [Компоненты - одна из основных концепций React](https://github.com/shopot/react-101/tree/components) 
-* 📘 [Условный рендеринг](https://github.com/shopot/react-101/tree/chapter-04) - _chapter-04_
+* 📘 [Условный рендеринг](https://github.com/shopot/react-101/tree/conditional-rendering)
 * 📘 [Обработка событий](https://github.com/shopot/react-101/tree/chapter-05) - _chapter-05_
 * 📘 [Списки и ключи - React Key Concepts](https://github.com/shopot/react-101/tree/chapter-06) - _chapter-06_
 * 📘 [Состояние: память компонента, знакомство с useState](https://github.com/shopot/react-101/tree/chapter-07) -
