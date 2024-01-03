@@ -9,7 +9,7 @@
 на [TypeScript](https://www.typescriptlang.org/) + [Tailwind CSS](https://tailwindcss.com/).
 
 * 📘 [Знакомство с JSX](https://github.com/shopot/react-101/tree/jsx)
-* 📘 [Отрисовка элементов](https://github.com/shopot/react-101/tree/chapter-02) - _chapter-02_
+* 📘 [Отрисовка элементов](https://github.com/shopot/react-101/tree/react-render)
 * 📘 [Компоненты - одна из основных концепций React](https://github.com/shopot/react-101/tree/chapter-03) - _chapter-03_
 * 📘 [Условный рендеринг](https://github.com/shopot/react-101/tree/chapter-04) - _chapter-04_
 * 📘 [Обработка событий](https://github.com/shopot/react-101/tree/chapter-05) - _chapter-05_
