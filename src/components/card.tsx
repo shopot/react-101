@@ -1,9 +1,5 @@
-import { ReactElement, ReactNode } from 'react';
+import { JSX, type PropsWithChildren } from 'react';
 
-export const Card = ({ children }: Props): ReactElement => {
-  return <div className="card">{children}</div>;
-};
-
-type Props = {
-  children: ReactNode;
-};
+export const Card = ({ children }: PropsWithChildren): JSX.Element => (
+  <div className="card">{children}</div>
+);

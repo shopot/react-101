@@ -1,5 +1,5 @@
-import { Avatar } from '@/components/avatar';
+import { Avatar } from './avatar';
 
-export const Profile = () => {
-  return <Avatar person={{ name: 'Lin Lanying', imageId: '1bX5QH6' }} size={100} />;
-};
+export const Profile = () => (
+  <Avatar person={{ name: 'Lin Lanying', imageId: '1bX5QH6' }} size={100} />
+);

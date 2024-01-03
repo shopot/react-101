@@ -1,11 +1,11 @@
-import { ReactElement } from 'react';
+import { JSX } from 'react';
 
 import { Footer } from '@/components/footer';
 import { Header } from '@/components/header';
 import { Profile } from '@/components/profile';
 import { Card } from '@/components/card';
 
-const App = (): ReactElement => {
+const App = (): JSX.Element => {
   return (
     <>
       <Header />

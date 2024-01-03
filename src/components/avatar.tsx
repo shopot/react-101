@@ -1,6 +1,14 @@
-import { ReactElement } from 'react';
+import { JSX } from 'react';
 
-export const Avatar = ({ person, size }: Props): ReactElement => {
+type AvatarProps = {
+  person: {
+    name: string;
+    imageId: string;
+  };
+  size: number;
+};
+
+export const Avatar = ({ person, size }: AvatarProps): JSX.Element => {
   const { name, imageId } = person;
 
   return (
@@ -15,12 +23,4 @@ export const Avatar = ({ person, size }: Props): ReactElement => {
       />
     </>
   );
-};
-
-type Props = {
-  person: {
-    name: string;
-    imageId: string;
-  };
-  size: number;
 };
