@@ -1,5 +1,5 @@
 import { DECREMENT, INCREMENT, RESET } from './constants';
-import { CounterAction, CounterState } from './types';
+import type { CounterAction, CounterState } from './types';
 
 const initialState = 0;
 

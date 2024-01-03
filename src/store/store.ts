@@ -1,6 +1,9 @@
-import { createStore, Store, compose, AnyAction, combineReducers, applyMiddleware } from 'redux';
-import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
-import thunk, { ThunkDispatch } from 'redux-thunk';
+import { createStore, compose, combineReducers, applyMiddleware } from 'redux';
+import { useDispatch, useSelector } from 'react-redux';
+import thunk from 'redux-thunk';
+import type { Store, AnyAction } from 'redux';
+import type { TypedUseSelectorHook } from 'react-redux';
+import type { ThunkDispatch } from 'redux-thunk';
 
 import { counterReducer } from '@/features/counter';
 
