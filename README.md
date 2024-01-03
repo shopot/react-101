@@ -124,7 +124,7 @@ export const store = configureStore({
 
 ```tsx
 // src/providers/app-provider.tsx
-import { JSX, PropsWithChildren } from 'react';
+import { JSX, type PropsWithChildren } from 'react';
 import { Provider } from 'react-redux';
 
 import { store } from '@/store';

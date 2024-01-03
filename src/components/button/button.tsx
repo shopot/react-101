@@ -1,4 +1,4 @@
-import { PropsWithChildren, JSX } from 'react';
+import { JSX, type PropsWithChildren } from 'react';
 
 import styles from './button.module.css';
 
