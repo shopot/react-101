@@ -13,7 +13,7 @@
 * 📘 [Компоненты - одна из основных концепций React](https://github.com/shopot/react-101/tree/components) 
 * 📘 [Условный рендеринг](https://github.com/shopot/react-101/tree/conditional-rendering)
 * 📘 [Обработка событий](https://github.com/shopot/react-101/tree/event-handling)
-* 📘 [Списки и ключи - React Key Concepts](https://github.com/shopot/react-101/tree/list-keys)
+* 📘 [Списки и ключи - React Key Concepts](https://github.com/shopot/react-101/tree/rendering-lists)
 * 📘 [Состояние: память компонента, знакомство с useState](https://github.com/shopot/react-101/tree/chapter-07) -
   _chapter-07_
 * 📘 [Применение стилей CSS - краткий обзор](https://github.com/shopot/react-101/tree/chapter-08) - _chapter-08_
