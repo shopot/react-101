@@ -1,5 +1,7 @@
 import { JSX } from 'react';
 
+import styles from './users-list-item.module.css';
+
 import type { User } from '@/types';
 
 type Props = {
@@ -10,5 +12,9 @@ type Props = {
 export const UsersListItem = ({ user, onRemove }: Props): JSX.Element => {
   const { name, id } = user;
 
-  return <li onClick={() => onRemove(id)}>{name}</li>;
+  return (
+    <li className={styles.item} onClick={() => onRemove(id)}>
+      {name}
+    </li>
+  );
 };
