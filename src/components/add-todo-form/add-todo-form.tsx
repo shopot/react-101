@@ -1,11 +1,15 @@
-import { ReactElement, useState } from 'react';
+import { JSX, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
 import styles from './add-todo-form.module.css';
 
-import { Button } from '@/shared/ui';
+import { Button } from '../ui';
 
-export const AddTodoForm = ({ onAddTodo }: Props): ReactElement => {
+type Props = {
+  onAddTodo: (todoId: string, title: string) => void;
+};
+
+export const AddTodoForm = ({ onAddTodo }: Props): JSX.Element => {
   // Объявляем переменную состояния для контролируемого компонента input,
   // начальное значение пустая строка
   const [title, setTitle] = useState('');
@@ -44,8 +48,4 @@ export const AddTodoForm = ({ onAddTodo }: Props): ReactElement => {
       </div>
     </form>
   );
-};
-
-type Props = {
-  onAddTodo: (todoId: string, title: string) => void;
 };

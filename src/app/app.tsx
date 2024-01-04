@@ -1,10 +1,10 @@
-import { ReactElement, useState } from 'react';
+import { JSX, useState } from 'react';
 
 import styles from './app.module.css';
 
+import type { TodoState } from '@/types';
 import { TodoList } from '@/components/todo-list';
 import { AddTodoForm } from '@/components/add-todo-form';
-import { TodoState } from '@/types';
 
 // Начальное значение для переменной состояния todos
 const initialState: TodoState = [
@@ -15,7 +15,7 @@ const initialState: TodoState = [
   },
 ];
 
-const App = (): ReactElement => {
+const App = (): JSX.Element => {
   // Объявляем переменную состояния для хранения списка todo при помощи useState()
   // начальное значение - массив с одним элементом
   const [todos, setTodos] = useState<TodoState>(initialState);
@@ -57,7 +57,7 @@ const App = (): ReactElement => {
     <div className={styles.appContainer}>
       <h1 className={styles.header}>Todo App</h1>
       <AddTodoForm onAddTodo={handleAddTodo} />
-      <TodoList todos={todos} onToggleComplete={handleToggleTodo} onRemove={handleRemoveTodo} />
+      <TodoList todos={todos} onToggle={handleToggleTodo} onRemove={handleRemoveTodo} />
     </div>
   );
 };

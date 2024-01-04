@@ -1,9 +1,15 @@
 import styles from './todo-item.module.css';
 
-import { ButtonRemove } from '@/shared/ui';
-import { Todo } from '@/types';
+import { ButtonRemove } from '../ui';
+import type { Todo } from '@/types';
 
-export const TodoItem = ({ todo, onToggleComplete, onRemove }: Props) => {
+type Props = {
+  todo: Todo;
+  onToggle: (todoId: string) => void;
+  onRemove: (todoId: string) => void;
+};
+
+export const TodoItem = ({ todo, onToggle, onRemove }: Props) => {
   const { id, title, completed } = todo;
 
   const completedClass = completed ? styles.todoTitleThrough : '';
@@ -13,7 +19,7 @@ export const TodoItem = ({ todo, onToggleComplete, onRemove }: Props) => {
       <div className={styles.todoInputWrapper}>
         <input
           checked={completed}
-          onChange={() => onToggleComplete(id)}
+          onChange={() => onToggle(id)}
           type="checkbox"
           className={styles.todoInput}
         />
@@ -22,10 +28,4 @@ export const TodoItem = ({ todo, onToggleComplete, onRemove }: Props) => {
       <ButtonRemove onCLick={() => onRemove(id)} />
     </div>
   );
-};
-
-type Props = {
-  todo: Todo;
-  onToggleComplete: (todoId: string) => void;
-  onRemove: (todoId: string) => void;
 };

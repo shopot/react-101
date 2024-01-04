@@ -1,1 +1,7 @@
-export { type Todo, type TodoState } from './todo';
+export type Todo = {
+  id: string;
+  title: string;
+  completed: boolean;
+};
+
+export type TodoState = Todo[];

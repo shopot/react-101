@@ -1,7 +1,7 @@
 {
   "name": "react-101",
   "version": "1.0.0",
-  "description": "React.js introducing for RS School students and not only",
+  "description": "Introduction to React.js for RS School students and beyond ",
   "keywords": [
     "react",
     "javascript",
@@ -17,7 +17,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "lint": "tsc --noEmit && eslint ./src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "lint": "eslint ./src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
   "dependencies": {
