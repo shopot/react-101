@@ -17,8 +17,7 @@
 * 📘 [Состояние: память компонента, знакомство с useState](https://github.com/shopot/react-101/tree/hook-use-state)
 * 📘 [Применение стилей CSS - краткий обзор](https://github.com/shopot/react-101/tree/chapter-08) - _chapter-08_
 * 📘 [React DOM компоненты - компоненты форм](https://github.com/shopot/react-101/tree/form-components)
-* 📘 [Совместное использование состояния между компонентами](https://github.com/shopot/react-101/tree/chapter-10) -
-  _chapter-10_
+* 📘 [Совместное использование состояния между компонентами](https://github.com/shopot/react-101/tree/sharing-state)
 * 📘 [Знакомство с хуком useEffect](https://github.com/shopot/react-101/tree/chapter-11) - _chapter-11_
 * 📘 [Руководство React Quiz App - Мыслим как React](https://github.com/shopot/react-101/tree/chapter-12) - _chapter-12_
 * 📘 [Получение данных - Fetching data](https://github.com/shopot/react-101/tree/chapter-13) - _chapter-13_
@@ -42,7 +41,8 @@
     - [form-components](https://github.com/shopot/react-101/tree/form-components)
     - [chapter-15](https://github.com/shopot/react-101/tree/chapter-15)
     - [chapter-17](https://github.com/shopot/react-101/tree/chapter-17)
-- 🔗 [Приложение React Roadmap (Accordion)](https://react-roadmap-ab1e50.netlify.app) - [chapter-10](https://github.com/shopot/react-101/tree/chapter-10)
+- 🔗 [Приложение React Roadmap (Accordion)](https://react-roadmap-ab1e50.netlify.app)
+    - [sharing-state](https://github.com/shopot/react-101/tree/chapter-10)
 - 🔗 [Приложение с примерами useEffect](https://react-use-effect-ab1e50.netlify.app) - [chapter-11](https://github.com/shopot/react-101/tree/chapter-11)
 - 🔗 [Приложение React Quiz App](https://quiz-app-ab1e50.netlify.app) - [chapter-12](https://github.com/shopot/react-101/tree/chapter-12)
 - 🔗 [Приложение Fetching Data](https://fetch-data-ab1e50.netlify.app) - [chapter-13](https://github.com/shopot/react-101/tree/chapter-13)
