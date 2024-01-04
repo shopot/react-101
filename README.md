@@ -114,8 +114,26 @@ export const List = () => {
 
 Фрагменты исчезают из DOM, поэтому создается плоский список `<h1>`, `<p>`, `<h1>`, `<p>` и т. д.
 
+**[⬆ Back to Top](#списки-и-ключи---react-key-concepts)**
+
+Готовый пример с приложением находится в `src`.
+
+![list-keys](./list-keys-app.png)
+
+Для запуска примера с готовым приложением выполните команды:
+
+```shell
+git clone https://github.com/shopot/react-101.git
+
+git checkout list-keys
+
+npm install
+
+npm run dev
+```
+
 Документация по теме:
 
-- 🔗 [Rendering Lists](https://react.dev/learn/rendering-lists)
+- 🔗 [Rendering Lists (react.dev)](https://react.dev/learn/rendering-lists)
 
 **[⬆ Back to Top](#списки-и-ключи---react-key-concepts)**
