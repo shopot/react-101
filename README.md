@@ -614,14 +614,14 @@ const NewPost = () => {
 
 ![Todo App](./todo-app.png)
 
-Готовый пример с приложением находится в `src` раздела chapter-09.
+Готовый пример с приложением находится в `src`.
 
 Для запуска примера с готовым приложением выполните команды:
 
 ```shell
 git clone https://github.com/shopot/react-101.git
 
-git checkout chapter-09
+git checkout form-components
 
 npm install
 
