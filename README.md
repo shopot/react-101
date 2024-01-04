@@ -14,8 +14,7 @@
 * 📘 [Условный рендеринг](https://github.com/shopot/react-101/tree/conditional-rendering)
 * 📘 [Обработка событий](https://github.com/shopot/react-101/tree/event-handling)
 * 📘 [Списки и ключи - React Key Concepts](https://github.com/shopot/react-101/tree/rendering-lists)
-* 📘 [Состояние: память компонента, знакомство с useState](https://github.com/shopot/react-101/tree/chapter-07) -
-  _chapter-07_
+* 📘 [Состояние: память компонента, знакомство с useState](https://github.com/shopot/react-101/tree/hook-use-state)
 * 📘 [Применение стилей CSS - краткий обзор](https://github.com/shopot/react-101/tree/chapter-08) - _chapter-08_
 * 📘 [React DOM компоненты - компоненты форм](https://github.com/shopot/react-101/tree/chapter-09) - _chapter-09_
 * 📘 [Совместное использование состояния между компонентами](https://github.com/shopot/react-101/tree/chapter-10) -
