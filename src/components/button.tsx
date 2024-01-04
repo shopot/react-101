@@ -1,14 +1,13 @@
-import { ReactElement, ReactNode } from 'react';
+import { JSX, type PropsWithChildren } from 'react';
 
-export const Button = ({ onClick, children }: Props): ReactElement => {
+type Props = {
+  onClick: () => void;
+} & PropsWithChildren;
+
+export const Button = ({ onClick, children }: Props): JSX.Element => {
   return (
     <button onClick={onClick} className="btn">
       {children}
     </button>
   );
-};
-
-type Props = {
-  onClick: () => void;
-  children: ReactNode;
 };

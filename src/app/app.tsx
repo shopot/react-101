@@ -1,6 +1,7 @@
+import { JSX } from 'react';
 import { Counter } from '@/components';
 
-function App() {
+function App(): JSX.Element {
   return (
     <div className="container mx-auto mt-5">
       <h1 className="text-center text-4xl font-bold text-gray-600">Counter Example</h1>
