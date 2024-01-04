@@ -125,7 +125,7 @@ export const List = () => {
 ```shell
 git clone https://github.com/shopot/react-101.git
 
-git checkout list-keys
+git checkout rendering-lists
 
 npm install
 
