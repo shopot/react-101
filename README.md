@@ -276,8 +276,7 @@ export const MyComponent = () => {
 Документация по теме:
 
 - 🔗 [Applying CSS styles](https://react.dev/reference/react-dom/components/common#applying-css-styles)
--
-🔗 [Injecting dynamic styles from CSS-in-JS libraries](https://react.dev/reference/react/useInsertionEffect#injecting-dynamic-styles-from-css-in-js-libraries)
+- 🔗 [Injecting dynamic styles from CSS-in-JS libraries](https://react.dev/reference/react/useInsertionEffect#injecting-dynamic-styles-from-css-in-js-libraries)
 - 🔗 [styled-components](https://styled-components.com/docs)
 - 🔗 [CSS-Modules](https://github.com/css-modules/css-modules)
 
