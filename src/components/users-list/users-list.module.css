@@ -1,0 +1,3 @@
+.usersList {
+  @apply mt-4 mx-auto max-w-fit space-y-1 list-disc list-inside;
+}

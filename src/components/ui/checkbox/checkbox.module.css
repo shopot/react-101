@@ -1,0 +1,11 @@
+.wrapper {
+  @apply flex  max-w-fit items-center;
+}
+
+.input {
+  @apply w-6 h-6 text-blue-600 bg-gray-100 border-gray-300 rounded focus:outline-none;
+}
+
+.label {
+  @apply ml-2 font-medium text-gray-900 hover:cursor-pointer;
+}
