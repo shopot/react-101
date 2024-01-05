@@ -20,7 +20,7 @@
 * [Совместное использование состояния между компонентами](https://github.com/shopot/react-101/tree/sharing-state)
 * [Знакомство с хуком useEffect](https://github.com/shopot/react-101/tree/hook-use-effect)
 * [Руководство React Quiz App - Мыслим как React](https://github.com/shopot/react-101/tree/react-quiz-app)
-* [Получение данных - Fetching data](https://github.com/shopot/react-101/tree/chapter-13) - _chapter-13_
+* [Получение данных - Fetching data](https://github.com/shopot/react-101/tree/fetching-data)
 * [Маршрутизация в SPA - React Routing](https://github.com/shopot/react-101/tree/chapter-14) - _chapter-14_
 * [Знакомство с хуком useReducer](https://github.com/shopot/react-101/tree/chapter-15) - _chapter-15_
 * [Знакомство с хуком useRef](https://github.com/shopot/react-101/tree/chapter-16) - _chapter-16_
@@ -47,7 +47,8 @@
     - [hook-use-effect](https://github.com/shopot/react-101/tree/hook-use-effect)
 - 🔗 [Приложение React Quiz App](https://quiz-app-ab1e50.netlify.app)
     - [react-quiz-app](https://github.com/shopot/react-101/tree/react-quiz-app)
-- 🔗 [Приложение Fetching Data](https://fetch-data-ab1e50.netlify.app) - [chapter-13](https://github.com/shopot/react-101/tree/chapter-13)
+- 🔗 [Приложение Fetching Data](https://fetch-data-ab1e50.netlify.app)
+    - [fetching-data](https://github.com/shopot/react-101/tree/fetching-data)
 - 🔗 [Приложение с React Router](https://react-router-ab1e50.netlify.app) - [chapter-14](https://github.com/shopot/react-101/tree/chapter-14)
 - 🔗 [Приложение с примерами useRef](https://react-useref-ab1e50.netlify.app) - [chapter-16](https://github.com/shopot/react-101/tree/chapter-16)
 - 🔗 [Приложение с примерами React Hook Form](https://react-hook-form-ab1e50.netlify.app) - [chapter-18](https://github.com/shopot/react-101/tree/chapter-18)
