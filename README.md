@@ -91,6 +91,10 @@ npm run dev
 * 📙 [Обзор React Testing Library](https://github.com/shopot/react-101/tree/react-testing-03)
 * 📙 [Обзор Mock Service Worker (MSW)](https://github.com/shopot/react-101/tree/react-testing-msw)
 
+## 📚 React и TypeScript
+
+* 📗 [React TypeScript Cheatsheet](https://react-typescript-cheatsheet.netlify.app/docs/basic/getting-started/basic_type_example)
+
 ## 📚 Архитектура и паттерны
 
 > Coming soon...
