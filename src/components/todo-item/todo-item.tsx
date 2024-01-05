@@ -1,13 +1,17 @@
-import { ReactElement } from 'react';
+import { JSX } from 'react';
 
 import styles from './todo-item.module.css';
 
 import { ButtonRemove } from '@/shared/ui';
-import { removeTodo, Todo, toggleCompleted } from '@/reducers/todo';
+import { removeTodo, type Todo, toggleCompleted } from '@/reducers/todo';
 
 import { useTodoDispatch } from '@/contexts';
 
-export const TodoItem = ({ todo }: TodoItemProps): ReactElement => {
+type TodoItemProps = {
+  todo: Todo;
+};
+
+export const TodoItem = ({ todo }: TodoItemProps): JSX.Element => {
   const dispatch = useTodoDispatch();
 
   const { id, title, completed } = todo;
@@ -28,8 +32,4 @@ export const TodoItem = ({ todo }: TodoItemProps): ReactElement => {
       <ButtonRemove onCLick={() => dispatch(removeTodo(id))} />
     </div>
   );
-};
-
-type TodoItemProps = {
-  todo: Todo;
 };

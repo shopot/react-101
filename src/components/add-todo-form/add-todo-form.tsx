@@ -1,4 +1,5 @@
-import { ReactElement, useState } from 'react';
+import { JSX, useState } from 'react';
+
 import styles from './add-todo-form.module.css';
 
 import { Button } from '@/shared/ui';
@@ -6,7 +7,7 @@ import { Button } from '@/shared/ui';
 import { addNewTodo } from '@/reducers/todo';
 import { useTodoDispatch } from '@/contexts';
 
-export const AddTodoForm = (): ReactElement => {
+export const AddTodoForm = (): JSX.Element => {
   const [title, setTitle] = useState('');
 
   const dispatch = useTodoDispatch();

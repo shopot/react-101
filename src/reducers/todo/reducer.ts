@@ -32,5 +32,5 @@ export const todoReducer = (state: TodoState, action: TodoAction): TodoState => 
     }
   }
 
-  throw new Error('Unknown action: ' + action.type);
+  return state;
 };

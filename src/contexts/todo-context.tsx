@@ -1,6 +1,6 @@
 import { createContext, Dispatch, ReactNode, useContext, useReducer } from 'react';
 
-import { TodoAction, todoReducer, TodoState } from '@/reducers/todo';
+import { type TodoAction, todoReducer, type TodoState } from '@/reducers/todo';
 
 const TodoContext = createContext<TodoState>([]);
 
