@@ -1,13 +1,13 @@
-import { ReactElement, useEffect, useState } from 'react';
+import { JSX, useEffect, useState } from 'react';
 
 import styles from './catalog-page.module.css';
 
 import { API_URI, MAX_PAGE_COUNT } from '@/config';
 import { useFetch } from '@/hooks';
-import { Post } from '@/types';
+import type { Post } from '@/types';
 import { PostsList } from '@/components/posts-list';
 
-export const CatalogPage = (): ReactElement => {
+export const CatalogPage = (): JSX.Element => {
   const [uri, setUri] = useState(`${API_URI}?_limit=6&_page=1`);
 
   const [page, setPage] = useState(1);

@@ -1,16 +1,18 @@
-import { ReactElement } from 'react';
+import { JSX } from 'react';
 
 import styles from './post-row.module.css';
 
 import { BASE_URL } from '@/config';
-import { Post } from '@/types';
+import type { Post } from '@/types';
 
-export const PostRow = ({ data }: Props): ReactElement => {
-  const { title, image, owner, addedAt } = data;
+type PostRowProps = {
+  data: Partial<Post>;
+};
 
+export const PostRow = ({ data: { title, image, owner, addedAt } }: PostRowProps): JSX.Element => {
   return (
     <div className={styles.row}>
-      <img src={`${BASE_URL}/${image}`} />
+      <img src={`${BASE_URL}/${image}`} alt={title} />
       <div className={styles.body}>
         <h2 className={styles.name}>{title}</h2>
         <div>
@@ -21,8 +23,4 @@ export const PostRow = ({ data }: Props): ReactElement => {
       </div>
     </div>
   );
-};
-
-type Props = {
-  data: Partial<Post>;
 };
