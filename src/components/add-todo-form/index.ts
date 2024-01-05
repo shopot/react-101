@@ -1,1 +1,1 @@
-export { AddTodoForm } from './add-todo-form.tsx';
+export { AddTodoForm } from './add-todo-form';

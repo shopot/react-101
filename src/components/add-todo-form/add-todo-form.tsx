@@ -4,7 +4,11 @@ import styles from './add-todo-form.module.css';
 
 import { Button } from '@/shared/ui';
 
-export const AddTodoForm = ({ onAddTodo }: Props): ReactElement => {
+type AddTodoFormProps = {
+  onAddTodo: (title: string) => void;
+};
+
+export const AddTodoForm = ({ onAddTodo }: AddTodoFormProps): ReactElement => {
   const [title, setTitle] = useState('');
 
   const handleClick = (): void => {
@@ -34,8 +38,4 @@ export const AddTodoForm = ({ onAddTodo }: Props): ReactElement => {
       </div>
     </form>
   );
-};
-
-type Props = {
-  onAddTodo: (title: string) => void;
 };
