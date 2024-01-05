@@ -21,7 +21,7 @@
 * [Знакомство с хуком useEffect](https://github.com/shopot/react-101/tree/hook-use-effect)
 * [Руководство React Quiz App - Мыслим как React](https://github.com/shopot/react-101/tree/react-quiz-app)
 * [Получение данных - Fetching data](https://github.com/shopot/react-101/tree/fetching-data)
-* [Маршрутизация в SPA - React Routing](https://github.com/shopot/react-101/tree/chapter-14) - _chapter-14_
+* [Маршрутизация в SPA - React Routing](https://github.com/shopot/react-101/tree/react-routing) 
 * [Знакомство с хуком useReducer](https://github.com/shopot/react-101/tree/chapter-15) - _chapter-15_
 * [Знакомство с хуком useRef](https://github.com/shopot/react-101/tree/chapter-16) - _chapter-16_
 * [Знакомство с хуком useContext](https://github.com/shopot/react-101/tree/chapter-17) - _chapter-17_
@@ -49,7 +49,8 @@
     - [react-quiz-app](https://github.com/shopot/react-101/tree/react-quiz-app)
 - 🔗 [Приложение Fetching Data](https://fetch-data-ab1e50.netlify.app)
     - [fetching-data](https://github.com/shopot/react-101/tree/fetching-data)
-- 🔗 [Приложение с React Router](https://react-router-ab1e50.netlify.app) - [chapter-14](https://github.com/shopot/react-101/tree/chapter-14)
+- 🔗 [Приложение с React Router](https://react-router-ab1e50.netlify.app)
+    - [react-routing](https://github.com/shopot/react-101/tree/react-routing)
 - 🔗 [Приложение с примерами useRef](https://react-useref-ab1e50.netlify.app) - [chapter-16](https://github.com/shopot/react-101/tree/chapter-16)
 - 🔗 [Приложение с примерами React Hook Form](https://react-hook-form-ab1e50.netlify.app) - [chapter-18](https://github.com/shopot/react-101/tree/chapter-18)
 
