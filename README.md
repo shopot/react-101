@@ -18,7 +18,7 @@
 * 📘 [Применение стилей CSS - краткий обзор](https://github.com/shopot/react-101/tree/react-styling)
 * 📘 [React DOM компоненты - компоненты форм](https://github.com/shopot/react-101/tree/form-components)
 * 📘 [Совместное использование состояния между компонентами](https://github.com/shopot/react-101/tree/sharing-state)
-* 📘 [Знакомство с хуком useEffect](https://github.com/shopot/react-101/tree/chapter-11) - _chapter-11_
+* 📘 [Знакомство с хуком useEffect](https://github.com/shopot/react-101/tree/hook-use-effect)
 * 📘 [Руководство React Quiz App - Мыслим как React](https://github.com/shopot/react-101/tree/chapter-12) - _chapter-12_
 * 📘 [Получение данных - Fetching data](https://github.com/shopot/react-101/tree/chapter-13) - _chapter-13_
 * 📘 [Маршрутизация в SPA - React Routing](https://github.com/shopot/react-101/tree/chapter-14) - _chapter-14_
