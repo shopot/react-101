@@ -1,8 +1,8 @@
-import { ComponentPropsWithoutRef, ReactElement } from 'react';
+import { ComponentPropsWithoutRef, JSX } from 'react';
 
 import styles from './button.module.css';
 
-export const Button = (props: Props): ReactElement => {
+export const Button = (props: Props): JSX.Element => {
   const { variant, type, ...rest } = props;
 
   const classVariant = variant || 'default';

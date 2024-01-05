@@ -1,8 +1,8 @@
-import { ReactElement, useRef, useState } from 'react';
+import { JSX, useRef, useState } from 'react';
 
 import { Badge, Button, Divider, Subtitle } from '@/shared/ui';
 
-export const Stopwatch = (): ReactElement => {
+export const Stopwatch = (): JSX.Element => {
   const [startTime, setStartTime] = useState<ReturnType<typeof Date.now> | null>(null);
   const [now, setNow] = useState<ReturnType<typeof Date.now> | null>(null);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);

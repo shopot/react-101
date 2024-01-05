@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { JSX, useState } from 'react';
 
 import styles from './app.module.css';
 
@@ -39,7 +39,7 @@ const EXAMPLES = [
   },
 ];
 
-function App() {
+function App(): JSX.Element {
   const [example, setExample] = useState(<ClickCounter />);
 
   const examples = EXAMPLES.map(({ title, component }) => (

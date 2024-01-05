@@ -1,1 +1,1 @@
-export { Stopwatch } from './stopwatch.tsx';
+export { Stopwatch } from './stopwatch';

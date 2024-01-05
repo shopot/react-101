@@ -1,10 +1,10 @@
-import { ReactElement, useRef } from 'react';
+import { JSX, useRef } from 'react';
 
 import styles from './scrolling-image.module.css';
 
 import { Badge, Button, Divider, Subtitle } from '@/shared/ui';
 
-export const ScrollingImage = (): ReactElement => {
+export const ScrollingImage = (): JSX.Element => {
   const listRef = useRef<HTMLUListElement>(null);
 
   const scrollToIndex = (index: number) => {

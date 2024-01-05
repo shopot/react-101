@@ -3,7 +3,7 @@ import { useRef } from 'react';
 import styles from './styles.module.css';
 
 import { Badge, Button, Divider, Subtitle } from '@/shared/ui';
-import { MyInput } from '@/example/UsingForwardRef/my-input.tsx';
+import { MyInput } from '@/example/UsingForwardRef/my-input';
 
 export const UsingForwardRef = () => {
   const inputRef = useRef<HTMLInputElement>(null);

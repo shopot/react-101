@@ -1,8 +1,8 @@
-import { ReactElement, useRef } from 'react';
+import { JSX, useRef } from 'react';
 
 import { Badge, Button, Divider, Subtitle } from '@/shared/ui';
 
-export const ClickCounter = (): ReactElement => {
+export const ClickCounter = (): JSX.Element => {
   const ref = useRef<number>(0);
 
   const handleClick = () => {
