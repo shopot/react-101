@@ -1,10 +1,10 @@
-import { ReactElement } from 'react';
+import { JSX } from 'react';
 import { Outlet } from 'react-router-dom';
 
 import { TopMenu } from '@/components/top-menu';
 import { Footer } from '@/components/footer';
 
-export const RootLayout = (): ReactElement => {
+export const RootLayout = (): JSX.Element => {
   return (
     <>
       <header>

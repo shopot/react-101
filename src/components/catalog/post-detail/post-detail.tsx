@@ -1,11 +1,15 @@
-import { ReactElement } from 'react';
+import { JSX } from 'react';
 
 import styles from './post-detail.module.css';
 
 import { BASE_URL } from '@/config';
-import { Post } from '@/types';
+import type { Post } from '@/types';
 
-export const PostDetail = ({ data }: Props): ReactElement => {
+type PostDetailProps = {
+  data: Partial<Post>;
+};
+
+export const PostDetail = ({ data }: PostDetailProps): JSX.Element => {
   const { title, image, owner, addedAt, description } = data;
 
   return (
@@ -22,8 +26,4 @@ export const PostDetail = ({ data }: Props): ReactElement => {
       </div>
     </div>
   );
-};
-
-type Props = {
-  data: Partial<Post>;
 };

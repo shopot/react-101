@@ -1,11 +1,11 @@
-import { ReactElement } from 'react';
+import { JSX } from 'react';
 import { NavLink } from 'react-router-dom';
 
 import styles from './top-menu.module.css';
 
 import { APP_ROUTES } from '@/config';
 
-export const TopMenu = (): ReactElement => {
+export const TopMenu = (): JSX.Element => {
   const computedClassName = ({ isActive, isPending }: LinkProps) => {
     const stateClass = isPending ? styles.pending : isActive ? styles.active : '';
 

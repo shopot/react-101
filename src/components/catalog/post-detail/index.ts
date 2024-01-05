@@ -1,1 +1,1 @@
-export { PostDetail } from './post-detail.tsx';
+export { PostDetail } from './post-detail';

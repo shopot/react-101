@@ -1,10 +1,8 @@
-import { ReactElement } from 'react';
+import { JSX } from 'react';
 import { RouterProvider } from 'react-router-dom';
 
 import { router } from '@/routes';
 
-const App = (): ReactElement => {
-  return <RouterProvider router={router} />;
-};
+const App = (): JSX.Element => <RouterProvider router={router} />;
 
 export default App;

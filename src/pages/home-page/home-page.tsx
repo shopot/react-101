@@ -1,10 +1,10 @@
-import { ReactElement } from 'react';
+import { JSX } from 'react';
 
 import styles from './home-page.module.css';
 
 import { PageHeader } from '@/components/page-header';
 
-export const HomePage = (): ReactElement => {
+export const HomePage = (): JSX.Element => {
   return (
     <>
       <PageHeader>What is a Home Page?</PageHeader>

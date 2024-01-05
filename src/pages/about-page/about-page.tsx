@@ -1,8 +1,8 @@
-import { ReactElement } from 'react';
+import { JSX } from 'react';
 
 import { PageHeader } from '@/components/page-header';
 
-export const AboutPage = (): ReactElement => {
+export const AboutPage = (): JSX.Element => {
   return (
     <>
       <PageHeader>What Is an About Us Page?</PageHeader>

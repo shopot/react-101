@@ -1,12 +1,16 @@
-import { ReactElement } from 'react';
+import { JSX } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 import styles from './post-row.module.css';
 
 import { APP_ROUTES, BASE_URL } from '@/config';
-import { Post } from '@/types';
+import type { Post } from '@/types';
 
-export const PostRow = ({ data }: Props): ReactElement => {
+type PostRowProps = {
+  data: Partial<Post>;
+};
+
+export const PostRow = ({ data }: PostRowProps): JSX.Element => {
   const navigate = useNavigate();
 
   const { id, title, image, owner, addedAt } = data;
@@ -31,8 +35,4 @@ export const PostRow = ({ data }: Props): ReactElement => {
       </div>
     </div>
   );
-};
-
-type Props = {
-  data: Partial<Post>;
 };

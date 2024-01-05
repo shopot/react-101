@@ -1,7 +1,5 @@
-import { ReactElement } from 'react';
+import { JSX } from 'react';
 
 import { PageHeader } from '@/components/page-header';
 
-export const ErrorPage = (): ReactElement => {
-  return <PageHeader>404 Not found!</PageHeader>;
-};
+export const ErrorPage = (): JSX.Element => <PageHeader>404 Not found!</PageHeader>;

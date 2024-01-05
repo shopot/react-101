@@ -1,11 +1,7 @@
-import { ReactElement, ReactNode } from 'react';
+import { JSX, type PropsWithChildren } from 'react';
 
 import styles from './page-header.module.css';
 
-export const PageHeader = ({ children }: Props): ReactElement => {
-  return <h1 className={styles.header}>{children}</h1>;
-};
-
-type Props = {
-  children: ReactNode;
-};
+export const PageHeader = ({ children }: PropsWithChildren): JSX.Element => (
+  <h1 className={styles.header}>{children}</h1>
+);
