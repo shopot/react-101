@@ -25,7 +25,7 @@
 * [Знакомство с хуком useReducer](https://github.com/shopot/react-101/tree/hook-use-reducer)
 * [Знакомство с хуком useRef](https://github.com/shopot/react-101/tree/hook-use-ref)
 * [Знакомство с хуком useContext](https://github.com/shopot/react-101/tree/hook-use-context)
-* [Работа с формами - обзор библиотеки React Hook Form](https://github.com/shopot/react-101/tree/chapter-18) - _chapter-18_
+* [Работа с формами - обзор библиотеки React Hook Form](https://github.com/shopot/react-101/tree/react-hook-form)
 * [Знакомство с React API: createPortal](https://github.com/shopot/react-101/tree/chapter-19) - _chapter-19_
 * [Путеводитель по Flux в картинках](https://github.com/shopot/react-101/tree/chapter-20) - _chapter-20_
 * [Знакомство с Redux](https://github.com/shopot/react-101/tree/redux-base) 
@@ -53,7 +53,8 @@
     - [react-routing](https://github.com/shopot/react-101/tree/react-routing)
 - 🔗 [Приложение с примерами useRef](https://react-useref-ab1e50.netlify.app)
     - [hook-use-ref](https://github.com/shopot/react-101/tree/hook-use-ref)
-- 🔗 [Приложение с примерами React Hook Form](https://react-hook-form-ab1e50.netlify.app) - [chapter-18](https://github.com/shopot/react-101/tree/chapter-18)
+- 🔗 [Приложение с примерами React Hook Form](https://react-hook-form-ab1e50.netlify.app)
+    - [react-hook-form](https://github.com/shopot/react-101/tree/react-hook-form)
 
 </details>
 
