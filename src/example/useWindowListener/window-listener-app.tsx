@@ -1,9 +1,9 @@
-import { ReactElement, useState } from 'react';
+import { JSX, useState } from 'react';
 
-import { useWindowListener } from './use-window-listener.ts';
-import { Description } from './description.tsx';
+import { useWindowListener } from './use-window-listener';
+import { Description } from './description';
 
-export const WindowListenerApp = (): ReactElement => {
+export const WindowListenerApp = (): JSX.Element => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
 
   useWindowListener('pointermove', (e: MouseEvent) => {

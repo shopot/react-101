@@ -1,7 +1,5 @@
-import { ReactElement } from 'react';
+import { JSX } from 'react';
 
 import styles from './divider.module.css';
 
-export const Divider = (): ReactElement => {
-  return <hr className={styles.divider} />;
-};
+export const Divider = (): JSX.Element => <hr className={styles.divider} />;

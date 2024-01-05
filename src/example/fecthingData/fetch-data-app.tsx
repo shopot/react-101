@@ -1,8 +1,8 @@
-import { ReactElement, useState } from 'react';
+import { JSX, useState } from 'react';
 import { Button } from '@/shared/ui';
-import { useFetchData } from './use-fetch-data.ts';
-import { CharacterDetail } from './character-detail.tsx';
-import { Description } from './description.tsx';
+import { useFetchData } from './use-fetch-data';
+import { CharacterDetail } from './character-detail';
+import { Description } from './description';
 
 const rickandmorty = [
   {
@@ -23,7 +23,7 @@ const rickandmorty = [
   },
 ];
 
-export const FetchDataApp = (): ReactElement => {
+export const FetchDataApp = (): JSX.Element => {
   const [characterId, setCharacterId] = useState(344);
 
   const uri = `https://rickandmortyapi.com/api/character/${characterId}`;

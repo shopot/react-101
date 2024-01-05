@@ -1,8 +1,8 @@
-import { ReactElement } from 'react';
+import { JSX } from 'react';
 
 import { Badge, Divider, Subtitle } from '@/shared/ui';
 
-export const Description = (): ReactElement => {
+export const Description = (): JSX.Element => {
   return (
     <>
       <div>

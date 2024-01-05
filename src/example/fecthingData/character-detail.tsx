@@ -1,8 +1,8 @@
-import { ReactElement } from 'react';
+import { JSX } from 'react';
 
 import styles from './styles.module.css';
 
-export const CharacterDetail = ({ data }: Props): ReactElement | null => {
+export const CharacterDetail = ({ data }: Props): JSX.Element | null => {
   if (typeof data === 'undefined') {
     return null;
   }

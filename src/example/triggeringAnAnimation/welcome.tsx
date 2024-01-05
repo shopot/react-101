@@ -1,8 +1,8 @@
-import { ReactElement, useEffect, useRef } from 'react';
+import { JSX, useEffect, useRef } from 'react';
 
-import { FadeInAnimation } from './animation.ts';
+import { FadeInAnimation } from './animation';
 
-export const Welcome = (): ReactElement => {
+export const Welcome = (): JSX.Element => {
   const ref = useRef(null);
 
   useEffect(() => {

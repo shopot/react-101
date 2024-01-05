@@ -1,9 +1,9 @@
-import { ReactElement } from 'react';
+import { JSX } from 'react';
 
 import { Box } from './box';
-import { Description } from './description.tsx';
+import { Description } from './description';
 
-export const IntersectionObserverApp = (): ReactElement => {
+export const IntersectionObserverApp = (): JSX.Element => {
   return (
     <>
       <Description />
@@ -16,7 +16,7 @@ export const IntersectionObserverApp = (): ReactElement => {
   );
 };
 
-function LongSection(): ReactElement {
+function LongSection(): JSX.Element {
   const items = [];
 
   for (let i = 0; i < 50; i++) {

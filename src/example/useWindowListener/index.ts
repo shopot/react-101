@@ -1,1 +1,1 @@
-export { WindowListenerApp } from './window-listener-app.tsx';
+export { WindowListenerApp } from './window-listener-app';

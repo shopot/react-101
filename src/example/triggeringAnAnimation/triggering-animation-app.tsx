@@ -1,11 +1,11 @@
-import { ReactElement, useState } from 'react';
+import { JSX, useState } from 'react';
 
 import { Button, Divider } from '@/shared/ui';
 
-import { Welcome } from './welcome.tsx';
-import { Description } from './description.tsx';
+import { Welcome } from './welcome';
+import { Description } from './description';
 
-export const TriggeringAnimationApp = (): ReactElement => {
+export const TriggeringAnimationApp = (): JSX.Element => {
   const [show, setShow] = useState(false);
   return (
     <>

@@ -1,11 +1,11 @@
-import { ReactElement, useState } from 'react';
+import { JSX, useState } from 'react';
 
 import { Button, Divider } from '@/shared/ui';
 
 import { ChatRoom } from './chat-room';
 import { Description } from './description';
 
-export const ChatApp = (): ReactElement => {
+export const ChatApp = (): JSX.Element => {
   const [roomId, setRoomId] = useState('general');
 
   const [show, setShow] = useState(false);

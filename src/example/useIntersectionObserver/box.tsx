@@ -1,8 +1,8 @@
-import { useRef, useEffect, ReactElement } from 'react';
+import { useRef, useEffect, JSX } from 'react';
 
-import { useIntersectionObserver } from './use-intersection-observer.tsx';
+import { useIntersectionObserver } from './use-intersection-observer';
 
-export const Box = (): ReactElement => {
+export const Box = (): JSX.Element => {
   const ref = useRef(null);
 
   const isIntersecting = useIntersectionObserver(ref);

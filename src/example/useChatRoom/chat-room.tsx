@@ -1,8 +1,12 @@
-import { ReactElement, useState } from 'react';
+import { JSX, useState } from 'react';
 
-import { useChatRoom } from './use-chat-room.ts';
+import { useChatRoom } from './use-chat-room';
 
-export const ChatRoom = ({ roomId }: Props): ReactElement => {
+type Props = {
+  roomId: string;
+};
+
+export const ChatRoom = ({ roomId }: Props): JSX.Element => {
   const [serverUrl, setServerUrl] = useState('https://localhost:1234');
 
   useChatRoom({
@@ -25,8 +29,4 @@ export const ChatRoom = ({ roomId }: Props): ReactElement => {
       </h1>
     </>
   );
-};
-
-type Props = {
-  roomId: string;
 };

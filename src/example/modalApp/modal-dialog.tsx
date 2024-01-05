@@ -2,6 +2,11 @@ import { ReactNode, useEffect, useRef } from 'react';
 
 import styles from './modal-dialog.module.css';
 
+type Props = {
+  isOpen: boolean;
+  children: ReactNode;
+};
+
 export const ModalDialog = ({ isOpen, children }: Props) => {
   const ref = useRef<HTMLDialogElement>(null);
 
@@ -24,9 +29,4 @@ export const ModalDialog = ({ isOpen, children }: Props) => {
       {children}
     </dialog>
   );
-};
-
-type Props = {
-  isOpen: boolean;
-  children: ReactNode;
 };

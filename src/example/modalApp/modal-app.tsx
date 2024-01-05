@@ -1,11 +1,11 @@
-import { ReactElement, useState } from 'react';
+import { JSX, useState } from 'react';
 
 import { Button } from '@/shared/ui';
 
-import { ModalDialog } from './modal-dialog.tsx';
-import { Description } from './description.tsx';
+import { ModalDialog } from './modal-dialog';
+import { Description } from './description';
 
-export const ModalApp = (): ReactElement => {
+export const ModalApp = (): JSX.Element => {
   const [show, setShow] = useState(false);
 
   return (

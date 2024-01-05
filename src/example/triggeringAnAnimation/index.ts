@@ -1,1 +1,1 @@
-export { TriggeringAnimationApp } from './triggering-animation-app.tsx';
+export { TriggeringAnimationApp } from './triggering-animation-app';

@@ -1,1 +1,1 @@
-export { IntersectionObserverApp } from './intersection-observer-app.tsx';
+export { IntersectionObserverApp } from './intersection-observer-app';

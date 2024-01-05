@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-import { createConnection } from './chat-api.ts';
+import { createConnection } from './chat-api';
 
 export const useChatRoom = ({ serverUrl, roomId }: Props) => {
   useEffect(() => {
