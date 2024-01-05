@@ -1,8 +1,16 @@
-import { ReactElement } from 'react';
+import { JSX } from 'react';
 
 import styles from './quiz-progress.module.css';
 
-export const QuizProgress = ({ questionAnswered, totalQuestions }: Props): ReactElement => {
+type QuizProgressProps = {
+  questionAnswered: number;
+  totalQuestions: number;
+};
+
+export const QuizProgress = ({
+  questionAnswered,
+  totalQuestions,
+}: QuizProgressProps): JSX.Element => {
   const progress = Math.floor((100 / totalQuestions) * questionAnswered);
 
   return (
@@ -16,9 +24,4 @@ export const QuizProgress = ({ questionAnswered, totalQuestions }: Props): React
       </div>
     </>
   );
-};
-
-type Props = {
-  questionAnswered: number;
-  totalQuestions: number;
 };

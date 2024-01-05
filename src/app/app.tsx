@@ -1,14 +1,14 @@
-import { ReactElement, useState } from 'react';
+import { JSX, useState } from 'react';
 
 import styles from './app.module.css';
 
-import questions from '@/data/questions.ts';
-import results from '@/data/results.ts';
+import questions from '@/data/questions';
+import results from '@/data/results';
 
 import { QuestionsForm, QuestionsResult } from '@/components';
 import { Button } from '@/shared/ui';
 
-export const App = (): ReactElement => {
+export const App = (): JSX.Element => {
   const [questionAnswered, setQuestionAnswered] = useState(0);
 
   const [totalCorrect, setTotalCorrect] = useState(0);

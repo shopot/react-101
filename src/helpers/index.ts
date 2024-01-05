@@ -1,4 +1,4 @@
-import { Answer } from '@/types';
+import type { Answer } from '@/types';
 
 export const shuffleAnswersArray = (arr: Answer[]): Answer[] => {
   let currentIndex = arr.length;

@@ -1,1 +1,1 @@
-export { AnswerRow } from './answer-row.tsx';
+export { AnswerRow } from './answer-row';

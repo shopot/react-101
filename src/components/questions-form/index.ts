@@ -1,1 +1,1 @@
-export { QuestionsForm } from './questions-form.tsx';
+export { QuestionsForm } from './questions-form';

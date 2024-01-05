@@ -186,10 +186,10 @@ const QuestionsResult = ({results}) => {
 }
 
 // Список вопросов викторины
-import questions from '@/data/questions.ts';
+import questions from '@/data/questions';
 
 // Список результатов, возможные варианты результатов на основе количество правильных ответов
-import results from '@/data/results.ts';
+import results from '@/data/results';
 
 export const App = () => {
   return (
@@ -506,13 +506,14 @@ export const App = () => {
 
 🔗 [Ссылка на деплой полной версии приложения](https://quiz-app-ab1e50.netlify.app)
 
-Готовый пример с приложением находится в src раздела chapter-12.
+Готовый пример с приложением находится в `src` раздела.
 
 Для запуска примера с готовым приложением выполните команды:
+
 ```shell
 git clone https://github.com/shopot/react-101.git
 
-git checkout chapter-12
+git checkout react-quiz-app
 
 npm install
 

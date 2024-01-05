@@ -1,17 +1,23 @@
-import { ReactElement } from 'react';
+import { JSX } from 'react';
 
 import styles from './questions-form.module.css';
 
-import { Question } from '@/types';
+import type { Question } from '@/types';
 import { shuffleAnswersArray } from '@/helpers';
 import { QuizProgress } from '../quiz-progress';
 import { AnswerRow } from '../answer-row';
+
+type QuestionsFormProps = {
+  questions: Question[];
+  questionAnswered: number;
+  onAnswerQuestion: (isCorrect: boolean) => void;
+};
 
 export const QuestionsForm = ({
   questions,
   questionAnswered,
   onAnswerQuestion,
-}: Props): ReactElement => {
+}: QuestionsFormProps): JSX.Element => {
   const { ask, answers } = questions[questionAnswered];
 
   const shuffledAnswers = shuffleAnswersArray(answers);
@@ -28,10 +34,4 @@ export const QuestionsForm = ({
       {answersList}
     </>
   );
-};
-
-type Props = {
-  questions: Question[];
-  questionAnswered: number;
-  onAnswerQuestion: (isCorrect: boolean) => void;
 };

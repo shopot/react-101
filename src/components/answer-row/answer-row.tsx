@@ -1,16 +1,14 @@
-import { ReactElement } from 'react';
+import { JSX } from 'react';
 
 import styles from './answer-row.module.css';
 
-export const AnswerRow = ({ text, onAnswerQuestion }: Props): ReactElement => {
-  return (
-    <div className={styles.answer} onClick={onAnswerQuestion}>
-      {text}
-    </div>
-  );
-};
-
-type Props = {
+type AnswerRowProps = {
   text: string;
   onAnswerQuestion: () => void;
 };
+
+export const AnswerRow = ({ text, onAnswerQuestion }: AnswerRowProps): JSX.Element => (
+  <div className={styles.answer} onClick={onAnswerQuestion}>
+    {text}
+  </div>
+);

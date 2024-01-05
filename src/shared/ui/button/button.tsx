@@ -1,16 +1,15 @@
-import { ReactNode } from 'react';
+import { JSX, type PropsWithChildren } from 'react';
 
 import styles from './button.module.css';
 
-export const Button = ({ onCLick, children }: Props) => {
+type ButtonProps = {
+  onCLick: () => void;
+} & PropsWithChildren;
+
+export const Button = ({ onCLick, children }: ButtonProps): JSX.Element => {
   return (
     <button onClick={onCLick} className={styles.button} type="button">
       {children}
     </button>
   );
-};
-
-type Props = {
-  onCLick: () => void;
-  children: ReactNode;
 };

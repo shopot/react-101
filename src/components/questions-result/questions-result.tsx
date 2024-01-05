@@ -1,10 +1,15 @@
-import { ReactElement } from 'react';
+import { JSX } from 'react';
 
 import styles from './questions-result.module.css';
 
-import { Result } from '@/types';
+import type { Result } from '@/types';
 
-export const QuestionsResult = ({ totalCorrect, results }: Props): ReactElement => {
+type QuestionsResultProps = {
+  totalCorrect: number;
+  results: Result[];
+};
+
+export const QuestionsResult = ({ totalCorrect, results }: QuestionsResultProps): JSX.Element => {
   let resultIndex = 0;
   let headerClass = styles.loser;
 
@@ -24,9 +29,4 @@ export const QuestionsResult = ({ totalCorrect, results }: Props): ReactElement 
       <p className={styles.desc}>{desc}</p>
     </>
   );
-};
-
-type Props = {
-  totalCorrect: number;
-  results: Result[];
 };

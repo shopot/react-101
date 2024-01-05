@@ -1,1 +1,1 @@
-export { QuizProgress } from './quiz-progress.tsx';
+export { QuizProgress } from './quiz-progress';
