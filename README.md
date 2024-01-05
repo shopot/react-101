@@ -26,7 +26,7 @@
 * [Знакомство с хуком useRef](https://github.com/shopot/react-101/tree/hook-use-ref)
 * [Знакомство с хуком useContext](https://github.com/shopot/react-101/tree/hook-use-context)
 * [Работа с формами - обзор библиотеки React Hook Form](https://github.com/shopot/react-101/tree/react-hook-form)
-* [Знакомство с React API: createPortal](https://github.com/shopot/react-101/tree/chapter-19) - _chapter-19_
+* [Знакомство с React API: createPortal](https://github.com/shopot/react-101/tree/react-create-portal)
 * [Путеводитель по Flux в картинках](https://github.com/shopot/react-101/tree/chapter-20) - _chapter-20_
 * [Знакомство с Redux](https://github.com/shopot/react-101/tree/redux-base) 
 * [Знакомство с Redux Toolkit (RTK)](https://github.com/shopot/react-101/tree/redux-toolkit-quick)
