@@ -19,7 +19,7 @@
 * 📘 [React DOM компоненты - компоненты форм](https://github.com/shopot/react-101/tree/form-components)
 * 📘 [Совместное использование состояния между компонентами](https://github.com/shopot/react-101/tree/sharing-state)
 * 📘 [Знакомство с хуком useEffect](https://github.com/shopot/react-101/tree/hook-use-effect)
-* 📘 [Руководство React Quiz App - Мыслим как React](https://github.com/shopot/react-101/tree/chapter-12) - _chapter-12_
+* 📘 [Руководство React Quiz App - Мыслим как React](https://github.com/shopot/react-101/tree/react-quiz-app)
 * 📘 [Получение данных - Fetching data](https://github.com/shopot/react-101/tree/chapter-13) - _chapter-13_
 * 📘 [Маршрутизация в SPA - React Routing](https://github.com/shopot/react-101/tree/chapter-14) - _chapter-14_
 * 📘 [Знакомство с хуком useReducer](https://github.com/shopot/react-101/tree/chapter-15) - _chapter-15_
@@ -43,8 +43,10 @@
     - [chapter-17](https://github.com/shopot/react-101/tree/chapter-17)
 - 🔗 [Приложение React Roadmap (Accordion)](https://react-roadmap-ab1e50.netlify.app)
     - [sharing-state](https://github.com/shopot/react-101/tree/chapter-10)
-- 🔗 [Приложение с примерами useEffect](https://react-use-effect-ab1e50.netlify.app) - [chapter-11](https://github.com/shopot/react-101/tree/chapter-11)
-- 🔗 [Приложение React Quiz App](https://quiz-app-ab1e50.netlify.app) - [chapter-12](https://github.com/shopot/react-101/tree/chapter-12)
+- 🔗 [Приложение с примерами useEffect](https://react-use-effect-ab1e50.netlify.app)
+    - [hook-use-effect](https://github.com/shopot/react-101/tree/hook-use-effect)
+- 🔗 [Приложение React Quiz App](https://quiz-app-ab1e50.netlify.app)
+    - [react-quiz-app](https://github.com/shopot/react-101/tree/react-quiz-app)
 - 🔗 [Приложение Fetching Data](https://fetch-data-ab1e50.netlify.app) - [chapter-13](https://github.com/shopot/react-101/tree/chapter-13)
 - 🔗 [Приложение с React Router](https://react-router-ab1e50.netlify.app) - [chapter-14](https://github.com/shopot/react-101/tree/chapter-14)
 - 🔗 [Приложение с примерами useRef](https://react-useref-ab1e50.netlify.app) - [chapter-16](https://github.com/shopot/react-101/tree/chapter-16)
