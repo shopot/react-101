@@ -23,7 +23,7 @@
 * [Получение данных - Fetching data](https://github.com/shopot/react-101/tree/fetching-data)
 * [Маршрутизация в SPA - React Routing](https://github.com/shopot/react-101/tree/react-routing) 
 * [Знакомство с хуком useReducer](https://github.com/shopot/react-101/tree/hook-use-reducer)
-* [Знакомство с хуком useRef](https://github.com/shopot/react-101/tree/chapter-16) - _chapter-16_
+* [Знакомство с хуком useRef](https://github.com/shopot/react-101/tree/hook-use-ref)
 * [Знакомство с хуком useContext](https://github.com/shopot/react-101/tree/chapter-17) - _chapter-17_
 * [Работа с формами - обзор библиотеки React Hook Form](https://github.com/shopot/react-101/tree/chapter-18) - _chapter-18_
 * [Знакомство с React API: createPortal](https://github.com/shopot/react-101/tree/chapter-19) - _chapter-19_
@@ -51,7 +51,8 @@
     - [fetching-data](https://github.com/shopot/react-101/tree/fetching-data)
 - 🔗 [Приложение с React Router](https://react-router-ab1e50.netlify.app)
     - [react-routing](https://github.com/shopot/react-101/tree/react-routing)
-- 🔗 [Приложение с примерами useRef](https://react-useref-ab1e50.netlify.app) - [chapter-16](https://github.com/shopot/react-101/tree/chapter-16)
+- 🔗 [Приложение с примерами useRef](https://react-useref-ab1e50.netlify.app)
+    - [hook-use-ref](https://github.com/shopot/react-101/tree/hook-use-ref)
 - 🔗 [Приложение с примерами React Hook Form](https://react-hook-form-ab1e50.netlify.app) - [chapter-18](https://github.com/shopot/react-101/tree/chapter-18)
 
 </details>
