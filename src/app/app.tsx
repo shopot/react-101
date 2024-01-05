@@ -1,11 +1,11 @@
-import { ReactElement } from 'react';
+import { JSX } from 'react';
 
 import styles from './app.module.css';
 
 import { Button, Modal } from '@/shared/ui';
 import { useModal } from '@/hooks';
 
-const App = (): ReactElement => {
+const App = (): JSX.Element => {
   const { isShowing, toggle } = useModal();
 
   console.log('Render <App />');

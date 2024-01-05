@@ -1,8 +1,8 @@
-import { ButtonHTMLAttributes, ReactElement } from 'react';
+import { ButtonHTMLAttributes, JSX } from 'react';
 
 import styles from './button.module.css';
 
-export const Button = (props: ButtonProps): ReactElement => {
+export const Button = (props: ButtonProps): JSX.Element => {
   const { variant, type, ...rest } = props;
 
   return (

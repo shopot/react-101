@@ -1,7 +1,12 @@
+import { type PropsWithChildren } from 'react';
 import { createPortal } from 'react-dom';
-import { ReactNode } from 'react';
 
 import styles from './modal.module.css';
+
+type ModalProps = {
+  isShowing: boolean;
+  hide: () => void;
+} & PropsWithChildren;
 
 export const Modal = ({ isShowing, hide, children }: ModalProps) => {
   if (isShowing) {
@@ -37,10 +42,4 @@ export const Modal = ({ isShowing, hide, children }: ModalProps) => {
   }
 
   return null;
-};
-
-type ModalProps = {
-  isShowing: boolean;
-  hide: () => void;
-  children: ReactNode;
 };

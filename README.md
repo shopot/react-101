@@ -180,14 +180,14 @@ export const App = () => {
 
 [⬆ Back to Top](#знакомство-с-react-api-createportal)
 
-Готовый пример с приложением находится в src раздела chapter-19.
+Готовый пример с приложением находится в src раздела.
 
 Для запуска примера с готовым приложением выполните команды:
 
 ```shell
 git clone https://github.com/shopot/react-101.git
 
-git checkout chapter-19
+git checkout react-create-portal
 
 npm install
 
