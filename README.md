@@ -22,7 +22,7 @@
 * [Руководство React Quiz App - Мыслим как React](https://github.com/shopot/react-101/tree/react-quiz-app)
 * [Получение данных - Fetching data](https://github.com/shopot/react-101/tree/fetching-data)
 * [Маршрутизация в SPA - React Routing](https://github.com/shopot/react-101/tree/react-routing) 
-* [Знакомство с хуком useReducer](https://github.com/shopot/react-101/tree/chapter-15) - _chapter-15_
+* [Знакомство с хуком useReducer](https://github.com/shopot/react-101/tree/hook-use-reducer)
 * [Знакомство с хуком useRef](https://github.com/shopot/react-101/tree/chapter-16) - _chapter-16_
 * [Знакомство с хуком useContext](https://github.com/shopot/react-101/tree/chapter-17) - _chapter-17_
 * [Работа с формами - обзор библиотеки React Hook Form](https://github.com/shopot/react-101/tree/chapter-18) - _chapter-18_
@@ -39,7 +39,7 @@
 
 - 🔗 [Приложение Todo App](https://todo-app-ab1e50.netlify.app)
     - [form-components](https://github.com/shopot/react-101/tree/form-components)
-    - [chapter-15](https://github.com/shopot/react-101/tree/chapter-15)
+    - [hook-use-reducer](https://github.com/shopot/react-101/tree/hook-use-reducer)
     - [chapter-17](https://github.com/shopot/react-101/tree/chapter-17)
 - 🔗 [Приложение React Roadmap (Accordion)](https://react-roadmap-ab1e50.netlify.app)
     - [sharing-state](https://github.com/shopot/react-101/tree/chapter-10)
