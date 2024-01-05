@@ -1,8 +1,12 @@
-import { ButtonHTMLAttributes, ReactElement } from 'react';
+import { type ButtonHTMLAttributes, JSX } from 'react';
 
 import styles from './button.module.css';
 
-export const Button = (props: ButtonProps): ReactElement => {
+type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
+  variant?: 'primary' | 'default';
+};
+
+export const Button = (props: ButtonProps): JSX.Element => {
   const { variant, type, ...rest } = props;
 
   return (
@@ -12,8 +16,4 @@ export const Button = (props: ButtonProps): ReactElement => {
       {...rest}
     />
   );
-};
-
-type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
-  variant?: 'primary' | 'default';
 };

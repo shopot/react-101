@@ -1,4 +1,4 @@
-import { ReactElement, useState } from 'react';
+import { JSX, useState } from 'react';
 
 import styles from './app.module.css';
 
@@ -6,7 +6,7 @@ import { Button } from '@/shared/ui';
 import { RegisterForm } from '@/components/register-form';
 import { LoginForm } from '@/components/login-form';
 
-const App = (): ReactElement => {
+const App = (): JSX.Element => {
   const [isLoginForm, setIsLoginForm] = useState(true);
 
   return (

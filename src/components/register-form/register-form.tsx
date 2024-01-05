@@ -1,4 +1,4 @@
-import { ReactElement } from 'react';
+import { JSX } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { ErrorMessage } from '@hookform/error-message';
@@ -6,10 +6,10 @@ import { ErrorMessage } from '@hookform/error-message';
 import styles from './register-form.module.css';
 
 import { Button, Input, Select, Checkbox, Card, FormControl } from '@/shared/ui';
-import { RegisterFormValues } from './register-form-types.ts';
-import { yupSchemaValidator } from './yup-schema-validator.ts';
+import { RegisterFormValues } from './register-form-types';
+import { yupSchemaValidator } from './yup-schema-validator';
 
-export const RegisterForm = (): ReactElement => {
+export const RegisterForm = (): JSX.Element => {
   const {
     register,
     handleSubmit,

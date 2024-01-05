@@ -3,6 +3,11 @@ import { UseFormRegister } from 'react-hook-form';
 
 import styles from './select.module.css';
 
+type SelectProps = {
+  label: string;
+  options: string[];
+};
+
 export const Select = forwardRef<
   HTMLSelectElement,
   SelectProps & ReturnType<UseFormRegister<{ [key: string]: string }>>
@@ -24,8 +29,3 @@ export const Select = forwardRef<
     </select>
   </>
 ));
-
-type SelectProps = {
-  label: string;
-  options: string[];
-};

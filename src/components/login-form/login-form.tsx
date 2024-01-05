@@ -1,12 +1,12 @@
-import { ReactElement } from 'react';
+import { JSX } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
 import styles from './login-form.module.css';
 
-import { LoginFormValues } from './login-form-types.ts';
-import { loginFormValidator } from './login-form-validator.ts';
+import { LoginFormValues } from './login-form-types';
+import { loginFormValidator } from './login-form-validator';
 
-export const LoginForm = (): ReactElement => {
+export const LoginForm = (): JSX.Element => {
   const {
     register,
     handleSubmit,

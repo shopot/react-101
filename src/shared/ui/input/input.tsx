@@ -3,6 +3,10 @@ import { UseFormRegister } from 'react-hook-form';
 
 import styles from './input.module.css';
 
+type InputProps = InputHTMLAttributes<HTMLInputElement> & {
+  label: string;
+} & Omit<ReturnType<UseFormRegister<{ [k: string]: string | number | boolean }>>, 'ref'>;
+
 export const Input = forwardRef<HTMLInputElement, InputProps>(
   ({ onChange, onBlur, name, label, ...rest }, ref) => (
     <>
@@ -18,7 +22,3 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
     </>
   )
 );
-
-type InputProps = InputHTMLAttributes<HTMLInputElement> & {
-  label: string;
-} & Omit<ReturnType<UseFormRegister<{ [k: string]: string | number | boolean }>>, 'ref'>;
