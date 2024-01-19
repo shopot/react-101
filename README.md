@@ -105,4 +105,4 @@ npm run dev
 
 ## 📓️ Полезности
  
-- 🔗 [Соглашение о коммитах](https://www.conventionalcommits.org/ru/v1.0.0/)
+- 🔗 [Соглашение о коммитах (conventionalcommits.org)](https://www.conventionalcommits.org/ru/v1.0.0/)
