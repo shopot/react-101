@@ -10,7 +10,7 @@
 
 * [Знакомство с JSX](https://github.com/shopot/react-101/tree/jsx)
 * [Отрисовка элементов](https://github.com/shopot/react-101/tree/react-render)
-* [Компоненты - одна из основных концепций React](https://github.com/shopot/react-101/tree/components) 
+* [Компоненты - одна из основных концепций React](https://github.com/shopot/react-101/tree/components)
 * [Условный рендеринг](https://github.com/shopot/react-101/tree/conditional-rendering)
 * [Обработка событий](https://github.com/shopot/react-101/tree/event-handling)
 * [Списки и ключи - React Key Concepts](https://github.com/shopot/react-101/tree/rendering-lists)
@@ -21,14 +21,14 @@
 * [Знакомство с хуком useEffect](https://github.com/shopot/react-101/tree/hook-use-effect)
 * [Руководство React Quiz App - Мыслим как React](https://github.com/shopot/react-101/tree/react-quiz-app)
 * [Получение данных - Fetching data](https://github.com/shopot/react-101/tree/fetching-data)
-* [Маршрутизация в SPA - React Routing](https://github.com/shopot/react-101/tree/react-routing) 
+* [Маршрутизация в SPA - React Routing](https://github.com/shopot/react-101/tree/react-routing)
 * [Знакомство с хуком useReducer](https://github.com/shopot/react-101/tree/hook-use-reducer)
 * [Знакомство с хуком useRef](https://github.com/shopot/react-101/tree/hook-use-ref)
 * [Знакомство с хуком useContext](https://github.com/shopot/react-101/tree/hook-use-context)
 * [Работа с формами - обзор библиотеки React Hook Form](https://github.com/shopot/react-101/tree/react-hook-form)
 * [Знакомство с React API: createPortal](https://github.com/shopot/react-101/tree/react-create-portal)
 * [Путеводитель по Flux в картинках](https://github.com/shopot/react-101/tree/react-flux)
-* [Знакомство с Redux](https://github.com/shopot/react-101/tree/redux-base) 
+* [Знакомство с Redux](https://github.com/shopot/react-101/tree/redux-base)
 * [Знакомство с Redux Toolkit (RTK)](https://github.com/shopot/react-101/tree/redux-toolkit-quick)
 * [Знакомство с RTK Query](https://github.com/shopot/react-101/tree/rtk-query)
 * [Новые возможности в Redux Toolkit 2.0](https://github.com/shopot/react-101/tree/redux-tollkit-2)
@@ -97,6 +97,7 @@ npm run dev
 
 ## 📚 React и TypeScript
 
+* [Конспект по TypeScript](https://github.com/shopot/react-101/blob/ts-notes/README.md)
 * [React TypeScript Cheatsheet](https://react-typescript-cheatsheet.netlify.app/docs/basic/getting-started/basic_type_example)
 
 ## 📚 Архитектура и паттерны
@@ -104,5 +105,5 @@ npm run dev
 > Coming soon...
 
 ## 📓️ Полезности
- 
+
 - 🔗 [Соглашение о коммитах (conventionalcommits.org)](https://www.conventionalcommits.org/ru/v1.0.0/)
