@@ -22,17 +22,10 @@
     "ecmaVersion": "latest",
     "sourceType": "module",
     "tsconfigRootDir": ".",
-    "project": [
-      "./tsconfig.json"
-    ]
+    "project": ["./tsconfig.json"]
   },
   // Configuring third-party plugins
-  "plugins": [
-    "react",
-    "react-hooks",
-    "@typescript-eslint",
-    "react-refresh"
-  ],
+  "plugins": ["react", "react-hooks", "@typescript-eslint", "react-refresh"],
   // Resolve imports
   "settings": {
     "import/resolver": {
@@ -48,10 +41,7 @@
   "rules": {
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
-    "comma-dangle": [
-      "error",
-      "only-multiline"
-    ],
+    "comma-dangle": ["error", "only-multiline"],
     "react/prop-types": "off",
     "react/display-name": "off",
     "@typescript-eslint/explicit-function-return-type": "off",
@@ -63,9 +53,18 @@
     "@typescript-eslint/no-explicit-any": "error",
     "@typescript-eslint/no-var-requires": "off",
     "react/jsx-uses-react": "off",
-    "react/react-in-jsx-scope": "off"
+    "react/react-in-jsx-scope": "off",
+    "import/order": [
+      "error",
+      {
+        "groups": ["builtin", "external", "internal", "parent", "sibling", "index", "object"],
+        "newlines-between": "always",
+        "alphabetize": { "order": "asc", "caseInsensitive": true }
+      }
+    ],
+    "import/default": "off",
+    "import/no-named-as-default-member": "off",
+    "import/no-named-as-default": "off"
   },
-  "ignorePatterns": [
-    "vite.config.ts"
-  ]
+  "ignorePatterns": ["vite.config.ts"]
 }

@@ -1,0 +1,7 @@
+.app {
+  @apply container max-w-lg mx-auto mt-8
+}
+
+.header {
+  @apply text-center font-semibold text-3xl
+}
