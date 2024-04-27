@@ -7,7 +7,7 @@ import styles from './todos-list.module.css';
 
 export const TodosList = (): JSX.Element => {
   const todos = useTodosStore((state) => state.todos);
-  const [removeTask, toggleTask] = useTodosStore((state) => [state.removeTask, state.toggleTask]);
+  const [deleteTodo, toggleTodo] = useTodosStore((state) => [state.deleteTodo, state.toggleTodo]);
 
   if (todos.length === 0) {
     return <div>No data!</div>;
@@ -16,7 +16,7 @@ export const TodosList = (): JSX.Element => {
   return (
     <div className={styles.todos}>
       {todos.map((todo) => (
-        <TodoItem key={todo.id} todo={todo} onToggle={toggleTask} onDelete={removeTask} />
+        <TodoItem key={todo.id} todo={todo} onToggle={toggleTodo} onDelete={deleteTodo} />
       ))}
     </div>
   );

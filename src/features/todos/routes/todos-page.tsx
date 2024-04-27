@@ -1,14 +1,19 @@
-import type { JSX } from 'react';
+import { useEffect, type JSX } from 'react';
 
 import { AddTodoForm, TodosList } from '../components';
 import { useTodosStore } from '../stores';
 
 export const TodosPage = (): JSX.Element => {
-  const addTask = useTodosStore((state) => state.addTask);
+  const addTodo = useTodosStore((state) => state.addTodo);
+  const loadTodos = useTodosStore((state) => state.loadTodos);
+
+  useEffect(() => {
+    void loadTodos();
+  }, [loadTodos]);
 
   return (
     <>
-      <AddTodoForm onAddTodo={addTask} />
+      <AddTodoForm onAddTodo={addTodo} />
       <TodosList />
     </>
   );

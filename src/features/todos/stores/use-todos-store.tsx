@@ -1,7 +1,6 @@
 import { create } from 'zustand';
 
-import { createId } from '@/lib/uuid';
-
+import { API } from '../api';
 import { TodoType } from '../types';
 
 export type TodosStateType = {
@@ -9,9 +8,10 @@ export type TodosStateType = {
 };
 
 export type TodosActionsType = {
-  removeTask: (id: string) => void;
-  addTask: (title: string) => void;
-  toggleTask: (id: string) => void;
+  deleteTodo: (id: string) => void;
+  addTodo: (title: string) => void;
+  toggleTodo: (id: string) => void;
+  loadTodos: () => void;
 };
 
 export type TodosState = TodosStateType & TodosActionsType;
@@ -41,30 +41,36 @@ const initialState: TodosStateType = {
   ],
 };
 
-export const useTodosStore = create<TodosState>((set) => ({
+export const useTodosStore = create<TodosState>((set, get) => ({
   ...initialState,
 
-  removeTask: (id: string) => {
-    set((state) => ({ todos: state.todos.filter((task) => task.id !== id) }));
+  deleteTodo: async (id: string) => {
+    await API.deleteTodoById(id);
+
+    get().loadTodos();
   },
 
-  addTask: (title: string) => {
-    set((state) => ({ todos: [...state.todos, { id: createId(), title, completed: false }] }));
+  addTodo: async (title: string) => {
+    await API.addTodo(title);
+
+    get().loadTodos();
   },
 
-  toggleTask: (id: string) => {
-    set((state) => {
-      const todos = [...state.todos];
+  toggleTodo: async (id: string) => {
+    const findTodo = get().todos.find((todo) => todo.id === id);
 
-      const index = todos.findIndex((task) => task.id === id);
+    if (!findTodo) {
+      return;
+    }
 
-      if (index !== -1) {
-        todos[index].completed = !todos[index].completed;
+    await API.updateTodoById(id, !findTodo.completed);
 
-        return { todos };
-      }
+    get().loadTodos();
+  },
 
-      return state;
-    });
+  loadTodos: async () => {
+    const todos = await API.getTodos();
+
+    set({ todos });
   },
 }));
