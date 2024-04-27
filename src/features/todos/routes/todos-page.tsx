@@ -4,8 +4,7 @@ import { AddTodoForm, TodosList } from '../components';
 import { useTodosStore } from '../stores';
 
 export const TodosPage = (): JSX.Element => {
-  const addTodo = useTodosStore((state) => state.addTodo);
-  const loadTodos = useTodosStore((state) => state.loadTodos);
+  const [addTodo, loadTodos] = useTodosStore(({ addTodo, loadTodos }) => [addTodo, loadTodos]);
 
   useEffect(() => {
     void loadTodos();
