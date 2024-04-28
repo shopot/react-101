@@ -14,7 +14,6 @@ export interface TodosStateInterface extends TodosStateProps {
   addTodo: (title: string) => void;
   toggleTodo: (id: string) => void;
   loadTodos: () => void;
-  queryFn: <T>(loader: () => Promise<T>) => Promise<T | null>;
 }
 
 export type TodosStoreType = ReturnType<typeof createTodosStore>;
@@ -54,27 +53,11 @@ const createTodosStore = (initialProps: Partial<TodosStateProps>) => {
     },
 
     loadTodos: async () => {
-      const todos =
-        (await get().queryFn(async () => {
-          return await API.getTodos();
-        })) || [];
+      set({ isLoading: true });
 
-      set({ todos });
-    },
+      const todos = await API.getTodos();
 
-    queryFn: async <T,>(loader: () => Promise<T>): Promise<T | null> => {
-      try {
-        set({ isLoading: true });
-        const result: T = await loader();
-
-        return result;
-      } catch (err) {
-        console.log(err);
-
-        return null;
-      } finally {
-        set({ isLoading: false });
-      }
+      set({ todos, isLoading: false });
     },
   }));
 };
