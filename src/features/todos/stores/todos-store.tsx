@@ -88,3 +88,5 @@ export const useTodosContext = <T,>(selector: (state: TodosStateType) => T): T =
 
   return useStore(store, selector);
 };
+
+export const useTodos = () => useTodosContext((state) => state);
