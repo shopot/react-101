@@ -2,13 +2,13 @@ import type { JSX } from 'react';
 
 import { Loader } from '@/components';
 
-import { deleteTodo, useStore, toggleTodo } from '../../stores';
+import { deleteTodo, useTodosStore, toggleTodo } from '../../stores';
 import { TodoItem } from '../todo-item/todo-item';
 
 import styles from './todos-list.module.css';
 
 export const TodosList = (): JSX.Element => {
-  const [todos, isLoading] = useStore((s) => [s.todos, s.isLoading]);
+  const [todos, isLoading] = useTodosStore((s) => [s.todos, s.isLoading]);
 
   if (isLoading) {
     return <Loader />;

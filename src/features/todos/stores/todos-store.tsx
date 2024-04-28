@@ -75,6 +75,4 @@ export const deleteTodo = async (id: string) => {
   }
 };
 
-export const useTodosStore = () => store.getState();
-
-export { store as useStore };
+export { store as useTodosStore };
