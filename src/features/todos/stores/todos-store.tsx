@@ -48,8 +48,6 @@ export const addTodo = async (title: string) => {
 };
 
 export const toggleTodo = async (id: string) => {
-  store.setState({ isLoading: true });
-
   const findTodo = store.getState().todos.find((todo) => todo.id === id);
 
   if (findTodo) {
@@ -61,8 +59,6 @@ export const toggleTodo = async (id: string) => {
       console.log(error);
     }
   }
-
-  store.setState({ isLoading: false });
 };
 
 export const deleteTodo = async (id: string) => {
