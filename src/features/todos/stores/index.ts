@@ -1,1 +1,1 @@
-export * from './use-todos-store';
+export * from './todos-store';

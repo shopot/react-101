@@ -1,1 +1,1 @@
-export { TodosPage } from './routes';
+export { TodosRoute } from './routes';

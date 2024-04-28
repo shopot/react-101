@@ -12,4 +12,7 @@ export default defineConfig({
       '@': pathResolver('./src'),
     },
   },
+  server: {
+    open: true,
+  },
 });

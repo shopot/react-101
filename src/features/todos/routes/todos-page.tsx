@@ -1,10 +1,10 @@
 import { useEffect, type JSX } from 'react';
 
 import { AddTodoForm, TodosList } from '../components';
-import { useTodosStore } from '../stores';
+import { useTodosContext } from '../stores';
 
 export const TodosPage = (): JSX.Element => {
-  const [addTodo, loadTodos] = useTodosStore(({ addTodo, loadTodos }) => [addTodo, loadTodos]);
+  const [addTodo, loadTodos] = useTodosContext((s) => [s.addTodo, s.loadTodos]);
 
   useEffect(() => {
     void loadTodos();

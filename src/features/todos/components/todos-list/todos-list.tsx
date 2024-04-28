@@ -1,13 +1,13 @@
 import type { JSX } from 'react';
 
-import { useTodosStore } from '../../stores';
+import { useTodosContext } from '../../stores';
 import { TodoItem } from '../todo-item/todo-item';
 
 import styles from './todos-list.module.css';
 
 export const TodosList = (): JSX.Element => {
-  const todos = useTodosStore((state) => state.todos);
-  const [deleteTodo, toggleTodo] = useTodosStore((state) => [state.deleteTodo, state.toggleTodo]);
+  const todos = useTodosContext((s) => s.todos);
+  const [deleteTodo, toggleTodo] = useTodosContext((s) => [s.deleteTodo, s.toggleTodo]);
 
   if (todos.length === 0) {
     return <div>No data!</div>;
