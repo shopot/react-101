@@ -6,6 +6,7 @@ import { TodoType } from '../types';
 
 export interface TodosStateProps {
   todos: TodoType[];
+  isLoading: boolean;
 }
 
 export interface TodosStateInterface extends TodosStateProps {
@@ -13,6 +14,7 @@ export interface TodosStateInterface extends TodosStateProps {
   addTodo: (title: string) => void;
   toggleTodo: (id: string) => void;
   loadTodos: () => void;
+  query: <T>(loader: () => Promise<T>) => Promise<T | null>;
 }
 
 export type TodosStoreType = ReturnType<typeof createTodosStore>;
@@ -20,6 +22,7 @@ export type TodosStoreType = ReturnType<typeof createTodosStore>;
 const createTodosStore = (initialProps: Partial<TodosStateProps>) => {
   const DEFAULT_PROPS: TodosStateProps = {
     todos: [],
+    isLoading: false,
   };
 
   return createStore<TodosStateInterface>()((set, get) => ({
@@ -51,9 +54,27 @@ const createTodosStore = (initialProps: Partial<TodosStateProps>) => {
     },
 
     loadTodos: async () => {
-      const todos = await API.getTodos();
+      const todos =
+        (await get().query(async () => {
+          return await API.getTodos();
+        })) || [];
 
       set({ todos });
+    },
+
+    query: async <T,>(loader: () => Promise<T>): Promise<T | null> => {
+      try {
+        set({ isLoading: true });
+        const result: T = await loader();
+
+        return result;
+      } catch (err) {
+        console.log(err);
+
+        return null;
+      } finally {
+        set({ isLoading: false });
+      }
     },
   }));
 };

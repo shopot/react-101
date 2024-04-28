@@ -1,3 +1,4 @@
+import { sleep } from '@/lib/sleep';
 import { createId } from '@/lib/uuid';
 
 import { TodoType } from '../types';
@@ -26,7 +27,7 @@ let todosInMemory: TodoType[] = [
 ];
 
 export const API = {
-  getTodos: async () => Promise.resolve(todosInMemory),
+  getTodos: async () => sleep(300).then(() => todosInMemory),
 
   addTodo: async (title: string) => {
     return new Promise<TodoType | null>((resolve) => {
