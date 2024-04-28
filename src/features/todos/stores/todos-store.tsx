@@ -1,92 +1,80 @@
-import { type PropsWithChildren, createContext, useRef, useContext } from 'react';
-import { createStore, useStore } from 'zustand';
+import { create } from 'zustand';
 
 import { API } from '../api';
 import { TodoType } from '../types';
 
-type TodosStateProps = {
+type TodosStateType = {
   todos: TodoType[];
   isLoading: boolean;
 };
 
-type TodosStateType = {
-  deleteTodo: (id: string) => void;
-  addTodo: (title: string) => void;
-  toggleTodo: (id: string) => void;
-  loadTodos: () => void;
-} & TodosStateProps;
+const initialState: TodosStateType = {
+  todos: [],
+  isLoading: false,
+};
 
-const createTodosStore = (initialProps: Partial<TodosStateProps>) => {
-  const DEFAULT_PROPS: TodosStateProps = {
-    todos: [],
-    isLoading: false,
-  };
+const store = create<TodosStateType>(() => ({
+  ...initialState,
+}));
 
-  return createStore<TodosStateType>()((set, get) => ({
-    ...DEFAULT_PROPS,
-    ...initialProps,
+export const loadAllTodos = async () => {
+  store.setState({ isLoading: true });
 
-    deleteTodo: async (id: string) => {
-      await API.deleteTodoById(id);
+  try {
+    const todos = await API.getTodos();
 
-      get().loadTodos();
-    },
+    store.setState({ todos, isLoading: false });
+  } catch (error) {
+    console.log(error);
 
-    addTodo: async (title: string) => {
-      await API.addTodo(title);
+    store.setState({ isLoading: false });
+  }
+};
 
-      get().loadTodos();
-    },
+export const addTodo = async (title: string) => {
+  store.setState({ isLoading: true });
 
-    toggleTodo: async (id: string) => {
-      const findTodo = get().todos.find((todo) => todo.id === id);
+  try {
+    const newTodo = await API.addTodo(title);
 
-      if (!findTodo) {
-        return;
-      }
+    if (newTodo) {
+      store.setState({ todos: [...store.getState().todos, newTodo] });
+    }
+  } catch (error) {
+    console.log(error);
+  }
 
+  store.setState({ isLoading: false });
+};
+
+export const toggleTodo = async (id: string) => {
+  store.setState({ isLoading: true });
+
+  const findTodo = store.getState().todos.find((todo) => todo.id === id);
+
+  if (findTodo) {
+    try {
       await API.updateTodoById(id, !findTodo.completed);
 
-      get().loadTodos();
-    },
-
-    loadTodos: async () => {
-      set({ isLoading: true });
-
-      const todos = await API.getTodos();
-
-      set({ todos, isLoading: false });
-    },
-  }));
-};
-
-type TodosStoreType = ReturnType<typeof createTodosStore>;
-
-const TodosStoreContext = createContext<TodosStoreType | null>(null);
-
-export const TodosStoreProvider = ({
-  children,
-  ...props
-}: PropsWithChildren<Partial<TodosStateProps>>) => {
-  const storeRef = useRef<TodosStoreType>();
-
-  if (!storeRef.current) {
-    storeRef.current = createTodosStore(props);
+      await loadAllTodos();
+    } catch (error) {
+      console.log(error);
+    }
   }
 
-  return (
-    <TodosStoreContext.Provider value={storeRef.current}>{children}</TodosStoreContext.Provider>
-  );
+  store.setState({ isLoading: false });
 };
 
-export const useTodosContext = <T,>(selector: (state: TodosStateType) => T): T => {
-  const store = useContext(TodosStoreContext);
+export const deleteTodo = async (id: string) => {
+  try {
+    await API.deleteTodoById(id);
 
-  if (!store) {
-    throw new Error('Missing TodosStoreProvider.Provider in the tree');
+    await loadAllTodos();
+  } catch (error) {
+    console.log(error);
   }
-
-  return useStore(store, selector);
 };
 
-export const useTodos = () => useTodosContext((state) => state);
+export const useTodosStore = () => store.getState();
+
+export { store as useStore };

@@ -2,20 +2,18 @@ import { useState } from 'react';
 
 import { Button } from '@/components';
 
+import { addTodo } from '../../stores';
+
 import styles from './add-todo-form.module.css';
 
-type AddTodoFormProps = {
-  onAddTodo: (title: string) => void;
-};
-
-export const AddTodoForm = ({ onAddTodo }: AddTodoFormProps): JSX.Element => {
+export const AddTodoForm = (): JSX.Element => {
   const [value, setValue] = useState('');
 
   const handleAddTodo = (): void => {
     const trimmedValue = value.trim();
 
     if (trimmedValue) {
-      onAddTodo(trimmedValue);
+      void addTodo(trimmedValue);
 
       setValue('');
     }
