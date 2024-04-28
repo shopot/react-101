@@ -4,19 +4,17 @@ import { createStore, useStore } from 'zustand';
 import { API } from '../api';
 import { TodoType } from '../types';
 
-export interface TodosStateProps {
+type TodosStateProps = {
   todos: TodoType[];
   isLoading: boolean;
-}
+};
 
-export interface TodosStateInterface extends TodosStateProps {
+type TodosStateType = {
   deleteTodo: (id: string) => void;
   addTodo: (title: string) => void;
   toggleTodo: (id: string) => void;
   loadTodos: () => void;
-}
-
-export type TodosStoreType = ReturnType<typeof createTodosStore>;
+} & TodosStateProps;
 
 const createTodosStore = (initialProps: Partial<TodosStateProps>) => {
   const DEFAULT_PROPS: TodosStateProps = {
@@ -24,7 +22,7 @@ const createTodosStore = (initialProps: Partial<TodosStateProps>) => {
     isLoading: false,
   };
 
-  return createStore<TodosStateInterface>()((set, get) => ({
+  return createStore<TodosStateType>()((set, get) => ({
     ...DEFAULT_PROPS,
     ...initialProps,
 
@@ -62,9 +60,14 @@ const createTodosStore = (initialProps: Partial<TodosStateProps>) => {
   }));
 };
 
+type TodosStoreType = ReturnType<typeof createTodosStore>;
+
 const TodosStoreContext = createContext<TodosStoreType | null>(null);
 
-export const TodosStoreProvider = ({ children, ...props }: PropsWithChildren<TodosStateProps>) => {
+export const TodosStoreProvider = ({
+  children,
+  ...props
+}: PropsWithChildren<Partial<TodosStateProps>>) => {
   const storeRef = useRef<TodosStoreType>();
 
   if (!storeRef.current) {
@@ -76,7 +79,7 @@ export const TodosStoreProvider = ({ children, ...props }: PropsWithChildren<Tod
   );
 };
 
-export const useTodosContext = <T,>(selector: (state: TodosStateInterface) => T): T => {
+export const useTodosContext = <T,>(selector: (state: TodosStateType) => T): T => {
   const store = useContext(TodosStoreContext);
 
   if (!store) {
