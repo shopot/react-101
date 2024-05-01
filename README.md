@@ -228,6 +228,7 @@ const useSoundStore = create<SoundStoreType>((set, get) => ({
 
 ```ts
 import type { JSX } from 'react';
+import { useCounterStore } from './counter-store'
 
 const MyCounter = (): JSX.Element => {
   const counter = useCounterStore((state) => state.value);
@@ -416,11 +417,26 @@ export * from './counter-actions';
 export type CounterStoreType = UseBoundStore<StoreApi<CounterStateType & CounterActionType>>;
 ```
 
+Пример вызова действия внутри React компонента:
+
+```ts
+// counter/components/my-counter-controls.tsx
+import type { JSX } from 'react';
+import { increment, decrement } from '../stores'
+
+const MyCounterControl = (): JSX.Element => (
+  <>
+    <button onClick={increment}>One up</button>
+    <button onClick={decrement}>One down</button>
+  </>
+);
+```
+
 Этот паттерн имеет несколько преимуществ:
 - Для вызова действия не требуется хук;
 - Облегчает разделение кода.
 
-Иногда отделение действий от стора делается в пределах одного модуля (файла), такой вариант встречается не мее часто, чем вариант с размещением действий внутри стора.
+Иногда отделение действий от стора делается в пределах одного модуля (файла), то есть без раскидывания сущностей стора по разным файлам, такой вариант встречается не мее часто, чем вариант с размещением действий внутри стора.
 
 ⬆ [Back to Top](#знакомство-с-zustand)
 
