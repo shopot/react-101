@@ -9,6 +9,7 @@
   - [Создание состояния Store](#создание-состояния-store)
     - [Иммутабельность  и слияние состояния](#иммутабельность--и-слияние-состояния)
     - [Использование getState()](#использование-getstate)
+  - [Использование состояния в React компонентах](#использование-состояния-в-react-компонентах)
   - [Пример Todos](#пример-todos)
 
 
@@ -156,7 +157,7 @@ set((state) => ({value: state.value + 1}))
 ```
 использует подход неглубокого слияния - **shallowly merged**, где `set()` фактически объединяет состояние, то есть **Zustand** позволяет менять часть состояния без потребности замены всего объекта как в случае с иммутабельным состоянием.
 
-Пример из документации пример из документации демонстрирующий частичное обновление состояния:
+Пример из документации демонстрирующий частичное обновление состояния:
 
 ```ts
 import { create } from 'zustand';
@@ -180,9 +181,16 @@ const usePersonStore = create<StateType & ActionType>((set) => ({
 }))
 ```
 
+Чтобы отключить поведение слияния, вы можете указать логическое значение замены для набора следующим образом:
+
+```ts
+set((state) => newState, true)
+```
+ Вторым параметром в `set()` передается значение типа `bool` установленное в `true`.
+
 ### Использование getState()
 
-Несмотря на то, что `set()` позволяет получить доступ к текущему состоянию `set(state => result)`, но у вас так же есть доступ к состоянию за его пределами через `get()`:
+Несмотря на то, что `set()` позволяет получить доступ к текущему состоянию `set(state => result)`, у вас так же есть возможность получить доступ к состоянию за его пределами через `get()`:
 
 ```ts
 const useSoundStore = create<SoundStoreType>((set, get) => ({
@@ -191,6 +199,34 @@ const useSoundStore = create<SoundStoreType>((set, get) => ({
     const sound = get().sound
     ...
 ```
+
+## Использование состояния в React компонентах
+
+Для того что получить данные из состояния и функции-действия (actions), достаточно использовать хук где угодно, без необходимости использования каких либо провайдеров:
+
+```ts
+import type { JSX } from 'react';
+
+const MyCounter = (): JSX.Element => {
+  const counter = useCounterStore((state) => state.value);
+
+  return <h1>{counter} around here...</h1>;
+}
+
+const MyCounterControl = (): JSX.Element => {
+  // const [increment, decrement] = useCounterStore(({increment, decrement}) => [increment, decrement]);
+  const increment = useCounterStore((state) => state.increment);
+  const decrement = useCounterStore((state) => state.decrement);
+
+  return (
+    <>
+      <button onClick={increment}>One up</button>
+      <button onClick={decrement}>One down</button>
+    </>
+  );
+}
+```
+
 > ...
 
 
