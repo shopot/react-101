@@ -276,10 +276,12 @@ export const createSelectors = <S extends UseBoundStore<StoreApi<object>>>(_stor
   const store = _store as WithSelectors<typeof _store>;
 
   store.use = {};
-
   for (const k of Object.keys(store.getState())) {
-    (store.use as Record<string, () => unknown>)[k] = () => store((s) => s[k as keyof typeof s]);
+    (store.use as any)[k] = () => store((s) => s[k as keyof typeof s]);
   }
+
+  return store;
+};
 ```
 
 Пример с использованием `createSelectors`:
@@ -303,6 +305,8 @@ const MyCounterValue = (): JSX.Element => {
 ```
 
 Теперь селекторы генерируются автоматически, и вы можете получить к ним прямой доступ через свойство `use`, как переменным состояния так и как действиям если они определены внутри стора.
+
+Обратите внимание, что при использовании devtools и persist из пакета `zustand/middleware` потребуется дополнительная типизация.
 
 ⬆ [Back to Top](#знакомство-с-zustand)
 
