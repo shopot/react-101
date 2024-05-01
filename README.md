@@ -259,17 +259,24 @@ const MyCounterControl = (): JSX.Element => {
 
 ## Асинхронные действия (Async actions)
 
-Для Zustand не имеет значения, являются ли ваши действия асинхронными или нет, просто используйте вызовы API как в обычно и обновляйте состояние когда будете готовы:
+Для Zustand не имеет значения, являются ли ваши действия асинхронными или нет, просто используйте вызовы API как обычно и обновляйте состояние когда будете готовы:
 
 ```ts
 // ...
 const usePostStore = create<PostStoreType>((set) => ({
   posts: PostType[],
+  isLoading: false,
 
   fetchItems: async (url: string) => {
-    const response = await fetch(url)
+    set({isLoading: true});
 
-    set({ posts:  (await response.json()) as PostType[]})
+    try {
+      const response = await fetch(url)
+
+      set({ posts:  (await response.json()) as PostType[], isLoading: false})
+    } catch {
+      set({isLoading: false});
+    }
   },
 }))
 ```
