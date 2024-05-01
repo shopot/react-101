@@ -10,8 +10,8 @@
   - [Создание состояния Store](#создание-состояния-store)
     - [Иммутабельность  и слияние состояния](#иммутабельность--и-слияние-состояния)
     - [Использование get/getState](#использование-getgetstate)
-  - [Асинхронные действия (Async actions)](#асинхронные-действия-async-actions)
   - [Использование состояния в React компонентах](#использование-состояния-в-react-компонентах)
+  - [Асинхронные действия (Async actions)](#асинхронные-действия-async-actions)
   - [Инициализация состояние с помощью реквизитов (props)](#инициализация-состояние-с-помощью-реквизитов-props)
   - [Как сбросить состояние](#как-сбросить-состояние)
   - [Best practices](#best-practices)
@@ -225,25 +225,6 @@ const useSoundStore = create<SoundStoreType>((set, get) => ({
 
 ⬆ [Back to Top](#знакомство-с-zustand)
 
-## Асинхронные действия (Async actions)
-
-Для Zustand не имеет значения, являются ли ваши действия асинхронными или нет, просто используйте вызовы API как в обычно и обновляйте состояние когда будете готовы:
-
-```ts
-// ...
-const usePostStore = create<PostStoreType>((set) => ({
-  posts: PostType[],
-
-  fetchItems: async (url: string) => {
-    const response = await fetch(url)
-
-    set({ posts:  (await response.json()) as PostType[]})
-  },
-}))
-```
-
-⬆ [Back to Top](#знакомство-с-zustand)
-
 ## Использование состояния в React компонентах
 
 Для того, что бы получить данные из состояния и действия, достаточно использовать хук где угодно, без необходимости использования каких либо провайдеров:
@@ -271,6 +252,26 @@ const MyCounterControl = (): JSX.Element => {
     </>
   );
 }
+```
+
+⬆ [Back to Top](#знакомство-с-zustand)
+
+
+## Асинхронные действия (Async actions)
+
+Для Zustand не имеет значения, являются ли ваши действия асинхронными или нет, просто используйте вызовы API как в обычно и обновляйте состояние когда будете готовы:
+
+```ts
+// ...
+const usePostStore = create<PostStoreType>((set) => ({
+  posts: PostType[],
+
+  fetchItems: async (url: string) => {
+    const response = await fetch(url)
+
+    set({ posts:  (await response.json()) as PostType[]})
+  },
+}))
 ```
 
 ⬆ [Back to Top](#знакомство-с-zustand)
