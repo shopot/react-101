@@ -10,6 +10,11 @@
     - [Иммутабельность  и слияние состояния](#иммутабельность--и-слияние-состояния)
     - [Использование getState()](#использование-getstate)
   - [Использование состояния в React компонентах](#использование-состояния-в-react-компонентах)
+  - [Best practices](#best-practices)
+    - [Single store](#single-store)
+    - [Slices Pattern (multiple stores)](#slices-pattern-multiple-stores)
+    - [Используйте set/setState для обновления состояния](#используйте-setsetstate-для-обновления-состояния)
+    - [Размещайте функции-действия для изменения состояния внутри Store](#размещайте-функции-действия-для-изменения-состояния-внутри-store)
   - [Пример Todos](#пример-todos)
 
 
@@ -214,7 +219,8 @@ const MyCounter = (): JSX.Element => {
 }
 
 const MyCounterControl = (): JSX.Element => {
-  // const [increment, decrement] = useCounterStore(({increment, decrement}) => [increment, decrement]);
+  /* const [increment, decrement]
+      = useCounterStore(({increment, decrement}) => [increment, decrement]);*/
   const increment = useCounterStore((state) => state.increment);
   const decrement = useCounterStore((state) => state.decrement);
 
@@ -226,6 +232,112 @@ const MyCounterControl = (): JSX.Element => {
   );
 }
 ```
+
+## Best practices
+
+### Single store
+
+Глобальное состояние вашего React-приложения должно быть расположено в одном Zustand Store.
+
+Если у вас большое приложение используйте поход **Slices Pattern**, разделение состояния на основе концепции модульности.
+
+### Slices Pattern (multiple stores)
+
+Вы можете разделить свой основной стор на отдельные сторы меньшего размера в соответствии с функциональной принадлежностью, чтобы добиться модульности.
+
+Первый store для модуля Fish:
+
+```ts
+// ..module/fish/fish-store-slice.ts
+import { StateCreator } from 'zustand'
+
+export type FishSliceType = {
+  fishes: number
+  addFish: () => void
+}
+
+export const createFishSlice: StateCreator<FishSliceType, [], [], FishSliceType> = (set) => ({
+  fishes: 0,
+  addFish: () => set((state) => ({ fishes: state.fishes + 1 })),
+})
+```
+
+Следующий store для модуля Bear:
+
+```ts
+// ..module/bear/bear-store-slice.ts
+import { StateCreator } from 'zustand'
+
+export type BearSliceType = {
+  bears: number
+  addBear: () => void
+}
+
+export const createBearSlice: StateCreator<BearSliceType, [], [], BearSliceType> = (set) => ({
+  bears: 0,
+  addBear: () => set((state) => ({ bears: state.bears + 1 })),
+})
+```
+
+Теперь вы можете объединить оба стора в один bounded store:
+
+```ts
+// stores/use-bound-store.ts
+import {type FishSliceType, createFishSlice} from '...';
+import {type BearSliceType, createBearSlice} from '...';
+
+export const useBoundStore = create<BearSlice & FishSlice>()((...a) => ({
+  ...createBearSlice(...a),
+  ...createFishSlice(...a),
+}))
+```
+
+Использование bounded store в React компонентах:
+
+```ts
+import { type JSX } from 'react';
+import { useBoundStore } from './stores/use-bound-store';
+
+const App = (): JSX.Element {
+  const bears = useBoundStore((state) => state.bears);
+  const fishes = useBoundStore((state) => state.fishes);
+  const addBear = useBoundStore((state) => state.addBear);
+
+ return (
+    <div>
+      <h2>Number of bears: {bears}</h2>
+      <h2>Number of fishes: {fishes}</h2>
+      <button onClick={() => addBear()}>Add a bear</button>
+    </div>
+  )
+}
+```
+
+В официальной документации вы можете посмотреть полный пример с использованием взаимодействия между слайсами и пример обновления мульти-стора.
+
+https://docs.pmnd.rs/zustand/guides/slices-pattern
+
+
+### Используйте set/setState для обновления состояния
+
+Всегда используйте `set()` (или `setState()`) для обновления вашего состояния. `set()`(и `setState()`) гарантирует правильное объединение описанного обновления и соответствующее уведомление подписчиков (паттерн Pub/Sub).
+
+### Размещайте функции-действия для изменения состояния внутри Store
+
+В Zustand, состояние может быть обновлено без использования вызова диспетчеров (dispatch action) и функций-редюсоров (reducers), которые находятся в других Flux-подобных библиотеках.
+
+Функции-действия могут быть добавлены напрямую в Store, как показано ниже.
+
+```ts
+const useBoundStore = create((set) => ({
+  storeSliceA: ...,
+  storeSliceB: ...,
+  storeSliceC: ...,
+  updateX: () => set(...),
+  updateY: () => set(...),
+}))
+```
+
 
 > ...
 
