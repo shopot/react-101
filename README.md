@@ -7,6 +7,8 @@
   - [Общее описание](#общее-описание)
   - [Установка](#установка)
   - [Создание состояния Store](#создание-состояния-store)
+    - [Иммутабельность  и слияние состояния](#иммутабельность--и-слияние-состояния)
+    - [Использование getState()](#использование-getstate)
   - [Пример Todos](#пример-todos)
 
 
@@ -70,13 +72,7 @@ interface StoreApi<T> {
 В качестве примера посмотрим на реализацию счетчика:
 
 ```ts
-type CounterType = {
-  value: number;
-  increment: () => void;
-  decrement: () => void;
-}
-
-const counter: CounterType = {
+const counter = {
   value: 0,
 
   increment() {
@@ -93,13 +89,19 @@ const counter: CounterType = {
 При создании Store с использованием функции `create`, наличие контекста `this` в реализации объекта должно игнорироваться, вместо этого нужно использовать методы `setState` и `getState`, которые передаются в колбэк-функцию **StateCreator**:
 
 ```ts
-type CounterType = {
+import { create } from 'zustand';
+
+type StateType = {
   value: number;
+}
+
+type ActionType = {
   increment: () => void;
   decrement: () => void;
 }
 
-const useCounterStore = create<CounterType>((set) => {
+// Здесь метод setState() передается как set()
+const useCounterStore = create<StateType & ActionType>((set) => {
   return {
     value: 0, // переменная состояния
 
@@ -110,16 +112,20 @@ const useCounterStore = create<CounterType>((set) => {
 })
 ```
 
-Здесь метод `set()` работает точно так же как и функция сеттер при использован хука `useState`:
+### Иммутабельность  и слияние состояния
+
+Метод `set()` в реализации `useCounterStore` работает точно так же как и функция сеттер при использован хука `useState`:
 
 ```ts
-const [age, setAge] = useState(42)
+const [counter, setCounter] = useState({value: 0})
 //...
 
 const  handleClick = () => {
-  // setAge(42 => 43), age = 43
-  setAge((pendingState) => {
-    return nextState + 1;
+  setAge((prevState) => {
+    return {
+      ...prevState
+      value: prevState.value + 1
+    };
   });
 }
 ```
@@ -127,16 +133,64 @@ const  handleClick = () => {
 Что эквивалентно записи:
 
 ```ts
-// set((state) => ({value: state.value - 1})
+// Метод setState
+// set((state) => ({value: state.value +1})
 set((state) => {
   return {
-    value: state.value - 1
+    ...state,
+    value: state.value + 1
   }
 })
 ```
 
-Вместо значения возвращаем объект который содержит свойство `value` с новым значением на основе предыдущего значения.
+Этот пример записи демонстрирует распространенный паттерн работы с иммутабельным состоянием.
 
+> Неизменяемым (англ. immutable) называется объект, состояние которого не может быть изменено после создания. Результатом любой модификации такого объекта всегда будет новый объект, при этом старый объект не изменится.
+
+То есть при любых изменениях гарантируется, что метод `set()` вернет новый объект с новым состоянием.
+
+В примере реализации `useCounterStore` метод `increment` как и `decrement`
+
+```ts
+set((state) => ({value: state.value + 1}))
+```
+использует подход неглубокого слияния - **shallowly merged**, где `set()` фактически объединяет состояние, то есть **Zustand** позволяет менять часть состояния без потребности замены всего объекта как в случае с иммутабельным состоянием.
+
+Пример из документации пример из документации демонстрирующий частичное обновление состояния:
+
+```ts
+import { create } from 'zustand';
+
+type StateType = {
+  firstName: string
+  lastName: string
+}
+
+type ActionType = {
+  updateFirstName: (firstName: StateType['firstName']) => void
+  updateLastName: (lastName: StateType['lastName']) => void
+}
+
+// Создание Store, которое включает в себя и состояние, и (необязательно) действия
+const usePersonStore = create<StateType & ActionType>((set) => ({
+  firstName: '',
+  lastName: '',
+  updateFirstName: (firstName) => set(() => ({ firstName: firstName })),
+  updateLastName: (lastName) => set(() => ({ lastName: lastName })),
+}))
+```
+
+### Использование getState()
+
+Несмотря на то, что `set()` позволяет получить доступ к текущему состоянию `set(state => result)`, но у вас так же есть доступ к состоянию за его пределами через `get()`:
+
+```ts
+const useSoundStore = create<SoundStoreType>((set, get) => ({
+  sound: 'grunt',
+  someAction: () => {
+    const sound = get().sound
+    ...
+```
 > ...
 
 
