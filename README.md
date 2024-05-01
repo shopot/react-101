@@ -11,6 +11,7 @@
     - [Иммутабельность  и слияние состояния](#иммутабельность--и-слияние-состояния)
     - [Использование get/getState](#использование-getgetstate)
   - [Использование состояния в React компонентах](#использование-состояния-в-react-компонентах)
+  - [Автогенерация селекторов](#автогенерация-селекторов)
   - [Асинхронные действия (Async actions)](#асинхронные-действия-async-actions)
   - [Инициализация состояние с помощью реквизитов (props)](#инициализация-состояние-с-помощью-реквизитов-props)
   - [Как сбросить состояние](#как-сбросить-состояние)
@@ -253,6 +254,55 @@ const MyCounterControl = (): JSX.Element => {
   );
 }
 ```
+
+⬆ [Back to Top](#знакомство-с-zustand)
+
+## Автогенерация селекторов
+
+Получение значений через селектор хука вида:
+
+```ts
+const counter = useCounterStore((state) => state.value);
+```
+может быть утомительным, если это так, вы можете автоматически генерировать селекторы определив собственную функцию-обертку `createSelectors`:
+
+```ts
+// utils/store.ts
+import {UseBoundStore, StoreApi } from 'zustand';
+
+export type WithSelectors<S> = S extends { getState: () => infer T } ? S & { use: { [K in keyof T]: () => T[K] } } : never;
+
+export const createSelectors = <S extends UseBoundStore<StoreApi<object>>>(_store: S) => {
+  const store = _store as WithSelectors<typeof _store>;
+
+  store.use = {};
+
+  for (const k of Object.keys(store.getState())) {
+    (store.use as Record<string, () => unknown>)[k] = () => store((s) => s[k as keyof typeof s]);
+  }
+```
+
+Пример с использованием `createSelectors`:
+
+```ts
+import { create } from 'zustand';
+import { createSelectors } from 'utils/store';
+
+const useCounterStore = create<CounterStateType>(() => ({ value: 0 }));
+
+const counterStore = createSelectors(useCounterStore);
+
+// ...
+const MyCounterValue = (): JSX.Element => {
+  const count = counterStore.use.value();
+
+  return (
+    <h1>Count is {count}</h1>
+  );
+};
+```
+
+Теперь селекторы генерируются автоматически, и вы можете получить к ним прямой доступ через свойство `use`, как переменным состояния так и как действиям если они определены внутри стора.
 
 ⬆ [Back to Top](#знакомство-с-zustand)
 
