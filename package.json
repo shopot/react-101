@@ -7,7 +7,10 @@
     "javascript",
     "typescript",
     "jsx",
-    "frontend"
+    "frontend",
+    "redux",
+    "mobx",
+    "zustand"
   ],
   "author": "Konstantin Sapronov (https://github.com/shopot)",
   "homepage": "https://github.com/shopot/react-101",
@@ -16,21 +19,20 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
-    "lint": "eslint ./src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "typecheck": "tsc --noEmit",
-    "preview": "vite preview"
+    "build": "tsc -b && vite build",
+    "lint": "eslint ./src",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "react-router-dom": "^6.23.0"
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.15.0",
-    "@types/node": "^20.12.7",
-    "@types/react": "^18.3.12",
-    "@types/react-dom": "^18.3.1",
+    "@types/node": "^22.10.2",
+    "@types/react": "^19.0.1",
+    "@types/react-dom": "^19.0.2",
     "@vitejs/plugin-react": "^4.3.4",
     "autoprefixer": "^10.4.20",
     "eslint": "^9.15.0",
