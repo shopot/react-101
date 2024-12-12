@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite';
-import { resolve } from 'node:path';
 import react from '@vitejs/plugin-react';
+import { resolve } from 'node:path';
 
 export const pathResolver = (p: string) => resolve(__dirname, '.', p);
 
@@ -11,5 +11,8 @@ export default defineConfig({
     alias: {
       '@': pathResolver('./src'),
     },
+  },
+  server: {
+    open: true,
   },
 });
